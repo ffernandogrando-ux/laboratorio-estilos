@@ -33,7 +33,7 @@ e um CTA natural que gera comentário ("qual avenida da sua cidade é um rio?").
 
 **01 MORROS E VALES** · 13,5–21,9
 - 13,5–15,8 · "São Paulo é um *sobe e desce*."
-- 16,0–18,0 · "Em cada vale, corria um rio."
+- 16,0–18,0 · "E em cada vale, lá embaixo, corria um rio."
 - 18,2–21,9 · "No alto, quase *cem metros* acima dos rios, ficou a *Paulista*."
 
 **02 O PLANO** · 22,4–36,4
@@ -58,7 +58,7 @@ e um CTA natural que gera comentário ("qual avenida da sua cidade é um rio?").
 - 68,9–70,9 · "ela só voltou a ser *rio*."
 - 71,1–74,4 · "Qual avenida da *sua cidade* esconde um rio? Comenta aqui."
 
-Total: **206 palavras**, ~74 s (~2,8 palavras/s com as pausas; Curitiba roda a 2,7).
+Total: **206 palavras** (203 sem contar os números), ~74 s (~2,7 palavras/s com as pausas; Curitiba roda a 2,7).
 
 ## 4. Plano visual por capítulo
 Paleta da referência + **azul-água `#3aa0ff`** só para rio (nada mais é azul-forte, para o rio "acender" na tela).
@@ -82,7 +82,7 @@ Selo `ilustrativo` sempre que houver mapa ou rede de rios desenhada (não é o t
 | Nove de Julho sobre o Saracura; 23 de Maio sobre o Itororó; plano de avenidas | [Unifesp: Plano de Avenidas e os ribeirões Saracura e Itororó (1937–1945)](https://site.unifesp.br/capph/images/Discurso%20T%C3%A9cnico%20e%20Rela%C3%A7%C3%B5es%20Sociais%20no%20Plano%20de%20Avenidas%20para%20a%20Cidade%20de%20S%C3%A3o%20Paulo%20elementos%20para%20a%20hist%C3%B3ria%20das%20transforma%C3%A7%C3%B5es%20espaciais%20na%20%C3%A1rea%20dos%20ribeir%C3%B5es%20Saracura%20e%20Itoror%C3%B3%20(1937-1945).pdf); [Prefeitura: caderno de drenagem do Anhangabaú (galeria do Saracura na 9 de Julho)](https://drive.prefeitura.sp.gov.br/cidade/secretarias/upload/obras/cadernos_de_drenagem/CBH_Anhangabau_2021.pdf) | o Itororó é afluente do Anhangabaú |
 | "nos anos 30, um plano de avenidas"; avenidas em fundo de vale | [Câmara Municipal de SP (Plano de Avenidas, anos 1930: 9 de Julho, 23 de Maio, Tiradentes)](https://www.saopaulo.sp.leg.br/apartes/?p=45913); [ANPUR: avenidas de fundo de vale](https://anais.anpur.org.br/index.php/anaisenanpur/article/download/1301/1284) | plano de 1929–1930 conforme a fonte (a fala diz "de 1930"); as obras vieram depois (túnel da 9 de Julho 1938, 23 de Maio concluída em 1968–69, [Wikipedia](https://en.wikipedia.org/wiki/23_de_Maio_Avenue)), |
 | Paulista no espigão entre Tietê e Pinheiros, ~100 m acima das várzeas | [USP (e-disciplinas): a Paulista ocupa o espigão que divide Pinheiros e Tietê](https://edisciplinas.usp.br/mod/resource/view.php?id=3939928); [A cidade de São Paulo: geografia e história (maciço central ~820 m, ~100 m acima das várzeas)](https://www.perkons.com/wp-content/uploads/2022/01/cidade-sao-paulo-geografia-historia.pdf); [National Geographic Brasil (Paulista entre as partes mais altas)](https://www.nationalgeographicbrasil.com/historia/2024/01/no-dia-do-aniversario-de-sao-paulo-descubra-5-fatos-surpreendentes-sobre-a-avenida-paulista) | "quase cem metros" é a diferença maciço × várzea |
-| Tietê retificado: um trecho de 46 km ficou com 26 (Osasco–Penha, só no chip); marginais na várzea | [Estadão 2012, via ISA (PDF): de 46 km para 26 km entre Osasco e a Penha](https://documentacao.socioambiental.org/noticias/anexo_noticia/23176_20120924_140343.pdf); [Revista USP (PAAM): rio encurtado para quase metade do comprimento original no município](https://revistas.usp.br/paam/article/download/158617/159285/392074); [Pesquisa FAPESP: meandros desapareceram com a retificação, a partir de 1930](https://revistapesquisa.fapesp.br/chuvas-intensas-redesenharam-o-rio-tiete-ha-17-mil-anos/) | 46 → 26 km é dado de **jornal** (Estadão 2012); o respaldo acadêmico é o "quase metade" da USP. Antes de publicar, conferir num documento do DAEE |
+| Tietê retificado: um trecho de 46 km ficou com 26 (Osasco–Penha, só no chip); marginais na várzea | [Estadão 2012, via ISA (PDF): de 46 km para 26 km entre Osasco e a Penha](https://documentacao.socioambiental.org/noticias/anexo_noticia/23176_20120924_140343.pdf); [Revista USP (PAAM): rio encurtado para quase metade do comprimento original no município](https://revistas.usp.br/paam/article/download/158617/159285/392074); [Pesquisa FAPESP: meandros desapareceram com a retificação, a partir de 1930](https://revistapesquisa.fapesp.br/chuvas-intensas-redesenharam-o-rio-tiete-ha-17-mil-anos/) | 46 → 26 km é dado de **jornal** (Estadão 2012); o respaldo acadêmico é o "quase metade" da USP. Conferido com o [DAEE (calha do Tietê): hoje 24,5 km entre o Cebolão e a Barragem da Penha](https://maubertec.com.br/wp-content/uploads/2025/03/EE03A-DAEE-Calha_Tiete-por.pdf), compatível com os ~26 km |
 | alagamentos sobre rios enterrados | [Pesquisa FAPESP: cidade dos rios invisíveis](https://revistapesquisa.fapesp.br/cidade-dos-rios-invisiveis/); [Diário do Litoral: por que SP sempre alaga](https://www.diariodolitoral.com.br/cotidiano/por-que-sao-paulo-sempre-alaga-a-resposta-pode-estar-nos-mais-de-300/) | o roteiro diz "tanto ponto", não "todo ponto" |
 
 ## 6. Regras conferidas
@@ -95,3 +95,4 @@ Selo `ilustrativo` sempre que houver mapa ou rede de rios desenhada (não é o t
 |---|---|---|
 | 1 | 7/10 | gancho só afirmava (sem mistério); "quantos você já viu?" sem sentido; 01 frio e técnico; 03 (Tietê) fora do fio; "apertado num tubo" contradizia o Tietê; "nos anos 30" confundia plano com obra |
 | 2 | 8/10 | gancho rápido demais (4+ palavras/s) e com o nome da cidade no lugar errado; "Osasco e a Penha" e "marginais" sem explicação; causa imprecisa ("sem as curvas"); 04 longo e repetitivo; CTA diferente na fala e na tela; "anos 30" no limite |
+| 3 | **8,5/10** | aprovado para publicar; ajustes finais: contagem, fonte do DAEE, "E em cada vale, lá embaixo, corria um rio." |

@@ -4,8 +4,8 @@
 __pycache__/
 node_modules/
 /fontes/
-estilos/*/teste/quadros/
-estilos/*/teste/prev/
+estilos/*/*/quadros/
+estilos/*/*/prev/
 indice/folha.jpg
 referencias/*/*.mp4
 referencias/*/q_*.jpg
