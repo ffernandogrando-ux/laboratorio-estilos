@@ -61,7 +61,7 @@ export function camera(t, sg, bg, c) {
 }
 
 // —— a sala: parede de papel listrado, janela, quadro, prateleira, rodapé de lambri, piso xadrez ——
-export const CHAO = 1600, MESA = { x0: 560, x1: 1030, topo: 1180 }, CANECA = [770, 1180];
+export const CHAO = 1600, MESA = { x0: 560, x1: 1030, topo: 1290 }, CANECA = [770, 1290];
 export function pintarSala() {
   const bg = novoFundo(-400, -300, 1500, 2500, 2), Wd = 1900, X0 = -400;
   noCanvas(bg, (g, cru) => {

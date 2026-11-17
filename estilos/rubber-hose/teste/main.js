@@ -5,7 +5,7 @@ import * as T from '../kit/toon.js';
 import { criarFilme, revelar } from '../kit/filme.js';
 import { P, glove, hose } from '../kit/partes.js';
 import { pintarSala, camera, cortina, mesa, caneca, respira, q, TEMPO, CHAO, CANECA, CAN } from '../kit/cenario.js';
-import { pao, barata, andar, OMBRO } from '../kit/personagens.js';
+import { pao, barata, andar, BOCA_PAO } from '../kit/personagens.js';
 import { carimbo } from '../kit/carimbo.js';
 
 const cv = document.getElementById('c');
@@ -46,7 +46,7 @@ function largo(t) {
   const toLocal = (wx, wy) => [(wx - x) / KP, (wy - y) / KP];
   // onde está a caneca (mundo): na mesa → na mão → na boca → longe do corpo (susto)
   const kc = 1.05, mesaPos = [CANECA[0], CANECA[1]];
-  const bocaPos = [x + 168 * KP, y - 205 * KP], longe = [x + 270 * KP, y - 330 * KP];
+  const bocaPos = [x + 238 * KP, y + BOCA_PAO()[1] * KP + 150], longe = [x + 300 * KP, y - 330 * KP];
   let mc = mesaPos, inc = 0;
   if (tq >= SEGURA) { mc = [lerp(mesaPos[0], bocaPos[0], leva), lerp(mesaPos[1], bocaPos[1], leva) - Math.sin(leva * Math.PI) * 60]; inc = -.42 * ss(seg(tq, 3.0, BOCA)); }
   if (susto) { const u = back(seg(tq, SUSTO, SUSTO + .3)); mc = [lerp(bocaPos[0], longe[0], u), lerp(bocaPos[1], longe[1], u)]; inc = lerp(-.42, .15, u); }
@@ -54,22 +54,22 @@ function largo(t) {
   const maoMundo = [mc[0] - CAN.R * kc - 6, mc[1] - 78 * kc];
   // mão direita: balança andando → estende para a caneca → segura
   let mD;
-  if (tq < PEGA) mD = [118 + w.balanco * .6, -150 + Math.abs(w.balanco) * .3];
-  else { const alvo = toLocal(...maoMundo); mD = segura ? alvo : [lerp(118, alvo[0], pega), lerp(-150, alvo[1], pega)]; }
+  if (tq < PEGA) mD = [118 + w.balanco * .6, -240 + Math.abs(w.balanco) * .3];
+  else { const alvo = toLocal(...maoMundo); mD = segura ? alvo : [lerp(130, alvo[0], pega), lerp(-240, alvo[1], pega)]; }
   const Pp = { x, y: y + pousa * 10, k: KP, t: tq, sx: 1 - pousa * .06 + (susto ? -.08 * (1 - caiu) : 0), sy: 1 + pousa * .1 + b * .015 + (susto ? .12 * (1 - caiu) - caiu * .1 : 0),
     olhar: tq < PARA ? .6 : .9, olhos: { lx: .7, ly: .1 }, boca: { type: 'smile' },
     pernaE: anda < 1 ? w.pernaE : undefined, pernaD: anda < 1 ? w.pernaD : undefined,
-    bracoE: { x: -150 - w.balanco * .6, y: -150 + Math.abs(w.balanco) * .3, mao: 'open', curva: 20 },
+    bracoE: { x: -240 - w.balanco * .6, y: -240 + Math.abs(w.balanco) * .3, mao: 'open', curva: 20 },
     bracoD: { x: mD[0], y: mD[1], mao: tq < PEGA + .15 ? 'open' : 'grab', frente: true, curva: -24, rot: segura ? -.15 : undefined } };
   if (anda < 1) Pp.y += w.quica;
   if (tq >= SEGURA && !susto) { Object.assign(Pp, { olhar: .7, olhos: { lx: .9, ly: -.4 + leva * .3, lid: leva * .35 }, boca: { type: leva > .5 ? 'o' : 'smile', open: .6 }, sx: 1 - leva * .04, sy: 1 + leva * .05 }); }
   if (susto) Object.assign(Pp, { olhar: .5, olhos: { type: 'wide', lx: .8, ly: -.5 }, sobr: 'up', boca: { type: 'wavy', open: .9, w: 84 }, tremor: 4,
-    bracoE: { x: -210, y: -480, mao: 'open', curva: 30 }, suor: [[-150, -520, 12], [160, -560, 10]],
+    bracoE: { x: -230, y: -560, mao: 'open', curva: 30 }, suor: [[-200, -530, 13], [210, -560, 11]],
     pernaE: { x: -70, y: -40 * (1 - caiu), dir: -1 }, pernaD: { x: 70, y: -60 * (1 - caiu), dir: 1 } });
   const desenhaCaneca = () => {
     const M0 = T.getM(); T.setM(T.BASE);
-    caneca(mc[0], mc[1], { t: tq, b: segura ? 0 : b, k: kc, inclina: inc, treme: susto ? 1 : 0, fumaca: susto ? 'up' : 'lazy',
-      dentro: t >= SAI ? () => barataNaCaneca(tq, .92, back(seg(tq, SAI, SAI + .35), 2.2), { olhar: susto ? [-.9, .1] : [-.9, -.3], baba: seg(tq, SAI + .3, SAI + 1) }) : null });
+    caneca(mc[0], mc[1], { t: tq, b: segura ? 0 : b, k: kc, inclina: inc, treme: susto ? 1 : 0, fumaca: t >= SAI ? 'none' : 'lazy',
+      dentro: t >= SAI ? () => barataNaCaneca(tq, .92, back(seg(tq, SAI, SAI + .35), 2.2), { olhar: susto ? [-.9, .1] : [-.9, -.3], baba: seg(tq, SAI + .3, SAI + 1), rot: -inc, dx: -inc * 40 }) : null });
     T.setM(M0);
   };
   if (!segura) desenhaCaneca();
@@ -86,7 +86,7 @@ function close(t) {
   const uq = tq - CORTE, gole = [.25, .85].map(g0 => Math.sin(clamp((uq - g0) / .45) * Math.PI)).reduce((a, c) => Math.max(a, c), 0);
   const arrota = uq >= 1.75 && uq < 2.15, tchau = uq >= 1.9, afunda = eio(seg(tq, MERGULHO, VOLTA)) * 340;
   const ondas = uq > .3 ? Math.sin(uq * 7) * 3 : 0;
-  caneca(CANECA[0], CANECA[1], { t: tq, b: b * .5, fumaca: arrota ? 'up' : 'lazy', nivel: 4,
+  caneca(CANECA[0], CANECA[1], { t: tq, b: b * .5, fumaca: 'none', nivel: 4,
     dentro: () => {
       const o = { olhar: uq > 1.3 ? [.2, -.6] : [-.3, .6], olhos: gole > .2 || (uq > 1.3 && !arrota) ? 'happy' : 'wide', boca: arrota ? 'arroto' : gole > .2 ? 'gole' : uq > 1.3 ? 'grin' : 'gole', baba: uq > 1.3 ? .4 : 0,
         afunda: gole * 36 + afunda + ondas, rot: gole * .22, sx: arrota ? 1.12 : 1, sy: arrota ? .94 : 1 };

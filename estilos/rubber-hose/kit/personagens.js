@@ -16,11 +16,11 @@ export function andar(fase, { L = 90, sobe = 34, quica = 16, balanco = 40 } = {}
     quica: -(1 - Math.abs(c)) * quica, balanco: c * balanco };
 }
 
-// —— PÃOZINHO (origem: chão entre os pés; ~520 de altura em k=1) ——
+// —— PÃOZINHO (origem: chão entre os pés; pão deitado de ~360×250 sobre pernas de 280) ——
 // p: { k, espelho, sx, sy, inclina, tremor, t, olhar:-1..1 (rosto vira), olhos:{type,lx,ly,lid}, boca:{type,open,w}, sobr,
 //      bracoE/bracoD: { x, y, mao:'open'|'grab'|'point'|'fist'|'wave', curva, frente, rot }, pernaE/pernaD: { x, y, dir },
 //      suor:[[x,y,r]], entre: fn (desenhada antes dos braços da frente: objeto na mão) }
-export const PAO = { rx: 128, ry: 172, perna: 150 };
+export const PAO = { rx: 178, ry: 122, perna: 280 };
 export function pao(p = {}) {
   const { rx, ry, perna } = PAO, cy = -perna - ry + 18;
   push(); translate(p.x || 0, p.y || 0); if (p.espelho) scale(-1, 1); scale(p.k || 1);
@@ -76,6 +76,7 @@ export function pao(p = {}) {
 }
 // ponto do ombro (local, sem escala) — para quem quer calcular onde a mão alcança
 export const OMBRO = s => [s * (PAO.rx - 14), -PAO.perna - PAO.ry + 48];
+export const BOCA_PAO = (olhar = .7) => [olhar * 30 + 8, -PAO.perna - PAO.ry + 18 + 82];
 
 // —— BARATA (origem: centro do corpo; cabeça para cima; ~260 de altura em k=1 sem as antenas) ——
 // p: { x, y, k, rot, t, olhar:[lx,ly], olhos:'wide'|'happy'|'open', boca:'grin'|'o'|'gole'|'arroto', baba:0..1,
@@ -114,7 +115,7 @@ export function barata(p = {}) {
   for (const [ox, oy, rx, ry, a, b2, s] of olhos) {
     const bob = Math.sin(t * 9 + s * 2) * 4;
     hose([s * 14, -122], [ox, oy + ry * .7 + bob], s * 5, 9, P.dmid);
-    if (tipo === 'happy' || tipo === 'shut') { pieEye(ox, oy + bob, rx, ry, { type: tipo, lwk: .75 }); continue; }
+    if (tipo === 'happy') { pieEye(ox, oy + bob, rx, ry, { type: 'open', lx: .1, ly: .5, lid: .55, lidCol: P.dmid, lwk: .75 }); continue; }
     pieEye(ox, oy + bob, rx, ry, { type: tipo, lx: a, ly: b2, lwk: .75, lid: s > 0 ? .28 : 0, lidCol: P.dmid, lidTilt: .25 });
     for (let v = 0; v < 3; v++) { const an = Math.PI * (.75 + v * .22) * (s < 0 ? 1 : -1) + (s > 0 ? Math.PI : 0), r0 = rx * 1.12, r1 = rx * .7;
       stroke([[ox + Math.cos(an) * r0 * .92, oy + bob + Math.sin(an) * ry * .92], [ox + Math.cos(an + .2) * r1, oy + bob + Math.sin(an + .2) * ry * .62], [ox + Math.cos(an - .1) * r1 * .8, oy + bob + Math.sin(an - .1) * ry * .45]], S.lw * .32, { line: P.mid }); }

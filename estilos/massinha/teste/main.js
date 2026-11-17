@@ -62,15 +62,15 @@ function draw(t) {
     cam(lerp(CANECA[0] - 20, CANECA[0], volta), lerp(950, 1060, volta), lerp(2.5 + u * 0.12, 3.4, volta), lerp(-0.03, 0.08, volta), t);
     sala(g, t);
     const gole = u < 1.7 ? Math.max(0, Math.sin(u * 7.5)) : 0, arroto = tq > 6.9 && tq < 7.3, tchau = seg(tq, 7.15, 7.35) * (1 - seg(tq, 7.85, 8));
-    caneca(g, CANECA[0], CANECA[1], t, { fumaca: 0.25 * (1 - volta) + volta, dentro: (g2) => barata(g2, 10, -188 + gole * 34, 0.62, t, {
-      rot: 1.45 - gole * 0.2, cabRot: -1.25 + gole * 0.5, v, anda: 0.12, olhar: [-0.3, -0.5], palpebra: arroto ? 0.1 : 0.38, boca: arroto || gole > 0.5 ? 'aberta' : 'sorriso',
+    caneca(g, CANECA[0], CANECA[1], t, { fumaca: 0.25 * (1 - volta) + volta, dentro: (g2) => barata(g2, 14, -200 + gole * 34, 0.75, t, {
+      rot: 1.45 - gole * 0.2, cabRot: -1.25 + gole * 0.5, v, anda: 0.12, olhar: [-0.3, -0.5], palpebra: arroto ? 0.05 : 0.3, boca: arroto || gole > 0.5 ? 'aberta' : 'sorriso',
       barriga: 1 + Math.min(1, u / 1.7) * 0.12 + (arroto ? 0.08 : 0), tchau, baba: arroto ? 1 : 0.4,
     }) });
     // arroto: bolha de massinha creme que sobe e estoura
     if (tq > 6.9 && tq < 7.6) {
       const a = seg(tq, 6.9, 7.5), s = a < 0.85 ? back(a / 0.4) : 1 + (a - 0.85) * 3;
       g.save(); g.globalAlpha = a < 0.85 ? 1 : 1 - (a - 0.85) / 0.15;
-      C.put(g, CANECA[0] - 120, 830 - a * 60, s, 0, () => {
+      C.put(g, CANECA[0] - 110, 880 - a * 70, s * 0.8, 0, () => {
         C.draw(g, 'arroto', { box: { x: -60, y: -40, w: 120, h: 80 }, fn: (c) => { c.beginPath(); c.ellipse(-24, 6, 34, 26, 0, 0, 7); c.ellipse(10, -8, 38, 30, 0, 0, 7); c.ellipse(36, 10, 24, 20, 0, 0, 7); c.fill(); } }, '#eef3d8', { bevel: 8, shine: 1, shadow: 0.5 });
       });
       g.restore();

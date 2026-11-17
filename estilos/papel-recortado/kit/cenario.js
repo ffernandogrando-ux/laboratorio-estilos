@@ -81,6 +81,8 @@ export function sala(g, kit) {
 export function mesa(g) {
     const { x0, topo, frente, chao } = MESA;
     spr(g, 'mesa', { x: x0 - 30, y: topo - 30, w: 1200, h: chao - topo + 80 }, (c) => {
+        // sombra embaixo do tampo (o vão entre as pernas fica escuro, sem gradiente)
+        P.cutout(c, [[x0 + 10, frente], [1600, frente], [1600, chao - 30], [x0 + 30, chao - 30]], '#2b1631', 'vao', { border: 0, shadow: 0, jag: 2, tex: { alpha: [0.2, 0.4] } });
         for (const x of [x0 + 30, 1040]) cut(c, [[x, frente], [x + 46, frente], [x + 40, chao], [x + 6, chao]], COL.woodDark, 'perna' + x, { inner: (cc, box) => D.woodGrain(cc, box, COL.woodDark, { seed: 'pl' + x, angle: Math.PI / 2 }) });
         cut(c, [[x0 + 60, frente + 30], [1600, frente + 30], [1600, frente + 60], [x0 + 60, frente + 60]], D.shade(COL.woodDark, -8), 'travessa', { border: 2 });
         cut(c, [[x0 + 14, topo], [1600, topo], [1600, frente], [x0, frente]], COL.wood, 'tampo', { shadow: 0.3, tex: { angle: 0.01, len: [80, 200], alpha: [0.3, 0.6] }, inner: (cc, box) => D.woodGrain(cc, box, COL.wood, { seed: 'tampo' }) });

@@ -84,7 +84,7 @@ export function barata(g, x, y, s, t, P = {}) {
     for (const [ex, ey, r, k] of [[-124, -80, 38, 'G'], [-74, -54, 22, 'P']]) {
       const ph = P.palpebra;
       g.save(); g.beginPath(); g.ellipse(ex, ey, r * 1.05, r * 1.08, 0, 0, 7); g.clip();
-      C.put(g, ex, ey - r * 1.1 + ph * r * 1.05, 1, 0, () => P_(g, 'b-palp' + k, C.ellipse(0, -r * 0.6, r * 1.2, r * 1.2, 14), COR.borda, C.small({ bevel: r * 0.15, shadow: false })));
+      C.put(g, ex, ey - r * 1.1 + ph * r * 1.05, 1, 0, () => P_(g, 'b-palp' + k, C.ellipse(0, -r * 0.6, r * 1.2, r * 1.2, 14), C.shade(COR.olho, -22), C.small({ bevel: r * 0.15, shadow: false })));
       g.strokeStyle = 'rgba(40,16,6,0.8)'; g.lineWidth = 2.2; g.beginPath(); g.moveTo(ex - r, ey - r * 0.5 + ph * r * 1.05); g.lineTo(ex + r, ey - r * 0.5 + ph * r * 1.05); g.stroke();
       g.restore();
     }

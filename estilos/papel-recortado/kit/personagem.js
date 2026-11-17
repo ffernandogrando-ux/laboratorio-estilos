@@ -52,7 +52,7 @@ const tubo = (cor, w, seed, malha) => (c, L) => (malha ? tricot(c, P.noodle([[0,
 } }));
 
 function perna(g, i, quadril, pe) {
-    const s = i === 0 ? -1 : 1;    // joelho para o lado de fora / para a frente da caminhada
+    const s = i === 0 ? 1 : -1;    // joelho para o lado de fora
     const { junta, fim } = ik(quadril, pe, PERNA[0], PERNA[1], s);
     peca(g, 'dito-coxa' + i, quadril, junta, 66, tubo(C.calca, 66, 'coxa' + i));
     peca(g, 'dito-canela' + i, junta, fim, 60, tubo(D.shade(C.calca, -3), 60, 'canela' + i));
@@ -70,7 +70,9 @@ function perna(g, i, quadril, pe) {
 
 function braco(g, i, mao, pose, o) {
     const sh = OMBRO[i], s = i === 0 ? -1 : 1;
-    const { junta, fim } = ik(sh, mao, BRACO[0], BRACO[1], i === 0 ? 1 : -1);
+    // cotovelo sempre para fora do corpo: das duas soluções, a que fica mais longe do centro
+    const A = ik(sh, mao, BRACO[0], BRACO[1], 1), Bk = ik(sh, mao, BRACO[0], BRACO[1], -1);
+    const { junta, fim } = (A.junta[0] - Bk.junta[0]) * (i === 0 ? -1 : 1) > 0 ? A : Bk;
     peca(g, 'dito-braco' + i, sh, junta, 64, tubo(C.sueter, 64, 'braco' + i, true));
     peca(g, 'dito-antebr' + i, junta, fim, 58, tubo(D.shade(C.sueter, -4), 58, 'antebr' + i, true));
     if (pose === null) return fim;
@@ -214,13 +216,13 @@ export function dito(g, x, y, s, o = {}) {
     }, 1.1);
     cabeca(g, o);
     // braços: direito do Dito (esquerda da imagem) e esquerdo (direita da imagem, o que segura a caneca)
-    braco(g, 0, o.maoD ?? [-150, -470], o.poseD ?? 'open', o);
+    braco(g, 0, o.maoD ?? [-185, -440], o.poseD ?? 'open', o);
     if (o.segura) {
         const S = o.segura, { w, rot } = pulsoCaneca(S.m, S.r, S.mugW);
         braco(g, 1, w, null, o);
         D.hand(g, w[0], w[1], 74, rot, 'wrap', { skin: C.pele, side: 'left', cuff: D.shade(C.sueter, -8), part: 'back' });
         S.desenha(g);
         D.hand(g, w[0], w[1], 74, rot, 'wrap', { skin: C.pele, side: 'left', part: 'front' });
-    } else braco(g, 1, o.maoE ?? [150, -470], o.poseE ?? 'open', o);
+    } else braco(g, 1, o.maoE ?? [185, -440], o.poseE ?? 'open', o);
     g.restore();
 }

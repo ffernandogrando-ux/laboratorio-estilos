@@ -1,0 +1,12 @@
+{
+ "slug": "massinha",
+ "nome": "Massinha (stop motion de plastilina)",
+ "origem": {"repo": "illodev/drawn-by-code", "pasta": "styles/clay (+ cache/rng de engine/core.js)", "licenca": "código MIT; personagens nossos (Juca e a barata)"},
+ "tecnica": "2D canvas: silhueta chapada virando peça de massinha (pigmento, marcas de espátula, digitais, volume, bisel por silhueta inversa desfocada, brilho de cera, sombra projetada), cacheada por resolução; stop motion em dois (12 desenhos/s) com fervura de 3 desenhos e tremor determinístico de câmera e luz",
+ "status": "teste",
+ "canais": ["anima-oteste", "zackdfilms", "anima-ovitinho"],
+ "fortes": "cara de massinha de verdade (digitais, bisel, cera) com render só de CPU; personagem e barata muito expressivos; cenário quente e cheio; letras de massinha legíveis no carimbo; profundidade de campo de graça no close (fundo com teto de resolução)",
+ "limites": "personagens são bonecos de peças fixas giradas (braço de 2 salsichas por IK): poses muito orgânicas ou vistas de costas exigem peças novas; sem 3D real (a barata é de perfil); cada peça nova custa ~ms no 1º quadro por resolução (cache por aba); o close muito aproximado (zoom > 4) perde nitidez",
+ "nota": 8,
+ "seg_por_10s": 30.6
+}
