@@ -87,3 +87,34 @@ export function fita(C, pts, u, larg, cor, y = 0, alpha = 1) {
     fillCam(C, Q, fog(C, cor, Math.max(0, dmin)), alpha);
   }
 }
+
+// —— âncoras estáveis para etiquetas (corrige o tremor de 17/11/2026) ——
+// Antes, a etiqueta procurava numa grade de 2 m o ponto da via mais perto de uma altura da tela: a cada quadro o
+// "vencedor" trocava de amostra (e de lado da via), e o ponto pulava 15–40 px. Agora:
+// 1) cruzamentoY acha o ponto de forma CONTÍNUA (primeiro cruzamento da altura alvo + bisseção), sem saltos de amostra;
+// 2) suavizar faz a média gaussiana da posição em instantes vizinhos (função pura de t: funciona com render em paralelo);
+// 3) nada de arredondar: a posição segue em subpixel até o canvas.
+// f(s) → ponto 3D ao longo de uma linha do mundo (ex.: s => A(s, u)); procura s em [s0, s1]
+export function cruzamentoY(C, f, s0, s1, yAlvo, { passo = 3, zMin = 6 } = {}) {
+  let ant = null, sa = s0;
+  for (let s = s0; s <= s1; s += passo) {
+    const q = toCam(C, f(s)); if (q[2] < zMin) { ant = null; continue; }
+    const y = scr(C, q)[1];
+    if (ant !== null && (ant - yAlvo) * (y - yAlvo) <= 0) {
+      let a = sa, b = s, ya = ant;
+      for (let i = 0; i < 22; i++) { const m = (a + b) / 2, ym = scr(C, toCam(C, f(m)))[1]; if ((ya - yAlvo) * (ym - yAlvo) <= 0) b = m; else { a = m; ya = ym; } }
+      const pt = scr(C, toCam(C, f((a + b) / 2))); return [pt[0], pt[1], (a + b) / 2];
+    }
+    ant = y; sa = s;
+  }
+  return null;
+}
+// média gaussiana de fn(t+δ) (fn → [x, y] ou null) numa janela de ±janela s; amostras nulas saem da média
+export function suavizar(fn, t, janela = .25, n = 9) {
+  let sx = 0, sy = 0, sw = 0;
+  for (let i = 0; i < n; i++) {
+    const d = (i / (n - 1) * 2 - 1) * janela, w = Math.exp(-4.5 * (d / janela) ** 2), p = fn(t + d);
+    if (p) { sx += p[0] * w; sy += p[1] * w; sw += w; }
+  }
+  return sw > .35 * (n / 3) ? [sx / sw, sy / sw] : null;
+}

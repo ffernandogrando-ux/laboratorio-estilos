@@ -8,6 +8,9 @@ export const UI = { menta: '#4fd6a8', vermelho: '#e0284a', laranja: '#f2a03a', a
 const SANS = (w, px) => `${w} ${px}px "Inter", sans-serif`, MONO = (w, px) => `${w} ${px}px "JetBrains Mono", monospace`;
 export const fontesProntas = () => Promise.all([SANS(800, 50), SANS(600, 30), MONO(400, 24), MONO(700, 26)].map(f => document.fonts.load(f)));
 
+// limite suave (sem quina): a pílula desacelera ao encostar na margem em vez de parar de repente
+const smin = (a, b, k = 70) => { const h = clamp(.5 + .5 * (b - a) / k); return b + (a - b) * h - k * h * (1 - h); };
+const clampSuave = (v, lo, hi) => -smin(-smin(v, hi), -lo);
 function rr(x, y, w, h, r) { g.beginPath(); g.roundRect(x, y, w, h, r); }
 const env = (t, a, b, fi = .3, fo = .3) => Math.min(eo(seg(t, a, a + fi)), 1 - ss(seg(t, b - fo, b)));
 
@@ -32,7 +35,8 @@ export function etiqueta(t, t0, t1, texto, ponto, pos, { cor = UI.creme, bola = 
   g.save(); g.font = MONO(700, 27);
   const tw = g.measureText(texto).width, pw = tw + 40 + (bola ? 26 : 0), ph = 50;
   // pos[0] = null: a pílula acompanha o ponto na horizontal (a linha de chamada cai quase reta)
-  const py = pos[1], px = pos[0] ?? clamp((ponto ? ponto[0] : W / 2) - pw * lado - 40, 50, W - pw - 50);
+  const py = pos[1], px = pos[0] ?? clampSuave((ponto ? ponto[0] : W / 2) - pw * lado - 40, 50, W - pw - 50);
+  (globalThis.__ETQ ||= {})[texto] = { t, ponto: ponto && [ponto[0], ponto[1]], pilula: [px, py] };   // para ferramentas/tremor.mjs
   // linha de chamada
   if (ponto && ponto[0] > -50 && ponto[0] < W + 50 && ponto[1] > 0 && ponto[1] < H) {
     const lx = px + pw * lado, ly = py + ph, L = eo(seg(t, t0 + .1, t0 + .55));

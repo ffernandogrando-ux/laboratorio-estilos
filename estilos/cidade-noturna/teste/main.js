@@ -2,7 +2,7 @@
 // 0–3 s: 01 O PLANO (câmera desce do alto até a avenida) · 3–7 s: 02 TRÊS VIAS (voo baixo, etiquetas) ·
 // 7–10 s: 03 E DEPOIS (câmera sobe, gente se junta no eixo, "+180" contando, mapa-múndi).
 import { seg, ss, eio, track } from '/motor/lib.js';
-import { init, camera, project, g, W } from '../kit/proj.js';
+import { init, camera, g, W, cruzamentoY, suavizar } from '../kit/proj.js';
 import { A, gerarCidade, gerarVeiculos, gerarGente, desenharCidade, SEC } from '../kit/cidade.js';
 import { capitulo, etiqueta, chip, legenda, selo, numero, ticksNumero, mapaMundi, grade, vinheta, fontesProntas, UI } from '../kit/ui.js';
 
@@ -31,15 +31,11 @@ const FALA = P([['Curitiba*', .15], ['não', .55], ['ia', .72], ['crescer…/', 
   ['A', 7.1], ['cidade', 7.22], ['cresceu/', 7.55], ['colada', 7.95], ['no', 8.28], ['eixo*/', 8.42], ['e', 8.95], ['virou', 9.08], ['modelo.*/', 9.35]]);
 const T_CANAL = 3.62, T_LENTA = 4.8, T_RAP = 6.02, T_NUM = 7.6, T_MAPA = 8.3;
 
-// ponto da faixa (entre os lados us) que cai perto da altura yAlvo na tela e dentro da largura
-function ancora(C, zc, us, yAlvo) {
-  let best = null, bd = 1e9;
-  for (const u of us) for (let z = zc; z < zc + 500; z += 2) {
-    const s = project(C, A(z, u, .1)); if (!s || s[2] < 4 || s[0] < 120 || s[0] > W - 120) continue;
-    const d = Math.abs(s[1] - yAlvo); if (d < bd) { bd = d; best = s; }
-  }
-  return best;
-}
+// ponto da faixa u que cai na altura yAlvo da tela: contínuo (cruzamento + bisseção) e suavizado no tempo (sem tremor)
+const ancora = (u, yAlvo) => t => suavizar(tt => { const C = cam(tt), z0 = POS(tt)[0]; const p = cruzamentoY(C, s => A(s, u, .1), z0, z0 + 500, yAlvo);
+  return p; }, t);
+const ETS = [['canaleta', T_CANAL, ancora(0, 720), [null, 430], UI.vermelho, .3], ['pista lenta', T_LENTA, ancora(-7.5, 980), [null, 530], UI.laranja, .3],
+  ['rápida', T_RAP, ancora(SEC.rapida, 860), [null, 630], UI.menta, .3]];
 function draw(t) {
   const C = cam(t);
   desenharCidade(C, t, { predios: PREDIOS, veiculos: VEIC, gente: GENTE, genteA: ss(seg(t, 6.9, 7.5)), juntar: seg(t, 7.2, 9.4),
@@ -52,10 +48,7 @@ function draw(t) {
   capitulo(t, 3, 7, '02', 'TRÊS VIAS');
   capitulo(t, 7, 10.5, '03', 'E DEPOIS');
   // etiquetas presas a pontos 3D (o ponto anda com a câmera)
-  const zc = POS(t)[0];
-  const ets = [['canaleta', T_CANAL, [0], 720, [null, 430], UI.vermelho, .3], ['pista lenta', T_LENTA, [-7.5], 980, [null, 530], UI.laranja, .3],
-    ['rápida', T_RAP, [SEC.rapida, -SEC.rapida], 860, [null, 630], UI.menta, .3]];
-  for (const [txt, t0, us, yAlvo, pos, cor, lado] of ets) etiqueta(t, t0, 7, txt, ancora(C, zc, us, yAlvo), pos, { bola: cor, lado });
+  for (const [txt, t0, an, pos, cor, lado] of ETS) etiqueta(t, t0, 7, txt, t > t0 - .05 && t < 7.05 ? an(t) : null, pos, { bola: cor, lado });
   // chip de dado
   chip(t, .3, 3, 'Anos 70', '· o plano', { cor: UI.menta });
   chip(t, 3.3, 7, '3 vias', 'trinário', { cor: UI.laranja });
