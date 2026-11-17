@@ -1,0 +1,1747 @@
+[
+ {
+  "id": "opuscar/archive-lighttable",
+  "nome": "Archive Light Table",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Instruments & Evidence",
+  "usos": [
+   "Brand history",
+   "Archive stories",
+   "Museums"
+  ],
+  "descricao": "The telegram said 57 seconds; under a loupe, the Wrights' glass negatives and the archive say 59.",
+  "demo_s": 40.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/art-deco",
+  "nome": "Art Deco",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Graphic & Type",
+  "usos": [
+   "Luxury & hospitality",
+   "Galas",
+   "Invitations"
+  ],
+  "descricao": "A grand hotel, 1930: a bellboy races lifts and revolving doors to deliver one letter before midnight.",
+  "demo_s": 58.4,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/ascii-crt",
+  "nome": "CRT ASCII Terminal",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Film & Tape",
+  "usos": [
+   "Developer tools",
+   "Sci-fi",
+   "Tech brands"
+  ],
+  "descricao": "A moon-base AI wakes after forty years to a signal from Earth, and replies by drawing “home” in characters.",
+  "demo_s": 59.8,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/assembly-line-diagram",
+  "nome": "Assembly-Line Diagram",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Line Diagrams",
+  "usos": [
+   "How a process works",
+   "Biology and medicine",
+   "Supply chains and pipelines"
+  ],
+  "descricao": "A body cut open as a factory that runs backwards: a 12:30 sandwich is taken apart station by station, and six hours later it runs for the bus.",
+  "demo_s": 54.9,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/backrooms",
+  "nome": "Liminal Found Footage",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Film & Tape",
+  "usos": [
+   "Horror",
+   "Mystery & ARG",
+   "Game teasers"
+  ],
+  "descricao": "A new night-shift hire films their first night in an endless yellow office, following the rules on the wall.",
+  "demo_s": 59.7,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/bauhaus-shapes",
+  "nome": "Bauhaus Shapes",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Graphic & Type",
+  "usos": [
+   "Finance and economics explainers",
+   "Mechanisms and principles",
+   "Titles and chapter cards"
+  ],
+  "descricao": "One dot doubles every ten years: 128 after seventy, 6.02 without compounding, and the last ten years are worth all the rest.",
+  "demo_s": 52.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/blueprint",
+  "nome": "Blueprint",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Line Diagrams",
+  "usos": [
+   "Engineering",
+   "Hardware launches",
+   "Tech explainers"
+  ],
+  "descricao": "An inventor's blueprint draws, explodes and assembles a cloud-catching machine, and its revision cloud starts to rain.",
+  "demo_s": 46.7,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/brick-toy",
+  "nome": "Brick Toy",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "3D & Miniature",
+  "usos": [
+   "Toys & kids",
+   "Product builds",
+   "Space"
+  ],
+  "descricao": "A brick astronaut builds a rocket from spare parts and flies to a brick moon.",
+  "demo_s": 54.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/briefing-board",
+  "nome": "Engineering Briefing Board",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Instruments & Evidence",
+  "usos": [
+   "Engineering",
+   "Option comparisons",
+   "Briefings"
+  ],
+  "descricao": "Four bridge types are tested on one briefing wall, and the ship that must pass under picks the winner.",
+  "demo_s": 40.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/caption-news",
+  "nome": "Caption News",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Edit & Documentary",
+  "usos": [
+   "Social news",
+   "Report explainers",
+   "Data shorts"
+  ],
+  "descricao": "America lost 1.3 million bee colonies, yet the count rose 6 %: a news short that works with the sound off.",
+  "demo_s": 59.5,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/cel-anime-80s",
+  "nome": "80s Cel Anime",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Cartoons",
+  "usos": [
+   "Music videos",
+   "Game trailers",
+   "Nostalgia"
+  ],
+  "descricao": "A courier girl rides through a rain-soaked neon city to deliver a tape before the dawn launch.",
+  "demo_s": 59.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/chalkboard",
+  "nome": "Chalkboard",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Sketch & Board",
+  "usos": [
+   "Word origins",
+   "Myth-busting",
+   "Lessons"
+  ],
+  "descricao": "Chalk writes a popular claim about two characters, wipes it, and traces 射 back three thousand years.",
+  "demo_s": 49.3,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/circuit-board",
+  "nome": "Circuit Board",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Light & Lines",
+  "usos": [
+   "Energy",
+   "Supply chains",
+   "Devices"
+  ],
+  "descricao": "Rivers become copper traces as current runs 2,080 km from a dam to a phone charger.",
+  "demo_s": 60.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/city-symphony",
+  "nome": "City Symphony",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Edit & Documentary",
+  "usos": [
+   "City films",
+   "Music montages",
+   "Openers"
+  ],
+  "descricao": "One day in New York in time-lapse: rivers of light, a grid on the sixteenths, 1899 beside today.",
+  "demo_s": 52.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/colored-pencil",
+  "nome": "Colored-Pencil Science Illustration",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Painting & Illustration",
+  "usos": [
+   "Natural-science cutaways",
+   "Picture-book explainers",
+   "Hidden structures and processes"
+  ],
+  "descricao": "Do trees feed each other? A pencil drawing sinks below the grass, follows one grain of sugar along a fungal thread to the next tree, and pulls back over a whole wood joined underground.",
+  "demo_s": 50.8,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/comic-history",
+  "nome": "Comic History Cartoon",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Cartoons",
+  "usos": [
+   "Territorial changes in history",
+   "Light explainers on geopolitics",
+   "Market share and turf-war stories"
+  ],
+  "descricao": "Alsace-Lorraine changed hands four times between 1871 and 1945: each time someone tore off the paper and pasted a new piece, and the woman living on it never moved.",
+  "demo_s": 51.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/countdown",
+  "nome": "Live Countdown Split-screen",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Edit & Documentary",
+  "usos": [
+   "Launches",
+   "Countdowns",
+   "Live events"
+  ],
+  "descricao": "The last minute of the Artemis II launch, uncut: one cell opens to nine, and they merge into one at ignition.",
+  "demo_s": 59.5,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/crayon-book",
+  "nome": "Crayon Picture Book",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Painting & Illustration",
+  "usos": [
+   "Picture books",
+   "Bedtime stories",
+   "Kids' learning"
+  ],
+  "descricao": "The moon can't sleep, so a little girl climbs onto the roof to sing it a lullaby.",
+  "demo_s": 52.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/crayon-world",
+  "nome": "Crayon World 3D",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "3D & Miniature",
+  "usos": [
+   "Short stories",
+   "Tributes",
+   "Journeys"
+  ],
+  "descricao": "A first-person flight over a crayon village to one flower in an old man's garden; then his eyes, and what he says.",
+  "demo_s": 64.5,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/dark-documentary",
+  "nome": "Radar Sweep Documentary",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Instruments & Evidence",
+  "usos": [
+   "History of science and engineering",
+   "Archaeology, sites and reconstructions",
+   "Astronomy, deep space and survey"
+  ],
+  "descricao": "A storm at Parkes, 21 July 1969: a 64-metre dish tipped to its limit holds on and catches the moonwalk for the world.",
+  "demo_s": 52.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/dark-keynote",
+  "nome": "Dark Tech Keynote",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Screens & Interfaces",
+  "usos": [
+   "Product launches",
+   "SaaS",
+   "Keynotes"
+  ],
+  "descricao": "Launch film for Tidy, a fictional app: one buried cursor snaps hundreds of windows back into place.",
+  "demo_s": 42.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/data-physical",
+  "nome": "Data Physicalization",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Data & Maps",
+  "usos": [
+   "Annual reports",
+   "Investor decks",
+   "Energy data"
+  ],
+  "descricao": "Twelve years of wind and solar stacked as real plates, spiralling round a walnut dial until solar overtakes.",
+  "demo_s": 39.4,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/dataviz",
+  "nome": "Data Storytelling",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Data & Maps",
+  "usos": [
+   "Data journalism",
+   "Reports",
+   "Climate & science"
+  ],
+  "descricao": "A hundred years of summer temperatures, where the chart itself tells the story.",
+  "demo_s": 50.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/desktop-flythrough",
+  "nome": "Tabletop App Flythrough",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Screens & Interfaces",
+  "usos": [
+   "App explainers",
+   "Workflows",
+   "Products"
+  ],
+  "descricao": "A cat photo hops across app cards on a sunlit desk, from one phone to a friend's.",
+  "demo_s": 60.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/double-exposure",
+  "nome": "Double Exposure",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Film & Tape",
+  "usos": [
+   "Brand and city films",
+   "Documentary and series openings",
+   "Music video intros"
+  ],
+  "descricao": "From the mountains to the sea as night falls: a stag, a wolf, an eagle, a salmon and a whale, each carrying its own place inside its silhouette, until the whale's harbour lands on the real shore.",
+  "demo_s": 50.5,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/engraving",
+  "nome": "Copperplate Engraving",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Print & Printmaking",
+  "usos": [
+   "Museum labels",
+   "Science explainers",
+   "Brand heritage"
+  ],
+  "descricao": "A natural-history plate engraves itself: the burin cuts the copper, the bee builds up line by line, and a watercolour wash brings it to life.",
+  "demo_s": 40.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/firefly-pointillism",
+  "nome": "Firefly Pointillism",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Light & Lines",
+  "usos": [
+   "Picture-book stories",
+   "Many becoming one",
+   "Night and nature lyric"
+  ],
+  "descricao": "A firefly's blink is a question: a girl gets her answer as a deer, loses every light in a storm, and asks the whole dark with the last one.",
+  "demo_s": 50.6,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/flat-space-explainer",
+  "nome": "Scale Zoom Explainer",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Graphic & Type",
+  "usos": [
+   "Science explainers",
+   "Scale and size",
+   "Classroom"
+  ],
+  "descricao": "A little probe whose eye is a zoom lens fires a dotted sight line at each next stop and takes us from the Milky Way down to a virus.",
+  "demo_s": 52.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/flow-field",
+  "nome": "Flow-field Wind Lines",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Light & Lines",
+  "usos": [
+   "Storms, monsoons and other weather",
+   "Ocean currents and river floods",
+   "Any flow measured against a threshold"
+  ],
+  "descricao": "Thousands of ink wind lines, computed from the best track, draw Super Typhoon Yagi: the eye opening over the South China Sea, the landfall on Hainan, the spiral coming apart in Vietnam, and a whole week folded into one last line.",
+  "demo_s": 52.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/game-show",
+  "nome": "Rhythm Game Show",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Games",
+  "usos": [
+   "Tech timelines",
+   "Year in review",
+   "Variety shows"
+  ],
+  "descricao": "The history of AI as a rhythm game: models take the stage on the beat, and a report card closes the show.",
+  "demo_s": 148.8,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/gilded-illumination",
+  "nome": "Gilded Illumination",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Traditional Crafts",
+  "usos": [
+   "Fables and picture-book stories",
+   "Holiday and festival shorts",
+   "Brand and origin stories"
+  ],
+  "descricao": "In a painted world where only gold shines, the sun goes out; a girl carries the last lamp up the mountain and gives it its light back.",
+  "demo_s": 46.8,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/glass-product",
+  "nome": "Glass Product Render",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "3D & Miniature",
+  "usos": [
+   "Product launches",
+   "Consumer tech",
+   "Beauty"
+  ],
+  "descricao": "Unboxing and close-ups of Aura, fictional glass earbuds, in strip-light sweeps and caustics.",
+  "demo_s": 32.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/halftone-dossier",
+  "nome": "Halftone Dossier",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Print & Printmaking",
+  "usos": [
+   "Humour",
+   "Pet content",
+   "Social shorts"
+  ],
+  "descricao": "A chubby orange cat stands trial for testing gravity and 4 a.m. parkour, and walks free.",
+  "demo_s": 30.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/hardcore-info",
+  "nome": "Line-Art Cutaway",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Line Diagrams",
+  "usos": [
+   "Hardware explainers",
+   "Product engineering",
+   "Science education"
+  ],
+  "descricao": "A phone loses signal when held by the corner; taken apart, its metal frame turns out to be the antenna, cut into pieces your hand can bridge.",
+  "demo_s": 52.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/hd-2d",
+  "nome": "2.5D Pixel Art",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Games",
+  "usos": [
+   "Game trailers",
+   "Fantasy",
+   "Story films"
+  ],
+  "descricao": "The lighthouse goes dark; a girl carries the last flame through a night forest and up the storm cliffs.",
+  "demo_s": 76.5,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/hologram-hud",
+  "nome": "Sci-fi Hologram HUD",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Screens & Interfaces",
+  "usos": [
+   "Spec walkthroughs",
+   "Launch videos",
+   "Trade shows"
+  ],
+  "descricao": "An e-bike is scanned into a hologram; target boxes lock onto the battery, motor and brakes.",
+  "demo_s": 39.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/impasto",
+  "nome": "Impasto Oil Painting",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Painting & Illustration",
+  "usos": [
+   "Music videos",
+   "Art & culture",
+   "Emotional ads"
+  ],
+  "descricao": "In a grey, rainy square one red umbrella opens, and a waltz paints the whole plaza in colour.",
+  "demo_s": 39.7,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/ink-wash",
+  "nome": "Chinese Ink Wash",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Traditional Crafts",
+  "usos": [
+   "Wuxia",
+   "Cultural brands",
+   "Poetry"
+  ],
+  "descricao": "A swordsman crosses the river on the water and splits the current with a single stroke.",
+  "demo_s": 48.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/instruction-manual",
+  "nome": "Instruction Manual Art",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Line Diagrams",
+  "usos": [
+   "Assembly and set-up guides",
+   "Safety instructions",
+   "Product onboarding"
+  ],
+  "descricao": "Two first-timers build a crib from a flat-pack manual, ten steps on one 45° page; step ten was never in the manual.",
+  "demo_s": 50.6,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/ipad-sketch",
+  "nome": "Tablet Sketch Explainer",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Sketch & Board",
+  "usos": [
+   "Food & drink explainers",
+   "Craft and how-to",
+   "Lifestyle science"
+  ],
+  "descricao": "The coffee in your cup turns into a red cherry, then walks back to the cup: ripening, drying, roasting and grinding, one colour change at a time on a single pencil page.",
+  "demo_s": 51.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/iso-infographic",
+  "nome": "Isometric Infographic",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Line Diagrams",
+  "usos": [
+   "Process explainers",
+   "Supply chains",
+   "Annual reports"
+  ],
+  "descricao": "A coffee's journey from the plantation to your hands, across one isometric world.",
+  "demo_s": 58.8,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/isometric-picture-book",
+  "nome": "Isometric People Scene",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "3D & Miniature",
+  "usos": [
+   "Everyday rules",
+   "Queues",
+   "Comparisons"
+  ],
+  "descricao": "Travellers board an isometric plane, and the order shows why one way is nearly twice as fast.",
+  "demo_s": 59.8,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/kino-montage",
+  "nome": "Constructivist Montage",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Edit & Documentary",
+  "usos": [
+   "Industry histories",
+   "Milestones",
+   "Collective effort"
+  ],
+  "descricao": "The Empire State's 1931 brochure credits its builders; the site film and Hine's photos answer: 2,500 a day.",
+  "demo_s": 60.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/lidar-survey",
+  "nome": "LiDAR Survey",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Instruments & Evidence",
+  "usos": [
+   "Heritage",
+   "Environment",
+   "Site surveys"
+  ],
+  "descricao": "A laser survey strips the canopy off a Connecticut forest and finds 3.4 km of old farm walls.",
+  "demo_s": 40.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/living-screencast",
+  "nome": "Mascot Screencast",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Screens & Interfaces",
+  "usos": [
+   "Product tutorials",
+   "Feature launches",
+   "Onboarding"
+  ],
+  "descricao": "Clawd hops out of the terminal into the Claude app and acts out plan mode and self-checks in one take.",
+  "demo_s": 59.4,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/lowpoly-island",
+  "nome": "Low-poly Isometric Island",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "3D & Miniature",
+  "usos": [
+   "Game trailers",
+   "World building",
+   "Calm content"
+  ],
+  "descricao": "An island and its village grow tile by tile from an empty sea, each tile a note, into a starry night.",
+  "demo_s": 53.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/manga-panels",
+  "nome": "Manga Panels",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Cartoons",
+  "usos": [
+   "Music videos",
+   "Product launches",
+   "Anime openings"
+  ],
+  "descricao": "A street photographer chases a running light to the moment the pigeons rise; her pocket camera splits that second into thirty panels.",
+  "demo_s": 48.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/map-explainer",
+  "nome": "3D Map Explainer",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Data & Maps",
+  "usos": [
+   "News and geopolitics",
+   "Energy, trade and shipping",
+   "Rivers, borders and terrain"
+  ],
+  "descricao": "From the globe down into the strait a fifth of the world's oil squeezes through: two lanes, a cut through the sea floor, and pipelines that can carry only a fraction of it around.",
+  "demo_s": 52.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/marker-paper",
+  "nome": "Marker on Paper",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Sketch & Board",
+  "usos": [
+   "Worked problems",
+   "Science explainers",
+   "Lessons"
+  ],
+  "descricao": "A felt-tip marker works out how far the horizon is from a beach, then shows that climbing a hundred times higher only lets you see ten times farther.",
+  "demo_s": 52.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/memphis-diorama",
+  "nome": "Memphis Diorama",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "3D & Miniature",
+  "usos": [
+   "Web heroes",
+   "Ambient loops",
+   "Seasons"
+  ],
+  "descricao": "One river bend, four seasons, one take; each turns when the big tree squats and springs back.",
+  "demo_s": 45.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/microgame",
+  "nome": "Microgame Frenzy",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Games",
+  "usos": [
+   "Game trailers",
+   "Onboarding",
+   "Social shorts"
+  ],
+  "descricao": "A clumsy cadet survives a five-second boot camp, faster and faster, until the boss: landing home.",
+  "demo_s": 59.8,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/microscope",
+  "nome": "Under the Microscope",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Instruments & Evidence",
+  "usos": [
+   "Biomedicine",
+   "Materials science",
+   "Skincare science"
+  ],
+  "descricao": "One continuous move from a liver slide to a single nucleus; two circles, counted pixel by pixel, differ 2.4 times in blue.",
+  "demo_s": 39.5,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/midcentury-toon",
+  "nome": "Mid-century Cartoon",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Cartoons",
+  "usos": [
+   "Set-up guides",
+   "Help centres",
+   "How-to"
+  ],
+  "descricao": "A robot vacuum set up in three steps, told like a 1950s classroom film.",
+  "demo_s": 40.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/neon-tubes",
+  "nome": "Neon Tubes",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Light & Lines",
+  "usos": [
+   "Shop openings and mascot stories",
+   "Nightlife and city-pop music videos",
+   "City and festival night idents"
+  ],
+  "descricao": "A neon cat goes out for the goldfish on the sign at the end of the street, cracks its bowl, and runs the fading fish home through the rain to the goblet on its own sign.",
+  "demo_s": 48.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/news-package",
+  "nome": "Broadcast News Package",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Edit & Documentary",
+  "usos": [
+   "News round-ups",
+   "Bulletins",
+   "Market updates"
+  ],
+  "descricao": "Four AI stories from one week in a full on-air package: rundown, headline strap, price board, spec card.",
+  "demo_s": 53.5,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/newsreel",
+  "nome": "1920s Newsreel",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Edit & Documentary",
+  "usos": [
+   "History stories",
+   "Fads & eras",
+   "Anniversaries"
+  ],
+  "descricao": "1926: the papers say the Charleston will ruin America's knees; at Ford's own picnic the kids dance it anyway.",
+  "demo_s": 54.6,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/one-bit-dither",
+  "nome": "1-bit Dither",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Screens & Interfaces",
+  "usos": [
+   "History told through a chain of media",
+   "Printing, scanning and signals",
+   "Night scenes and space"
+  ],
+  "descricao": "February 1966: the first close-up of the Moon arrives at an English radio telescope as a newspaper fax, printed one line at a time in two inks, a day early and stretched too tall.",
+  "demo_s": 50.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/one-line",
+  "nome": "One-line Drawing",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Sketch & Board",
+  "usos": [
+   "Brand stories",
+   "Life milestones",
+   "Minimal ads"
+  ],
+  "descricao": "One unbroken line draws a whole life, then the pen passes to a child.",
+  "demo_s": 47.5,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/oscilloscope-math",
+  "nome": "Oscilloscope Math",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Light & Lines",
+  "usos": [
+   "Maths and physics lessons",
+   "Signals and electronics",
+   "Science explainers"
+  ],
+  "descricao": "How do you roll a square out of circles? Spinning circles stack into a square wave, until a dive into one corner finds the 9% spike that never goes away.",
+  "demo_s": 51.1,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/paper-lantern",
+  "nome": "Paper-cut Lightbox",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Traditional Crafts",
+  "usos": [
+   "Journeys and travel",
+   "Farewells and anniversaries",
+   "Places and their stories"
+  ],
+  "descricao": "An old night train makes its last run, from a snowy mountain halt through a long tunnel to the sea, its lit windows going out one by one at the end of the line.",
+  "demo_s": 51.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/paper-popup",
+  "nome": "Paper Pop-up Book",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "3D & Miniature",
+  "usos": [
+   "Children's books",
+   "Game trailers",
+   "Story films"
+  ],
+  "descricao": "A pop-up book opens on a desk; a sprite named Pip adventures through paper worlds and jumps out into ours.",
+  "demo_s": 133.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/papercut-red",
+  "nome": "Red Paper-cut",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Traditional Crafts",
+  "usos": [
+   "Lunar New Year",
+   "Festive greetings",
+   "Folk tales"
+  ],
+  "descricao": "On New Year's Eve the beast Nian comes to town, and one girl's giant paper-cut lights up the village to scare it off.",
+  "demo_s": 49.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/pen-plotter",
+  "nome": "Pen Plotter",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Line Diagrams",
+  "usos": [
+   "Maps and terrain",
+   "Measurements and records",
+   "Generative and data drawings"
+  ],
+  "descricao": "At night under a desk lamp, a pen plotter draws Mount Qomolangma from real elevation data with four pens, and writes its height last.",
+  "demo_s": 49.9,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/pictogram-motion",
+  "nome": "Pictogram Motion",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Graphic & Type",
+  "usos": [
+   "Public services and city stories",
+   "Brand and event identity films",
+   "Explainers told through signs and objects"
+  ],
+  "descricao": "A yellow umbrella left on a bus waits out a sunny day on the lost-property shelf, then opens with 312 others when the storm comes back: objects, vehicles, weather and signs as beat-locked geometric pictograms.",
+  "demo_s": 50.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/pip-simulation",
+  "nome": "Blob Simulation",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Data & Maps",
+  "usos": [
+   "Evolution and natural selection",
+   "Game theory and agent-based models",
+   "Epidemics, queues and markets"
+  ],
+  "descricao": "160 flocked Pips race for beans: the fast ones eat first and run dry first, and after 20 generations the board turns blue.",
+  "demo_s": 52.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/pixel-rpg",
+  "nome": "16-bit Pixel RPG",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Games",
+  "usos": [
+   "Game trailers",
+   "Recaps",
+   "Nostalgia"
+  ],
+  "descricao": "At the final boss door a hero saves the game, and the save screen replays the whole journey.",
+  "demo_s": 54.5,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/pop-art",
+  "nome": "Pop Art",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Print & Printmaking",
+  "usos": [
+   "Everyday-object explainers",
+   "Brand and product posters",
+   "Small data stories"
+  ],
+  "descricao": "Almost every banana in the shops is one plant, copied: a wall of identical prints, an old banana eaten black by dots, and a wave of colour that turns into many bananas.",
+  "demo_s": 52.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/precise-mechanism",
+  "nome": "Color-Coded Mechanism",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Line Diagrams",
+  "usos": [
+   "How machines work",
+   "Product and engineering explainers",
+   "Science teaching"
+  ],
+  "descricao": "A watch with no battery is cut open: its three systems are dyed one by one, the train races when the escapement is pulled out, and one slowed tick lets it all out again.",
+  "demo_s": 52.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/printed-long-take",
+  "nome": "Scratchboard Long Take",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Print & Printmaking",
+  "usos": [
+   "Journeys",
+   "Wildlife",
+   "Landscapes"
+  ],
+  "descricao": "Red-crowned cranes in a Hokkaido valley, one scratchboard take, counted back from 33 to 1,927.",
+  "demo_s": 60.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/risograph",
+  "nome": "Risograph Print",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Print & Printmaking",
+  "usos": [
+   "Indie brands",
+   "Zines",
+   "Lifestyle"
+  ],
+  "descricao": "A Sunday-morning bike ride through the city — bakery, park, riverside — each stop adding an ink until three misregistered plates overprint.",
+  "demo_s": 40.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/rubber-hose",
+  "nome": "1930s Rubber Hose Cartoon",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Cartoons",
+  "usos": [
+   "Food & drink",
+   "Retro ads",
+   "Kids"
+  ],
+  "descricao": "A coffee cup chases a runaway sugar cube around the kitchen, 1930s-cartoon style.",
+  "demo_s": 50.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/satellite-briefing",
+  "nome": "Satellite Briefing",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Instruments & Evidence",
+  "usos": [
+   "Climate",
+   "News explainers",
+   "Geography"
+  ],
+  "descricao": "A satellite follows the map to the Aral Sea and finds a desert; only the part someone dammed came back.",
+  "demo_s": 37.8,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/scifi-toon",
+  "nome": "Sci-Fi Sitcom Toon",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Cartoons",
+  "usos": [
+   "Comedy",
+   "Tech brands",
+   "Social shorts"
+  ],
+  "descricao": "A jaded genius opens a portal just to buy coffee and tumbles through ever-stranger universes.",
+  "demo_s": 57.5,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": "sitcom"
+ },
+ {
+  "id": "opuscar/scratch-film",
+  "nome": "Scratch Film",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Film & Tape",
+  "usos": [
+   "Things that happen in the dark",
+   "One mark to a whole system",
+   "Small adventures told in light and shadow"
+  ],
+  "descricao": "A finger-long lanternfish climbs half a kilometre in the dark, hides its shadow with its own lights, and turns out to be one of countless animals rising every night.",
+  "demo_s": 52.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/security-xray",
+  "nome": "Security X-ray",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Instruments & Evidence",
+  "usos": [
+   "Airport and customs screening",
+   "Parcel and cargo inspection",
+   "Product internals"
+  ],
+  "descricao": "One night at an airport screening console: a power bank, a bottle of water, and six live crabs that move in the CT.",
+  "demo_s": 51.9,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/shadow-puppet",
+  "nome": "Shadow Puppetry",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Traditional Crafts",
+  "usos": [
+   "Myths & folklore",
+   "Heritage",
+   "Festivals"
+  ],
+  "descricao": "Ten suns scorch the earth until the archer Hou Yi draws his bow, told with leather puppets on a lit screen.",
+  "demo_s": 54.4,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/silent-film",
+  "nome": "1920s Silent Film",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Film & Tape",
+  "usos": [
+   "Comedy",
+   "Retro brands",
+   "Silent storytelling"
+  ],
+  "descricao": "A baker's boy chases a runaway loaf downhill, then breaks it in half for a hungry girl.",
+  "demo_s": 54.2,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/silhouette-rhythm",
+  "nome": "Silhouette Rhythm",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Graphic & Type",
+  "usos": [
+   "Music videos",
+   "Sports and team films",
+   "Nature and festival openers"
+  ],
+  "descricao": "A flock of flamingos moves on every beat, and one young bird is always half a beat late; the ripples the others left on the water teach it the beat.",
+  "demo_s": 49.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/silkscreen-poster",
+  "nome": "Silkscreen Travel Poster",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Print & Printmaking",
+  "usos": [
+   "Destination guides",
+   "Tourism",
+   "Event posters"
+  ],
+  "descricao": "A traveller crosses the world one full-bleed screen print at a time, a ticket stub counting the distance from home, until the far side turns into the way back.",
+  "demo_s": 50.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/sketchnote",
+  "nome": "Sketchnote",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Sketch & Board",
+  "usos": [
+   "Lecture notes",
+   "Science explainers",
+   "One-page summaries"
+  ],
+  "descricao": "One bee makes 1/12 of a teaspoon of honey in her life; the pen follows one yellow drop from flower to jar until the whole page is a poster.",
+  "demo_s": 51.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/spreadsheet",
+  "nome": "Spreadsheet Film",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Screens & Interfaces",
+  "usos": [
+   "Data literacy",
+   "Finance & costs",
+   "Analytics explainers"
+  ],
+  "descricao": "The total says treatment B; unhide the stone-size columns and A wins every group. Simpson's paradox told in one sheet, 1 cell = 1 patient.",
+  "demo_s": 52.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/spy-titles",
+  "nome": "60s Spy Title Sequence",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Graphic & Type",
+  "usos": [
+   "Title sequences",
+   "Event openers",
+   "Trailers"
+  ],
+  "descricao": "Opening titles for an imaginary 1964 spy film: a chase for a stolen key until the shapes lock into the title.",
+  "demo_s": 44.1,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/stained-glass",
+  "nome": "Stained Glass",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Traditional Crafts",
+  "usos": [
+   "Legends",
+   "Heritage",
+   "Holiday stories"
+  ],
+  "descricao": "Sunlight crosses a cathedral window from dawn to dusk, waking each pane of a knight-and-dragon tale.",
+  "demo_s": 56.5,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/stick-explainer",
+  "nome": "Stick-figure Explainer",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Sketch & Board",
+  "usos": [
+   "Science explainers",
+   "Networks & social ideas",
+   "Data comparisons"
+  ],
+  "descricao": "A chain of hands from you to a stranger: tested with letters in 1967, explained by rings that outgrow the Earth, closed around the globe.",
+  "demo_s": 52.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/swiss-motion",
+  "nome": "Swiss Motion Graphics",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Graphic & Type",
+  "usos": [
+   "Brand identity",
+   "Events",
+   "Design education"
+  ],
+  "descricao": "A concert poster lays itself out by five Swiss design rules; the fifth is to break just one.",
+  "demo_s": 44.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/teardown",
+  "nome": "Exploded Teardown",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Line Diagrams",
+  "usos": [
+   "Hardware launches",
+   "Product pages",
+   "Spec explainers"
+  ],
+  "descricao": "Half an open-source keyboard comes apart in one orbit, down to the chip, then closes with its real dimensions.",
+  "demo_s": 38.8,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/telestrator",
+  "nome": "Sports Telestrator",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Edit & Documentary",
+  "usos": [
+   "Sports analysis",
+   "Match recaps",
+   "Coaching"
+  ],
+  "descricao": "Down 3–0 at half-time, Fenerbahçe scored three in 12 minutes: freeze, draw, split screen, shot map.",
+  "demo_s": 54.4,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/text-flash-cuts",
+  "nome": "Text Flash Cuts",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Graphic & Type",
+  "usos": [
+   "Suspense & drama trailers",
+   "Title sequences",
+   "Manifesto films"
+  ],
+  "descricao": "A letter, a phone call, a wall of windows, thirteen steps: the girl who told him not to look back is always one step closer, until she turns her head.",
+  "demo_s": 46.2,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/thermal-camera",
+  "nome": "Thermal Camera",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Instruments & Evidence",
+  "usos": [
+   "Building and energy inspection",
+   "Wildlife at night",
+   "Machines and electrics"
+  ],
+  "descricao": "A thermal camera circles an old apartment block on a snowy night: a leaking window, pipes inside the walls, a cat asleep on a warm bonnet, and the same block a year after its retrofit.",
+  "demo_s": 49.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/tilt-shift",
+  "nome": "Tilt-Shift Miniature",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "3D & Miniature",
+  "usos": [
+   "City promos",
+   "Real estate",
+   "Transport"
+  ],
+  "descricao": "Morning rush hour in a town that looks like a model: traffic, trains and tiny people.",
+  "demo_s": 38.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/transit-map",
+  "nome": "Transit Map",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Data & Maps",
+  "usos": [
+   "Transport",
+   "Growth over time",
+   "Networks"
+  ],
+  "descricao": "A printed metro map grows from one 6 km line in 1993 to 21 lines and 906 km.",
+  "demo_s": 47.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/ukiyoe",
+  "nome": "Ukiyo-e",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Traditional Crafts",
+  "usos": [
+   "Travel",
+   "Japanese culture",
+   "Poetry"
+  ],
+  "descricao": "A traveller walks toward a distant mountain; every shot is a woodblock print, a great wave at the climax, the mountain and the whole scroll at the end.",
+  "demo_s": 44.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/urban-sketch",
+  "nome": "Urban Sketch · Pen & Wash",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Painting & Illustration",
+  "usos": [
+   "City & travel",
+   "Architecture",
+   "Lifestyle brands"
+  ],
+  "descricao": "A park that is only a pen sketch; wherever the wind carries her straw hat, colour follows.",
+  "demo_s": 33.4,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/vintage-collage",
+  "nome": "Vintage Engraving Collage",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Print & Printmaking",
+  "usos": [
+   "The history of an object",
+   "Magazine-style explainers on ideas and society",
+   "Archive and collecting stories"
+  ],
+  "descricao": "A 1918 airmail sheet printed with its plane upside down: bought for $24, cut up and scattered, and number 66 is still missing.",
+  "demo_s": 52.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/visual-investigation",
+  "nome": "Visual Investigation",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Edit & Documentary",
+  "usos": [
+   "Reconstructions",
+   "Fact-checks",
+   "Incident reports"
+  ],
+  "descricao": "Newsreel, photos, testimony and the 1937 inquiry on one clock: five sources point to the same spot.",
+  "demo_s": 60.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/watercolor",
+  "nome": "Watercolor Brush",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Painting & Illustration",
+  "usos": [
+   "Nature documentary",
+   "Travel",
+   "Science explainers"
+  ],
+  "descricao": "Follow the rain from Australia's red desert heart to its green coast in one unbroken painted walk.",
+  "demo_s": 113.6,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/white-model",
+  "nome": "Projection-Mapped Model",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Data & Maps",
+  "usos": [
+   "Urban planning",
+   "Exhibitions",
+   "City data"
+  ],
+  "descricao": "A projector paints Rotterdam's white model layer by layer, from the 1940 gap to today's towers.",
+  "demo_s": 40.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/whiteboard",
+  "nome": "Whiteboard Explainer",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Sketch & Board",
+  "usos": [
+   "Explainers",
+   "Online courses",
+   "Science"
+  ],
+  "descricao": "How your phone knows where you are: GPS, atomic clocks, and the 38 microseconds relativity adds every day.",
+  "demo_s": 111.0,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opuscar/woodcut",
+  "nome": "Woodcut Print",
+  "repo": "lemomo-ai/lemo-opuscar",
+  "categoria": "Print & Printmaking",
+  "usos": [
+   "Folk tales",
+   "Craft brands",
+   "Book trailers"
+  ],
+  "descricao": "A village spends a whole winter casting one bell; the first time it rings, the snow stops.",
+  "demo_s": 58.5,
+  "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
+  "no_laboratorio": null
+ },
+ {
+  "id": "drawn-by-code/70s-poster",
+  "nome": "70s-poster",
+  "repo": "illodev/drawn-by-code",
+  "categoria": "",
+  "usos": [],
+  "licenca": "MIT",
+  "descricao": "Fillmore / Yellow Submarine: flat acid colours, thick outlines, concentric echoes, sunbursts, wavy shapes and melting letters.",
+  "no_laboratorio": null
+ },
+ {
+  "id": "drawn-by-code/cereal-ad",
+  "nome": "cereal-ad",
+  "repo": "illodev/drawn-by-code",
+  "categoria": "",
+  "usos": [],
+  "licenca": "MIT",
+  "descricao": "A Saturday-morning TV spot taped on VHS and played on a CRT: flat cel colour with an even",
+  "no_laboratorio": null
+ },
+ {
+  "id": "drawn-by-code/clay",
+  "nome": "clay",
+  "repo": "illodev/drawn-by-code",
+  "categoria": "",
+  "usos": [],
+  "licenca": "MIT",
+  "descricao": "Plasticine as illustration: flat silhouettes turned into soft 3D pieces (bevel, sheen, fingerprints, tool marks, soft shadows), stop motion with a boiling surface. Quick to render.",
+  "no_laboratorio": null
+ },
+ {
+  "id": "drawn-by-code/clay3d",
+  "nome": "clay3d",
+  "repo": "illodev/drawn-by-code",
+  "categoria": "",
+  "usos": [],
+  "licenca": "MIT",
+  "descricao": "Real 3D plasticine puppets, raymarched in WebGL2 inside the headless browser: lumpy pressed-on pieces (flat disc eyes, ball noses, hair in clumps), matte clay with fingerprints, soft studio light on a seamless backdrop, ",
+  "no_laboratorio": null
+ },
+ {
+  "id": "drawn-by-code/comic",
+  "nome": "comic",
+  "repo": "illodev/drawn-by-code",
+  "categoria": "",
+  "usos": [],
+  "licenca": "MIT",
+  "descricao": "A clean-line comic book: brush-ink outlines that swell and taper, flat print colours on newsprint, Ben-Day halftone, panels that pop in on the beat, balloons, sound effects on bursts and speed lines. Motion comic: the dr",
+  "no_laboratorio": null
+ },
+ {
+  "id": "drawn-by-code/engraving",
+  "nome": "engraving",
+  "repo": "illodev/drawn-by-code",
+  "categoria": "",
+  "usos": [],
+  "licenca": "MIT",
+  "descricao": "3D scenes drawn as a plate of the «Description de l'Égypte» (1809–1822): charcoal tone on toothed paper, masonry drawn stone by stone, temple walls in low relief after Dendera (registers of offering scenes, invented sign",
+  "no_laboratorio": null
+ },
+ {
+  "id": "drawn-by-code/felt3d",
+  "nome": "felt3d",
+  "repo": "illodev/drawn-by-code",
+  "categoria": "",
+  "usos": [],
+  "licenca": "MIT",
+  "descricao": "Needle-felted wool puppets, raymarched in WebGL2 inside the headless browser: a halo of stray fibres on every silhouette, heathered matte wool, glass bead eyes, stitched mouths and toes. The puppets render over a transpa",
+  "no_laboratorio": null
+ },
+ {
+  "id": "drawn-by-code/kaleidoscope",
+  "nome": "kaleidoscope",
+  "repo": "illodev/drawn-by-code",
+  "categoria": "",
+  "usos": [],
+  "licenca": "MIT",
+  "descricao": "Radial mirror symmetry, pieces coming out of the centre, rotation and colour cycling.",
+  "no_laboratorio": null
+ },
+ {
+  "id": "drawn-by-code/lightfield",
+  "nome": "lightfield",
+  "repo": "illodev/drawn-by-code",
+  "categoria": "",
+  "usos": [],
+  "licenca": "MIT",
+  "descricao": "Light photographed, not drawn. A scene is a fragment shader that says how much light leaves",
+  "no_laboratorio": null
+ },
+ {
+  "id": "drawn-by-code/line",
+  "nome": "line",
+  "repo": "illodev/drawn-by-code",
+  "categoria": "",
+  "usos": [],
+  "licenca": "MIT",
+  "descricao": "A black line on white paper that wobbles on purpose (line boil), like hand-drawn animation at 12 drawings a second.",
+  "no_laboratorio": null
+ },
+ {
+  "id": "drawn-by-code/liquid-light",
+  "nome": "liquid-light",
+  "repo": "illodev/drawn-by-code",
+  "categoria": "",
+  "usos": [],
+  "licenca": "MIT",
+  "descricao": "The oil-and-ink projections of 60s concerts: blobs that flow and merge (metaballs), shift colour and ring like oil on water.",
+  "no_laboratorio": null
+ },
+ {
+  "id": "drawn-by-code/paper-cutout",
+  "nome": "paper-cutout",
+  "repo": "illodev/drawn-by-code",
+  "categoria": "",
+  "usos": [],
+  "licenca": "MIT",
+  "descricao": "Torn paper with a white fibre edge, marker fill, grain and handwriting, animated on twos. Every element is its own set of pieces with textures that say what it is made of, and real hands.",
+  "no_laboratorio": null
+ },
+ {
+  "id": "drawn-by-code/pixel-art",
+  "nome": "pixel-art",
+  "repo": "illodev/drawn-by-code",
+  "categoria": "",
+  "usos": [],
+  "licenca": "MIT",
+  "descricao": "Crisp square pixels on a low-res grid blown up with nearest-neighbour, sprites drawn as",
+  "no_laboratorio": null
+ },
+ {
+  "id": "drawn-by-code/risograph",
+  "nome": "risograph",
+  "repo": "illodev/drawn-by-code",
+  "categoria": "",
+  "usos": [],
+  "licenca": "MIT",
+  "descricao": "Scenes printed like a riso print: four spot inks (fluorescent pink, yellow, blue, navy) on",
+  "no_laboratorio": null
+ },
+ {
+  "id": "drawn-by-code/skate-toon",
+  "nome": "skate-toon",
+  "repo": "illodev/drawn-by-code",
+  "categoria": "",
+  "usos": [],
+  "licenca": "MIT",
+  "descricao": "The look of a late-'90s extreme-sports TV cartoon: a thin, even, hand-held black line, flat",
+  "no_laboratorio": null
+ },
+ {
+  "id": "drawn-by-code/sumi-e",
+  "nome": "sumi-e",
+  "repo": "illodev/drawn-by-code",
+  "categoria": "",
+  "usos": [],
+  "licenca": "MIT",
+  "descricao": "Japanese ink painting on washi: one black ink in many greys, brush strokes with tapered",
+  "no_laboratorio": null
+ },
+ {
+  "id": "drawn-by-code/tabletop3d",
+  "nome": "tabletop3d",
+  "repo": "illodev/drawn-by-code",
+  "categoria": "",
+  "usos": [],
+  "licenca": "MIT",
+  "descricao": "«An office in miniature»: real desk objects brought to life as stop motion and photographed",
+  "no_laboratorio": null
+ },
+ {
+  "id": "animate/crosshatch",
+  "nome": "crosshatch",
+  "repo": "cth9191/animate",
+  "categoria": "",
+  "usos": [],
+  "licenca": "MIT",
+  "descricao": "A sketchy ink line that boils on 2s, crosshatch and coloured-pencil shading clipped inside shapes, stipple, paper grain. Warm cream paper and wood by day; navy \"inside the computer\" worlds with periwinkle lines and glowi",
+  "no_laboratorio": null
+ },
+ {
+  "id": "animate/cut-paper",
+  "nome": "cut-paper",
+  "repo": "cth9191/animate",
+  "categoria": "",
+  "usos": [],
+  "licenca": "MIT",
+  "descricao": "Torn-edge paper shapes with soft drop shadows, paper grain and crayon in the fills, patterns (stripes, dots, gingham, wood grain), full-bleed colour worlds, and characters with simple faces. Collage-style animation: play",
+  "no_laboratorio": null
+ },
+ {
+  "id": "animate/isometric",
+  "nome": "isometric",
+  "repo": "cth9191/animate",
+  "categoria": "",
+  "usos": [],
+  "licenca": "MIT",
+  "descricao": "Calm, precise product illustration: objects in 2:1 dimetric isometric on a white ground, drawn only with constant hairlines. Grey silhouettes and edges, lighter inner and receding lines, faces filled white so nearer obje",
+  "no_laboratorio": null
+ },
+ {
+  "id": "animate/math",
+  "nome": "math",
+  "repo": "cth9191/animate",
+  "categoria": "",
+  "usos": [],
+  "licenca": "MIT",
+  "descricao": "A manim-style math explainer look. Coloured math on a near-black stage:",
+  "no_laboratorio": null
+ },
+ {
+  "id": "animate/pixel",
+  "nome": "pixel",
+  "repo": "cth9191/animate",
+  "categoria": "",
+  "usos": [],
+  "licenca": "MIT",
+  "descricao": "Pixel art. Every picture is drawn at a low internal resolution — 90x160, 135x240, 180x320 for a 9:16 frame — with whole-pixel primitives in a limited palette, then scaled up nearest-neighbour to 1080x1920. Hard square pi",
+  "no_laboratorio": null
+ },
+ {
+  "id": "animate/riso",
+  "nome": "riso",
+  "repo": "cth9191/animate",
+  "categoria": "",
+  "usos": [],
+  "licenca": "MIT",
+  "descricao": "A three-ink risograph print on cream paper: halftone screens at their own angles, overprints instead of mixed colours, plates a few pixels off register, ink dropouts that sparkle in the darks. Flat, bright, a little worn",
+  "no_laboratorio": null
+ },
+ {
+  "id": "animate/sketchbook",
+  "nome": "sketchbook",
+  "repo": "cth9191/animate",
+  "categoria": "",
+  "usos": [],
+  "licenca": "MIT",
+  "descricao": "Graphite and one accent colour on a warm sketchbook page. Every line is drawn by hand and boils on 2s. Things get pencilled in, inked over, then coloured with a quick scribble, and hand lettering on the page does the nar",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opus-video-skills/kinetic-reel",
+  "nome": "kinetic-reel",
+  "repo": "tuzhechen2005/opus-video-skills",
+  "categoria": "",
+  "usos": [],
+  "licenca": "MIT",
+  "descricao": "name: kinetic-reel",
+  "no_laboratorio": null
+ },
+ {
+  "id": "opus-video-skills/painted-animation",
+  "nome": "painted-animation",
+  "repo": "tuzhechen2005/opus-video-skills",
+  "categoria": "",
+  "usos": [],
+  "licenca": "MIT",
+  "descricao": "name: painted-animation",
+  "no_laboratorio": null
+ }
+]

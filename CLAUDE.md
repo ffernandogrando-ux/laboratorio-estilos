@@ -11,9 +11,13 @@ dá para comparar visual, ritmo e tempo de render lado a lado. Responda em portu
 | `ferramentas/` | `mix.py` (efeitos bem audíveis, voz opcional), `narracao.py` (tempo de cada palavra), `folha.py` (folha de contato), `galeria.py` (pôsteres, `galeria.jpg`, `CATALOGO.md`) |
 | `estilos/<estilo>/` | `kit/` (a parte reutilizável), `teste/` (o teste padrão), `ficha.json`, `poster.jpg`, `tira.jpg` |
 | `docs/` | `TESTE_PADRAO.md`, `PORTAR_ESTILO.md` (passo a passo), `FONTES.md` (repositórios de origem e licenças) |
+| `indice/` | cardápio de todos os estilos das fontes (`estilos.json` + miniaturas), feito por `ferramentas/cardapio.py` |
+| `escolhas/` | uma escolha de estilo por canal (`<canal>.md`) |
 | `fontes/` | clones dos repositórios de origem (fora do Git; `sh scripts/baixar_fontes.sh`) |
 
 ## Regras
+- **Escolher o estilo de um canal:** `docs/ESCOLHER_ESTILO.md` (busca por texto → 1 folha de 6 prévias → portar só o escolhido).
+  Nunca portar ou renderizar estilos só para olhar: as prévias das fontes já existem no cardápio.
 - **Portar um estilo novo:** siga `docs/PORTAR_ESTILO.md`. Estilos independentes podem ser portados em paralelo, um agente
   por estilo, cada um só na sua pasta `estilos/<estilo>/`.
 - **Nada de copiar entre estilos:** o que é comum vai para `motor/` ou `ferramentas/`. Peça útil a vários estilos (ex.: barata,
