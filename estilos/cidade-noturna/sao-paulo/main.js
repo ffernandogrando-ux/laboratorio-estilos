@@ -1,15 +1,18 @@
 // Teste São Paulo (20 s) do estilo "cidade noturna": gancho + capítulo 01 do roteiro referencias/sao_paulo/roteiro.md,
-// sem voz, legenda palavra a palavra (tempos do roteiro × 0,9 para caber em 20 s).
+// COM VOZ (Fish Audio, audio/narracao.wav): a cena foi desenhada numa linha do tempo de 20 s ("tempo da cena", τ) e é
+// esticada para a voz: palavras-chave da fala (alaga, rio, 300, chuva, sobe, vale, rio, cem, Paulista) viram âncoras
+// τ ↔ tempo real (audio/words.json, de ferramentas/narracao.py). A legenda usa o tempo real de cada palavra.
 // Metrópole: prédios altos e colados, relevo em degraus (vale do rio → espigão da Paulista), rio canalizado em raio-X
 // debaixo da avenida, rede de rios escondidos.
-import { seg, ss, eo, eio, track } from '/motor/lib.js';
+import { seg, ss, eo, eio, track, monotone } from '/motor/lib.js';
 import { init, camera, project, g, W, H, cruzamentoY, suavizar } from '../kit/proj.js';
 import { A, gerarCidade, gerarVeiculos, gerarRede, desenharCidade, alturaDegrau } from '../kit/cidade.js';
 import { capitulo, etiqueta, chip, legenda, frase, selo, numero, ticksNumero, grade, vinheta, fontesProntas, UI } from '../kit/ui.js';
 
 init(document.getElementById('c'));
 await fontesProntas();
-const DUR = 20;
+const DUR0 = 20;   // duração da cena no tempo τ
+const PALAVRAS = await (await fetch('audio/words.json')).json();
 // relevo: [u a partir do qual, altura do patamar] — direita sobe até o espigão (Paulista em u = 201), esquerda um pouco menos
 const DEG_D = [[0, 0], [49, 14], [103, 32], [153, 52], [193, 70]], DEG_E = [[0, 0], [49, 12], [103, 26], [153, 40], [211, 50]];
 const terreno = u => alturaDegrau(u >= 0 ? DEG_D : DEG_E, u);
@@ -42,6 +45,22 @@ const FALA = [
   ...frase('No alto,/ quase cem* metros*/ acima dos rios,/ ficou a Paulista./*', 16.38, 19.71),
 ];
 FALA.forEach(p => { if (p.w === 'Paulista.') p.chave = true; });
+// —— amarração na voz ——
+const nrm = w => w.toLowerCase().normalize('NFD').replace(/[^a-z0-9]/g, '');
+const acha = (lista, w, k = 1, campo = 't') => { let c = 0; for (const p of lista) if (nrm(p.w) === w && ++c === k) return p[campo]; return null; };
+const ANC = [['alaga', 1], ['rio', 1], ['unica', 1], ['300', 1], ['estao', 1], ['chuva', 1], ['sobe', 1], ['vale', 1], ['rio', 2], ['cem', 1], ['paulista', 1]];
+const FIM = PALAVRAS[PALAVRAS.length - 1].e;
+const VELHO = [0, ...ANC.map(([w, k]) => acha(FALA, w, k)), DUR0], NOVO = [0, ...ANC.map(([w, k]) => acha(PALAVRAS, w, k, 's')), FIM + 1.6];
+const interp = (x, xs, ys) => { if (x <= xs[0]) return ys[0]; for (let i = 1; i < xs.length; i++) if (x <= xs[i]) return ys[i - 1] + (ys[i] - ys[i - 1]) * (x - xs[i - 1]) / (xs[i] - xs[i - 1]); return ys[ys.length - 1] + x - xs[xs.length - 1]; };
+// curva monótona suave (sem quinas de velocidade nas âncoras), não interpolação linear
+const TAU = monotone(NOVO.map((x, i) => [x, VELHO[i]])), REAL = monotone(VELHO.map((x, i) => [x, NOVO[i]]));
+const tau = t => t > NOVO[NOVO.length - 1] ? t - NOVO[NOVO.length - 1] + DUR0 : TAU(t), real = tc => REAL(tc);
+const DUR = NOVO[NOVO.length - 1];
+// legenda com os tempos reais da voz (chave = palavras que acendem em menta; grupo novo a cada pontuação ou 4 palavras)
+const CHAVE = new Set(['rio', '300', 'chuva', 'sobe', 'desce', 'cem', 'metros', 'paulista']);
+let nGrupo = 0;
+const FALA_VOZ = PALAVRAS.map((p, i) => { nGrupo++; const fimFrase = /[.,?:!…]$/.test(p.w) || nGrupo >= 4 || i === PALAVRAS.length - 1; if (fimFrase) nGrupo = 0;
+  return { w: p.w.replace(/\.\.\.$/, '…'), t: p.s, chave: CHAVE.has(nrm(p.w)) && !(nrm(p.w) === 'rio' && i > 20), quebra: fimFrase }; });
 const T_RIO = 1.4, T_NUM = 5.9, T_REDE = 5.6, T_CHUVA = 10.6, T_CAP = 12.15, T_VALE = 14.9, T_ALTO = 16.6, T_PAUL = 18.9;
 
 // âncora estável: ponto da linha f(s) (s = z ao longo da avenida) na altura yAlvo da tela, suavizado no tempo
@@ -62,7 +81,7 @@ function chuva(t, a) {
   g.restore();
 }
 
-function draw(t) {
+function cena(t) {
   const C = cam(t);
   const rx = ss(seg(t, .5, 1.2)) * (1 - .35 * ss(seg(t, 4.5, 6))) * (1 - .45 * ss(seg(t, 11.5, 13))) + .25 * ss(seg(t, T_VALE, T_VALE + .5));
   desenharCidade(C, t, { predios: PREDIOS, veiculos: VEIC, rapidas: false, terrenoD: DEG_D, terrenoE: DEG_E, ruaAlta: PAULISTA,
@@ -77,8 +96,8 @@ function draw(t) {
   chip(t, 16.9, 20.5, '~100 m', 'acima dos rios', { cor: UI.menta });
   numero(t, T_NUM, 11.9, 300, 'rios e córregos escondidos', { x: 80, y: 380 });
   if (t > T_REDE && t < 13) selo(t, { a: ss(seg(t, T_REDE, T_REDE + .4)) * (1 - ss(seg(t, 12.4, 13))) });
-  legenda(t, FALA, { y: 1372 });
 }
+function draw(t) { cena(tau(t)); legenda(t, FALA_VOZ, { y: 1372 }); }
 
 const EV = [
   { som: 'whoosh', t: 0, d: 1, g: .8 }, { som: 'chiado', t: T_RIO - .3, g: .35 }, { som: 'pop', t: .8, g: .8 }, { som: 'pop', t: T_RIO, g: .9, seed: 1 },
@@ -89,4 +108,4 @@ const EV = [
   { som: 'whoosh', t: T_CAP - .1, d: 1.6, g: .9, seed: 3 },
   { som: 'pop', t: T_VALE, g: .8, seed: 4 }, { som: 'pop', t: 16.9, g: .7, seed: 5 }, { som: 'pop', t: T_PAUL, g: .9, seed: 6 },
 ];
-window.EVENTOS = EV; window.DUR = DUR; window.render = draw;
+window.EVENTOS = EV.map(e => ({ ...e, t: +real(e.t).toFixed(3) })); window.DUR = DUR; window.render = draw;

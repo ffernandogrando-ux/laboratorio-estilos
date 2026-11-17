@@ -22,6 +22,6 @@ if not os.path.exists(os.path.join(A, "narracao.wav")):   # teste sem voz (labor
 else: subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", os.path.join(A, "narracao.wav"), "-i", os.path.join(A, "efeitos.wav"), "-filter_complex",
                 f"[0:a]aresample=48000,loudnorm=I={VOZ_LUFS}:TP=-1.5,aresample=48000,asplit=2[v][sc];[1:a]aresample=48000,volume={ganho:.2f}dB,alimiter=limit=0.9[e];"
                 "[e][sc]sidechaincompress=threshold=0.1:ratio=2:attack=20:release=200[ed];"
-                "[v][ed]amix=inputs=2:normalize=0:duration=longest,alimiter=limit=0.89", "-ar", "48000", os.path.join(A, "mix.wav")], check=True)
+                "[v][ed]amix=inputs=2:normalize=0:duration=longest,alimiter=limit=0.89,apad", "-t", str(ev.get("dur", dur)), "-ar", "48000", os.path.join(A, "mix.wav")], check=True)
 print(f"efeitos {lufs:.1f} -> {EF_LUFS} LUFS ({ganho:+.1f} dB)")
 print(len(ev["eventos"]), "eventos sonoros ->", os.path.join(A, "mix.wav"))

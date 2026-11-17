@@ -1,0 +1,7 @@
+# Narração completa "A avenida que é um rio" com marcações de tom (Fish Audio S2). Um parágrafo = um pedido.
+# Números por extenso para a voz não tropeçar. Humanização: tom de conversa, respiração, suspiro, pausas nas viradas.
+[intrigued, talking to a friend] Sabe por que essa avenida alaga? [break] [lowering voice, revealing a secret] Tem um rio... embaixo dela. [break] [casual, a little amused] E ela não é a única.
+
+[impressed, building curiosity] São Paulo esconde mais de trezentos rios e córregos, [break] [softer, almost whispering] e quase ninguém sabe onde eles estão. [long-break] [mysterious, with a slight smile] Mas a chuva sabe.
+
+[calm storyteller, warm] São Paulo é um sobe e desce. [break] E em cada vale, lá embaixo, corria um rio. [break] [proud, emphasizing] No alto, quase cem metros acima dos rios, ficou a Paulista.

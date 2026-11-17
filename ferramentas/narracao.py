@@ -13,7 +13,7 @@ raw = subprocess.run(["ffmpeg", "-loglevel", "error", "-i", wav, "-f", "f32le", 
 segs, _ = WhisperModel("small", device="cpu", compute_type="int8").transcribe(np.frombuffer(raw, np.float32), language="pt", word_timestamps=True, initial_prompt=txt[:600])
 WH = [(w.word.strip(), w.start, w.end) for s in segs for w in s.words]
 def n(s): s = unicodedata.normalize("NFD", s.lower()); return "".join(c for c in s if unicodedata.category(c) != "Mn" and c.isalnum())
-NUM = {"24": "vinteequatro", "2": "dois", "3": "tres", "60": "sessenta", "100": "cem"}
+NUM = {"24": "vinteequatro", "2": "dois", "3": "tres", "60": "sessenta", "100": "cem", "300": "trezentos", "46": "quarentaeseis", "26": "vinteeseis", "23": "vinteetres", "1930": "milnovecentosetrinta"}
 nw = lambda w: NUM.get(n(w), n(w))
 RW = txt.split(); a = "".join(n(w) for w in RW); b = "".join(nw(w) for w, _, _ in WH); tb = []
 for w, s0, e0 in WH:
