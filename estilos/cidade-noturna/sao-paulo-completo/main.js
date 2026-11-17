@@ -123,8 +123,10 @@ function camReal(t) {
   return camAv(P5(t), A5(t), 52);
 }
 const zAv = t => t < T.c03 ? P2(t)[0] : t < T.c04 ? 0 : t < T.tiete2 ? P4a(t)[0] : t < T.fecho ? P4c(t)[0] : P5(t)[0];
-const ancoraR = (f, yAlvo, dz = 20) => t => suavizar(tt => cruzamentoY(camReal(tt), f, zAv(tt) + dz, zAv(tt) + 700, yAlvo), t, .2);
-const fixoR = pf => t => suavizar(tt => project(camReal(tt), typeof pf === 'function' ? pf(tt) : pf), t, .2);
+// a média no tempo só usa instantes do MESMO trecho (do outro lado de um corte a câmera é outra e a etiqueta saltaria)
+const trecho = t => { let i = 0; for (const c of [T02, ...CORTES]) if (t >= c) i++; return i; };
+const ancoraR = (f, yAlvo, dz = 20) => t => suavizar(tt => trecho(tt) !== trecho(t) ? null : cruzamentoY(camReal(tt), f, zAv(tt) + dz, zAv(tt) + 700, yAlvo), t, .2);
+const fixoR = pf => t => suavizar(tt => { if (trecho(tt) !== trecho(t)) return null; const p = project(camReal(tt), typeof pf === 'function' ? pf(tt) : pf); return p && Math.abs(p[0]) < 3 * W ? p : null; }, t, .2);
 
 // —— legenda com os tempos reais ——
 const CHAVE = new Set(['rio', '300', 'chuva', 'sobe', 'desce', 'cem', 'metros', 'paulista', 'vales', 'tubo', 'saracura', 'endireitaram', '46', '26', 'marginais', 'sumiu', 'vale', 'antigo', 'sua', 'cidade']);
