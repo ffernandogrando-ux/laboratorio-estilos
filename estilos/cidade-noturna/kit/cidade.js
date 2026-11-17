@@ -127,11 +127,13 @@ export function desenharCidade(C, t, o) {
   // chão: grande fita escura, ou degraus de curva de nível (terreno = [[u, y], ...] para |u| ≥ u; lados: o.terrenoE / o.terrenoD)
   if (o.terrenoD) terrenoDegraus(C, pts, o.terrenoD, o.terrenoE || o.terrenoD);
   else fita(C, pts, 0, 520, COR.chao);
-  if (o.rio) rioGaleria(C, pts, t, o.rio, rx);
+  // pavimento parcial (o.pavimento = z até onde a avenida existe): além dele, o rio corre a céu aberto
+  const pav = o.pavimento ?? Infinity, ptsA = pts.filter(p => p[1] <= pav + AMOSTRA), ptsB = pts.filter(p => p[1] >= pav - AMOSTRA);
+  if (o.rio && pav < Infinity && ptsB.length > 1) rioAberto(C, ptsB, t, o.rio, o.tubo || 0);
+  if (o.rio && ptsA.length > 1) rioGaleria(C, ptsA, t, o.rio, rx);
   if (o.corte != null && o.terrenoD) faceCorte(C, o.corte, o.terrenoD, o.terrenoE || o.terrenoD, o.rio);
   // ruas: avenida, vias rápidas
-  fita(C, pts, 0, 2 * SEC.calc, COR.calcada, 0, o.rio ? va : 1);
-  fita(C, pts, 0, 2 * SEC.linhaL + 1, COR.rua, 0, o.rio ? va : 1);
+  if (ptsA.length > 1) { fita(C, ptsA, 0, 2 * SEC.calc, COR.calcada, 0, o.rio ? va : 1); fita(C, ptsA, 0, 2 * SEC.linhaL + 1, COR.rua, 0, o.rio ? va : 1); }
   if (rapidas) for (const sd of [-1, 1]) fita(C, pts, sd * SEC.rapida, SEC.rapLarg + 3, COR.rua);
   if (o.ruaAlta) fita(C, pts, o.ruaAlta.u, o.ruaAlta.larg, COR.rua, o.ruaAlta.y + .05);
   // ruas transversais (a cada quadra, aproximadas) — faixas escuras finas
@@ -139,12 +141,14 @@ export function desenharCidade(C, t, o) {
   const h = o.destaque || {};
   const brilho = (rgb, k) => k ? rgb.map(c => Math.min(255, c + 25 * k)) : rgb;
   for (const sd of [-1, 1]) {
-    fita(C, pts, sd * SEC.linhaV, .6 + .3 * (h.canaleta || 0), brilho(COR.vermelho, h.canaleta), .02);
-    fita(C, pts, sd * SEC.linhaL, .5 + .3 * (h.lenta || 0), brilho(COR.laranja, h.lenta), .02);
+    if (ptsA.length < 2) break;
+    fita(C, ptsA, sd * SEC.linhaV, .6 + .3 * (h.canaleta || 0), brilho(COR.vermelho, h.canaleta), .02);
+    fita(C, ptsA, sd * SEC.linhaL, .5 + .3 * (h.lenta || 0), brilho(COR.laranja, h.lenta), .02);
     if (!rapidas) continue;
     fita(C, pts, sd * (SEC.rapida + SEC.rapLarg / 2 + .6), 1.1 + .4 * (h.rapida || 0), brilho(COR.menta, h.rapida), .02);
     fita(C, pts, sd * (SEC.rapida - SEC.rapLarg / 2 - .3), .25, COR.branco, .02, .7);
   }
+  if (o.agua > 0 && ptsA.length > 1) agua(C, ptsA, t, o.agua);
   if (o.ruaAlta) for (const sd of [-1, 1]) fita(C, pts, o.ruaAlta.u + sd * (o.ruaAlta.larg / 2 + .4), .9 + .5 * (h.ruaAlta || 0), brilho(COR.menta, h.ruaAlta), o.ruaAlta.y + .08);
   // tracejado branco nas vias rápidas
   const dash = [];
@@ -164,6 +168,7 @@ export function desenharCidade(C, t, o) {
   }
   for (const v of o.veiculos) {
     const z = posZ(v, t); if (z < za + (o.corte != null ? 8 : 0) || z > zb) continue;
+    if (z > pav) continue;
     const p = A(z, v.f.u); if (!perto(p[0], p[2], 650) || !dentro(p[0], p[2])) continue;
     const dd = dist(cam, p[0], 1, p[2]);
     itens.push({ d: dd, f: v.f.tipo === 'bus' ? () => onibus(C, z, v.f.u, v.f.dir) : () => carro(C, z, v.f.u, v.f.dir, v.cor) });
@@ -199,7 +204,7 @@ function terrenoDegraus(C, pts, D, E) {
   }
 }
 export const alturaDegrau = (deg, u) => { let y = 0; for (const [u0, yy] of deg) if (Math.abs(u) >= u0) y = yy; return y; };
-function parede(C, pts, u, y0, y1, i) {
+function parede(C, pts, u, y0, y1, i, alpha = 1) {
   const step = 6, cor = COR.lado2.map(c => c - 2 + 2 * i);
   for (let a = 0; a < pts.length - 1; a += step) {
     const b = Math.min(pts.length - 1, a + step), Q = [];
@@ -226,6 +231,27 @@ function faceCorte(C, zc, D, E, rio) {
   for (const lado of [0, 1]) { const pf = perfil[lado]; for (let i = 0; i < pf.length - 1; i++) { const [u0, y0] = pf[i], [u1, y1] = pf[i + 1];
     const n = y0 === y1 ? [0, .7] : [.7 * Math.sign(u1 - u0 || 1), 0];
     fillWorld(C, [A(zc, u0, y0), A(zc, u1, y1), A(zc, u1 + n[0], y1 + n[1]), A(zc, u0 + n[0], y0 + n[1])], fog(C, COR.menta.map(c => c * .55), d)); } }
+}
+// rio a céu aberto (antes da avenida): margens escuras, água com correnteza; tubo (0..1) ergue as paredes de concreto
+function rioAberto(C, pts, t, r, tubo) {
+  const L = r.larg || 9;
+  fita(C, pts, 0, 2 * SEC.calc, hex('#1d2a26'), .01);
+  if (tubo > 0) for (const sd of [-1, 1]) parede(C, pts, sd * (L / 2 + .6), -.6 - 4 * (1 - tubo), .4 * tubo, 3, Math.min(1, tubo * 2));
+  fita(C, pts, 0, L * (1 - .15 * tubo), COR_AGUA.map(c => c * .75), .05);
+  correnteza(C, pts, t, r.v || 4, L, .08, 1);
+}
+function correnteza(C, pts, t, v, L, y, a) {
+  const per = 14;
+  for (let k = 0; k < pts.length - 2; k += 2) {
+    const z = pts[k][1], f = ((z - v * t) % per + per) % per; if (f > 4) continue;
+    for (const o of [-L / 4, L / 6]) fillWorld(C, [A(z, o - .5, y), A(z, o + .5, y), A(z + 3, o + .5, y), A(z + 3, o - .5, y)], fog(C, COR_AGUA2, Math.hypot(pts[k][0] - C.pos[0], z - C.pos[2])), a);
+  }
+}
+// água subindo sobre a avenida (alagamento): k 0..1 alarga e engrossa a lâmina
+function agua(C, pts, t, k) {
+  const L = 9 + (2 * SEC.calc + 10 - 9) * Math.min(1, k);
+  fita(C, pts, 0, L, COR_AGUA.map(c => c * .8), .3 + .4 * k, .35 + .35 * Math.min(1, k));
+  correnteza(C, pts, t * .5, 2, L * .7, .35 + .4 * k, .5 * Math.min(1, k));
 }
 // rio na galeria debaixo da avenida: fundo, paredes de concreto, água com listras correndo (o.rio = { larg, fundo, v })
 function rioGaleria(C, pts, t, r, rx) {
@@ -268,3 +294,45 @@ export function gerarRede(seed = 4, { z0 = -100, z1 = 1200, n = 26, alcance = 28
   return rios;
 }
 const dist = (c, x, y, z) => Math.hypot(x - c[0], y - c[1], z - c[2]);
+
+// —— Tietê: rio em curvas que se endireita na várzea; marginais e cidade ocupando a várzea ——
+// r = { x0, z0, k (0 curvas → 1 reto), cheia (0..1 mancha de cheia), marg (0..1 marginais), varzea (0..1 prédios), alvo }
+const MEANDRO = z => 75 * Math.sin(z / 52) + 32 * Math.sin(z / 21 + 1);
+function tracadoW(P) { const tr = []; for (let i = 0; i < P.length; i++) { const a = P[Math.max(0, i - 1)], b = P[Math.min(P.length - 1, i + 1)], dx = b[0] - a[0], dz = b[1] - a[1], l = Math.hypot(dx, dz) || 1; tr.push([P[i][0], P[i][1], dz / l, -dx / l]); } return tr; }
+let VARZEA = null;
+export function tiete(C, t, r) {
+  const { x0, z0 } = r, k = r.k || 0, Z = [];
+  for (let z = -700; z <= 700; z += 2.5) Z.push(z);
+  const reto = tracadoW(Z.map(z => [x0, z0 + z])), curvo = tracadoW(Z.map(z => [x0 + MEANDRO(z), z0 + z])), agora = tracadoW(Z.map(z => [x0 + MEANDRO(z) * (1 - k), z0 + z]));
+  fita(C, reto, 0, 1400, COR.chao);
+  if (r.cheia > 0) fita(C, reto, 0, 300, COR_AGUA.map(c => c * .5), .02, .32 * r.cheia);
+  if (k > 0) {   // traçado antigo tracejado
+    for (let i = 0; i < curvo.length - 3; i += 6) fita(C, curvo.slice(i, i + 3), 0, 2.2, COR_AGUA2, .03, .55 * Math.min(1, k * 2));
+  }
+  fita(C, agora, 0, 22, COR_AGUA.map(c => c * .45), .04, .5);
+  fita(C, agora, 0, 13, COR_AGUA, .06);
+  const mg = r.marg || 0;
+  if (mg > 0) for (const sd of [-1, 1]) {
+    fita(C, reto, sd * 30, 22 * mg, COR.rua, .07);
+    fita(C, reto, sd * (30 + 11.4 * mg), .9, COR.menta, .09, mg);
+    fita(C, reto, sd * (30 - 11.4 * mg), .5, COR.branco, .09, .6 * mg);
+  }
+  // itens com volume (carros nas marginais, prédios na várzea) em ordem de pintor
+  const itens = [], cam = C.pos;
+  if (mg > .3) for (const sd of [-1, 1]) for (let i = 0; i < 70; i++) {
+    const L = 1400, s0 = (i * 97.7) % L, z = z0 - 700 + (((s0 + sd * t * 22 * (.8 + (i % 5) * .08)) % L) + L) % L, u = sd * (30 + ((i % 3) - 1) * 6);
+    const dd = Math.hypot(x0 + u - cam[0], z - cam[2]); if (dd > 800) continue;
+    const base = [hex('#e4e5e8'), hex('#a9adb4'), hex('#e0284a')][i % 7 === 0 ? 2 : i % 2];
+    itens.push({ d: dd, f: () => prisma(C, { x: x0 + u, z, w: 2.2, d: 4.6, h: 1.3, yaw: 0, top: base, s1: base.map(c => c * .78), s2: base.map(c => c * .6) }) });
+  }
+  const vz = r.varzea || 0;
+  if (vz > 0) {
+    if (!VARZEA) { const R = mulberry(77); VARZEA = []; for (let i = 0; i < 520; i++) { const sd = R() < .5 ? -1 : 1; VARZEA.push({ u: sd * lerp(48, 340, Math.pow(R(), .8)), z: lerp(-650, 650, R()), w: 8 + R() * 14, d: 8 + R() * 16, h: 6 + Math.pow(R(), 2) * 40, at: R() * .7 }); } }
+    for (const b of VARZEA) {
+      const kk = eio(seg(vz, b.at, b.at + .3)); if (kk <= 0) continue;
+      const x = x0 + b.u, z = z0 + b.z, dd = Math.hypot(x - cam[0], b.h * .3 - cam[1], z - cam[2]); if (dd > 900) continue;
+      itens.push({ d: dd, f: () => prisma(C, { x, z, w: b.w, d: b.d, h: b.h * kk, yaw: 0, top: COR.topo, s1: COR.lado1, s2: COR.lado2 }) });
+    }
+  }
+  itens.sort((a, b) => b.d - a.d); for (const it of itens) it.f();
+}

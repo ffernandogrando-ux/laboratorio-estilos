@@ -1,0 +1,15 @@
+# Narração completa "A avenida que é um rio" com marcações de tom (Fish Audio S2). Um parágrafo = um pedido.
+# Números por extenso para a voz não tropeçar. Humanização: tom de conversa, respiração, suspiro, pausas nas viradas.
+[intrigued, talking to a friend] Sabe por que essa avenida alaga? [break] [lowering voice, revealing a secret] Tem um rio... embaixo dela. [break] [casual, a little amused] E ela não é a única.
+
+[impressed, building curiosity] São Paulo esconde mais de trezentos rios e córregos, [break] [softer, almost whispering] e quase ninguém sabe onde eles estão. [long-break] [mysterious, with a slight smile] Mas a chuva sabe.
+
+[calm storyteller, warm] São Paulo é um sobe e desce. [break] E em cada vale, lá embaixo, corria um rio. [break] [proud, emphasizing] No alto, quase cem metros acima dos rios, ficou a Paulista.
+
+[serious documentary narrator] Um plano de mil novecentos e trinta decidiu: [break] as avenidas iam passar pelo fundo dos vales. [break] [matter-of-fact] O rio ia para um tubo de concreto... e o asfalto, por cima. [break] [naming things, slower] A Nove de Julho cobriu um rio, o Saracura. [break] A Vinte e Três de Maio, outro.
+
+[intrigued, leaning in] Com o maior rio da cidade, o Tietê, foi diferente: [break] em vez de enterrar, [emphasis] endireitaram. [break] [surprised] Um trecho de quarenta e seis quilômetros de curvas... ficou com vinte e seis. [break] [explaining calmly] E onde ele espalhava a cheia, nasceram duas vias expressas: as marginais.
+
+[lowering voice, serious] Só que a água não sumiu. [break] Os rios enterrados continuam lá, apertados em tubos. [break] E o Tietê não tem mais onde espalhar: [sighing] ali agora é asfalto. [break] [building tension] Na chuva forte, a água volta pro fundo do vale... [emphasis] bem em cima de um rio antigo.
+
+[warm, conversational] Então, da próxima vez que uma avenida encher, repara: [break] [softly, with a smile] ela só voltou a ser rio. [long-break] [friendly, inviting] Qual avenida da sua cidade esconde um rio? Comenta aqui.

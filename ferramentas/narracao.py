@@ -10,7 +10,7 @@ pasta = sys.argv[1]
 wav, rot = os.path.join(pasta, "audio", "narracao.wav"), open(os.path.join(pasta, "roteiro.md"), encoding="utf-8").read()
 m = re.search(r"## NARRAÇÃO\s*\n(.*?)(\n## |\Z)", rot, re.S); txt = re.sub(r"[>*_`]", "", m.group(1)).strip()
 raw = subprocess.run(["ffmpeg", "-loglevel", "error", "-i", wav, "-f", "f32le", "-ac", "1", "-ar", "16000", "-"], capture_output=True).stdout
-segs, _ = WhisperModel("small", device="cpu", compute_type="int8").transcribe(np.frombuffer(raw, np.float32), language="pt", word_timestamps=True, initial_prompt=txt[:600])
+segs, _ = WhisperModel("small", device="cpu", compute_type="int8").transcribe(np.frombuffer(raw, np.float32), language="pt", word_timestamps=True)   # sem initial_prompt: com ele o Whisper às vezes pula trechos inteiros (17/11/2026)
 WH = [(w.word.strip(), w.start, w.end) for s in segs for w in s.words]
 def n(s): s = unicodedata.normalize("NFD", s.lower()); return "".join(c for c in s if unicodedata.category(c) != "Mn" and c.isalnum())
 NUM = {"24": "vinteequatro", "2": "dois", "3": "tres", "60": "sessenta", "100": "cem", "300": "trezentos", "46": "quarentaeseis", "26": "vinteeseis", "23": "vinteetres", "1930": "milnovecentosetrinta"}
