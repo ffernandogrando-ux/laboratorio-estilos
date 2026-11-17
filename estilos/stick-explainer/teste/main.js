@@ -80,9 +80,9 @@ function draw(t) {
     const b = bocaCaneca(cx, cy);
     // 5,2–6,6 bebe (cabeça dentro, golinhos) · 6,6–7,0 levanta · 6,9 arroto · 7,0–7,6 tchau · 7,6–8,0 mergulha de volta
     const gole = u < 1.4 ? Math.sin(u * 13) : 0, sobe = eio(seg(t, 6.6, 7.0)), volta = eio(seg(t, 7.55, 7.95));
-    const rot = lerp(Math.PI / 2 + .2 + .07 * gole, Math.PI * 1.42, sobe), dy = lerp(-58 + 6 * gole, -66, sobe) + volta * 190;
+    const rot = lerp(Math.PI / 2 + .2 + .07 * gole, Math.PI * 1.42, sobe), dy = lerp(-58 + 6 * gole, -66, sobe) + volta * 120;
     g.save(); recorteCaneca(cx, cy);
-    barata(b[0] + lerp(-8, 6, sobe), b[1] + dy, .62, t, { rot: volta > 0 ? lerp(rot, Math.PI / 2, volta) : rot, anda: .25 + .4 * Math.abs(gole), olhar: sobe > .5 ? [-.4, .9] : [0, 1],
+    barata(b[0] + lerp(-8, 6, sobe) * (1 - volta), b[1] + dy, .62 * (1 - .25 * volta), t, { rot: volta > 0 ? lerp(rot, Math.PI / 2, volta) : rot, anda: .25 + .4 * Math.abs(gole), olhar: sobe > .5 ? [-.4, .9] : [0, 1],
       sorriso: sobe, tchau: ss(seg(t, 7.0, 7.15)) * (1 - ss(seg(t, 7.45, 7.6))), seed: 3 });
     g.restore();
     arroto(b[0] - 40, b[1] - 170, seg(t, 6.85, 7.5));
