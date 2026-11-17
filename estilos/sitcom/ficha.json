@@ -1,0 +1,11 @@
+{
+ "slug": "sitcom",
+ "nome": "Sitcom de desenho",
+ "origem": {"repo": "lemomo-ai/lemo-opuscar", "pasta": "styles/scifi-toon", "licenca": "código MIT; personagens nossos"},
+ "tecnica": "2D canvas: traço grosso que ferve, cor chapada, sombra recortada",
+ "status": "em produção (canal anima-oteste)",
+ "canais": ["anima-oteste"],
+ "fortes": "personagem expressivo (Bia), bicho nojento caprichado, render muito rápido",
+ "limites": "personagens e cenários novos precisam ser desenhados em código (1 cômodo por vídeo)",
+ "nota": 9
+}
