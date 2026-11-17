@@ -3,7 +3,7 @@
 *.pcm
 __pycache__/
 node_modules/
-fontes/
+/fontes/
 estilos/*/teste/quadros/
 estilos/*/teste/prev/
 indice/folha.jpg

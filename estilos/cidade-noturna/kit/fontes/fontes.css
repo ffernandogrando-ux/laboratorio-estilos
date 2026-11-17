@@ -1,0 +1,5 @@
+/* Inter (OFL, © The Inter Project Authors) e JetBrains Mono (OFL, © JetBrains): subconjunto latino em woff2 */
+@font-face { font-family: 'Inter'; font-weight: 600; font-display: block; src: url(Inter-SemiBold.woff2) format('woff2'); }
+@font-face { font-family: 'Inter'; font-weight: 800; font-display: block; src: url(Inter-ExtraBold.woff2) format('woff2'); }
+@font-face { font-family: 'JetBrains Mono'; font-weight: 400; font-display: block; src: url(JetBrainsMono-Regular.woff2) format('woff2'); }
+@font-face { font-family: 'JetBrains Mono'; font-weight: 700; font-display: block; src: url(JetBrainsMono-Bold.woff2) format('woff2'); }
