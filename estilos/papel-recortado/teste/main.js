@@ -141,7 +141,7 @@ function draw(t) {
         } };
         dito(g, D.x, D.y, 1, D.o);
         // onomatopeia do susto, em papel (fica no mundo)
-        kit.sfxWord(g, t, SUSTO, 'AAAH!', D.x - 140, 415, 92, '#f4ecda', 0.7);
+        kit.sfxWord(g, t, SUSTO, 'AAAH!', D.x - 185, 335, 84, '#f4ecda', 0.7);
     } else {
         const b = barataB(t);
         g.save(); g.translate(CANECA.x, CANECA.y); canecaCheia(t, b); g.restore();
