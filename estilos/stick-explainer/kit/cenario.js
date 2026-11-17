@@ -44,7 +44,7 @@ export function caneca(x, y, t, { s = 1, inclina = 0, lado = 1, vapor = 1, treme
 export function recorteCaneca(x, y, { s = 1, inclina = 0, lado = 1 } = {}) {
   g.beginPath(); g.save(); g.setTransform(1, 0, 0, 1, 0, 0); g.rect(0, 0, 1080, 1920); g.restore();
   g.save(); g.translate(x, y); g.rotate(inclina); g.scale(s * lado, s);
-  g.moveTo(36, -56); g.ellipse(91, -56, 55, 13, 0, Math.PI, 0, true); g.lineTo(140, 60); g.lineTo(42, 60); g.closePath();
+  g.moveTo(36, -56); g.ellipse(91, -56, 55, 13, 0, Math.PI, 0, true); g.lineTo(140, 60); g.lineTo(140, 420); g.lineTo(42, 420); g.lineTo(42, 60); g.closePath();
   g.restore(); g.clip('evenodd');
 }
 // ponto da boca da caneca (onde o bicho aparece), no mundo

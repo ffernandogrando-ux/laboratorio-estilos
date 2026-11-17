@@ -20,11 +20,18 @@ export function aguada(pts, col, o = {}) {
   g.save(); g.setTransform(1, 0, 0, 1, 0, 0); g.clip(Pth);
   const bb = pts.map(p => T.tx(p[0], p[1])), xs = bb.map(p => p[0]), ys = bb.map(p => p[1]);
   const x0 = Math.min(...xs), x1 = Math.max(...xs), y0 = Math.min(...ys), y1 = Math.max(...ys);
-  const n = Math.min(110, Math.max(8, ((x1 - x0) * (y1 - y0)) / 16000 | 0));
-  g.filter = 'blur(16px)';
-  for (let i = 0; i < n; i++) { const r = 30 + rnd() * 140; g.fillStyle = rnd() > .5 ? `rgba(30,28,25,${.03 + rnd() * .05})` : `rgba(255,253,245,${.03 + rnd() * .05})`; g.beginPath(); g.ellipse(x0 + rnd() * (x1 - x0), y0 + rnd() * (y1 - y0), r, r * (.5 + rnd() * .6), rnd() * 3, 0, 7); g.fill(); }
-  if ((o.edge ?? .16) > 0) { g.filter = 'blur(11px)'; g.strokeStyle = `rgba(20,18,16,${o.edge ?? .16})`; g.lineWidth = 40; g.stroke(Pth); }
-  g.filter = 'none'; g.restore();
+  const n = Math.min(70, Math.max(6, ((x1 - x0) * (y1 - y0)) / 30000 | 0));
+  // manchas macias (gradiente radial: mesmo efeito do desfoque da origem, muito mais barato na CPU)
+  for (let i = 0; i < n; i++) {
+    const r = (30 + rnd() * 140) * 1.6, cx = x0 + rnd() * (x1 - x0), cy = y0 + rnd() * (y1 - y0), sy = .5 + rnd() * .6, rot = rnd() * 3, esc = rnd() > .5, a = .05 + rnd() * .07;
+    const gr = g.createRadialGradient(0, 0, 0, 0, 0, r); const c0 = esc ? '30,28,25' : '255,253,245';
+    gr.addColorStop(0, `rgba(${c0},${a})`); gr.addColorStop(.6, `rgba(${c0},${a * .6})`); gr.addColorStop(1, `rgba(${c0},0)`);
+    g.save(); g.translate(cx, cy); g.rotate(rot); g.scale(1, sy); g.fillStyle = gr; g.fillRect(-r, -r, 2 * r, 2 * r); g.restore();
+  }
+  // pigmento acumulado na borda (traços largos e transparentes no lugar do desfoque)
+  const ed = o.edge ?? .16;
+  if (ed > 0) for (const [lw, k] of [[56, .25], [34, .3], [16, .45]]) { g.strokeStyle = `rgba(20,18,16,${ed * k})`; g.lineWidth = lw; g.stroke(Pth); }
+  g.restore();
   if (o.line !== false) T.outline(Pth, o.lw ?? 3.4, o.lineCol ?? '#2A2927');
   return Pth;
 }

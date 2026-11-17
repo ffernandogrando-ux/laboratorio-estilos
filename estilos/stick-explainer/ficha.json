@@ -1,0 +1,12 @@
+{
+ "slug": "stick-explainer",
+ "nome": "Explicador de palito",
+ "origem": {"repo": "lemomo-ai/lemo-opuscar", "pasta": "styles/stick-explainer", "licenca": "código MIT; textos .md da origem (CC BY-NC) não copiados; fonte Jost OFL; personagem nosso (Palito)"},
+ "tecnica": "2D canvas: boneco de palito com esqueleto e IK, cada membro uma curva quadrática de espessura igual, molas amortecidas por parâmetro (integradas em passo fixo, quadro = função pura de t); papel quente com grão, tinta + um único destaque vermelho-laranja; Jost alinhada à margem",
+ "status": "teste",
+ "canais": ["politica-2d", "anima-ovitinho", "testarstickimannovo", "zackdfilms"],
+ "fortes": "leitura instantânea e limpa; movimento muito natural (molas: antebraço atrasa, cabeça segue, quique ao parar); o destaque único faz a barata saltar aos olhos; tipografia editorial bonita; boneco e poses (andar, pegar, levar à boca, susto) reaproveitáveis em qualquer roteiro; render rápido",
+ "limites": "sem rosto por regra do estilo (o susto usa olhos só no pico, uma concessão); pouco nojo e pouca 'sujeira' para o anima-oteste; cenário minimalista (só traço), não serve para lugares ricos ou mapas; mãos são só a ponta do braço; pernas em pose extrema (pulo) viram curvas meio moles",
+ "nota": 7,
+ "seg_por_10s": 19.8
+}

@@ -10,7 +10,7 @@ const RAIZ = path.dirname(path.dirname(new URL(import.meta.url).pathname)), FPS 
 const [pasta, modo = 'quadros', arg] = process.argv.slice(2);
 if (!pasta || !fs.existsSync(path.join(RAIZ, pasta, 'index.html'))) { console.error('uso: node render.mjs videos/NN_tema quadros|video [arg]'); process.exit(1); }
 const DIR = path.join(RAIZ, pasta);
-const TIPOS = { '.html': 'text/html', '.js': 'text/javascript', '.mjs': 'text/javascript', '.json': 'application/json', '.css': 'text/css', '.ttf': 'font/ttf', '.png': 'image/png', '.jpg': 'image/jpeg' };
+const TIPOS = { '.html': 'text/html', '.js': 'text/javascript', '.mjs': 'text/javascript', '.json': 'application/json', '.css': 'text/css', '.ttf': 'font/ttf', '.woff2': 'font/woff2', '.woff': 'font/woff', '.otf': 'font/otf', '.svg': 'image/svg+xml', '.webp': 'image/webp', '.wasm': 'application/wasm', '.png': 'image/png', '.jpg': 'image/jpeg' };
 const srv = http.createServer((q, r) => { const f = path.join(RAIZ, decodeURIComponent(q.url.split('?')[0])); if (!f.startsWith(RAIZ)) { r.writeHead(403); r.end(); return; }
   fs.readFile(f, (e, b) => { if (e) { r.writeHead(404); r.end(); return; } r.writeHead(200, { 'content-type': TIPOS[path.extname(f)] || 'application/octet-stream' }); r.end(b); }); });
 await new Promise(ok => srv.listen(0, '127.0.0.1', ok)); const URL_ = `http://127.0.0.1:${srv.address().port}/${pasta.replace(/\/$/, '')}/index.html`;
