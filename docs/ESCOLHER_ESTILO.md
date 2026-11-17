@@ -18,6 +18,17 @@ renderizar nada até a escolha final. O registro de cada escolha fica em `escolh
 
 Atualizar o cardápio quando as fontes mudarem: `sh scripts/baixar_fontes.sh && python3 -I ferramentas/cardapio.py indexar`.
 
+## Partindo de um vídeo de referência (Instagram, TikTok…)
+1. O usuário manda o arquivo do vídeo (link do Instagram costuma não baixar daqui; o arquivo sempre funciona).
+2. `python3 -I ferramentas/referencia.py <video> <nome>` → `referencias/<nome>/folha.jpg` (6 quadros, 1 imagem).
+   O vídeo de terceiros fica fora do Git; só a folha e as notas entram.
+3. Descrever o estilo em 5 linhas em `referencias/<nome>/notas.md`: 2D ou 3D, traço, cor, textura, câmera, ritmo, texto
+   na tela. **Preferir 2D** quando o efeito couber (render 10–40× mais rápido sem placa de vídeo).
+4. Buscar no cardápio com essas palavras e montar a folha de 6 finalistas, **com a folha da referência ao lado**.
+5. Escolhido o mais próximo, portar e **ajustar ao vídeo de referência** (paleta, traço, textura, ritmo de cortes),
+   medindo quadro a quadro em vez de chutar. Se nada no cardápio chegar perto, criar um estilo novo no laboratório
+   a partir dos kits mais parecidos. Nunca copiar personagens, logotipo ou marca do vídeo de referência: só a linguagem visual.
+
 ## Tempo estimado de um vídeo de 1 a 2 minutos (nuvem, só CPU)
 | Etapa | 1 min | 2 min |
 |---|---|---|

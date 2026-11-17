@@ -40,7 +40,11 @@ export function janela(g, t) {
   P(g, 'jan-cruzh', C.lumpy(C.roundRect(132, 368, 346, 24, 10), 'jch', 1), COR.creme, BG({ bevel: 6, shine: 0.4 }));
   P(g, 'jan-peitoril', C.lumpy(C.roundRect(80, 616, 450, 44, 16), 'jpeit', 2), shade('#f6efe0', -6), BG({ bevel: 10, shine: 0.4 }));
   // cortina coral com pregas
-  P(g, 'jan-cortina', C.lumpy([[470, 100], [560, 100], [585, 300], [560, 520], [600, 690], [520, 700], [500, 500], [486, 300]], 'cort', 5), COR.coral, BG({ bevel: 16, shine: 0.3, prints: 3, marks: 12 }));
+  P(g, 'jan-cortina', C.lumpy([[462, 100], [610, 100], [596, 260], [560, 420], [596, 560], [622, 700], [488, 706], [516, 560], [532, 420], [492, 260]], 'cort', 4), COR.coral, BG({ bevel: 16, shine: 0.3, prints: 3, marks: 12 }));
+  P(g, 'jan-laco', C.lumpy(C.roundRect(512, 404, 70, 30, 12), 'laco', 1.5), COR.mostarda, BG({ bevel: 6, shine: 0.6 }));
+  g.save(); g.strokeStyle = 'rgba(90,20,10,0.35)'; g.lineWidth = 3; g.lineCap = 'round';
+  for (const [a, b] of [[[520, 130], [540, 400]], [[570, 120], [550, 400]], [[548, 450], [520, 690]], [[556, 450], [590, 690]]]) { g.beginPath(); g.moveTo(...a); g.lineTo(...b); g.stroke(); }
+  g.restore();
   P(g, 'jan-varao', C.capsule([[60, 104], [620, 104]], 10), COR.madeira, BG({ bevel: 5, shine: 0.6 }));
 }
 const shade = C.shade;
@@ -80,7 +84,7 @@ export function caneca(g, x, y, t, o = {}) {
   const w = 128, h = 140, ry = 16, cor = o.cor ?? COR.coral;
   C.put(g, x, y, o.s ?? 1, o.rot ?? 0, () => {
     // alça para a esquerda (para quem pega vindo da esquerda)
-    P(g, 'can-alca', C.capsule([[-w / 2 + 6, -h + 34], [-w / 2 - 34, -h + 40], [-w / 2 - 44, -h / 2 - 4], [-w / 2 - 30, -38], [-w / 2 + 6, -30]], 11), shade(cor, -6), { bevel: 6, shine: 0.6, prints: 0, shadowBlur: 4, shadowOffset: [3, 5] });
+    P(g, 'can-alca', C.capsule([...Array(11)].map((_, i) => { const a = -Math.PI / 2 - (i / 10) * Math.PI; return [-w / 2 + 8 + Math.cos(a) * 46, -h / 2 - 2 + Math.sin(a) * 40]; }), 11), shade(cor, -6), { bevel: 6, shine: 0.6, prints: 0, shadowBlur: 4, shadowOffset: [3, 5] });
     P(g, 'can-borda', C.lumpy(C.ellipse(0, -h, w / 2, ry, 18), 'cborda', 0.8), shade(cor, 10), { bevel: 4, shine: 0.8, shadow: false, prints: 0 });
     P(g, 'can-cafe', C.ellipse(0, -h + 2, w / 2 - 9, ry - 5, 18), COR.cafe, { bevel: 3, shine: 1.4, shadow: false, prints: 0, marks: 0, speckle: 0.2 });
     if (o.dentro) o.dentro(g);

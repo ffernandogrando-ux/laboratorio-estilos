@@ -184,6 +184,12 @@ function cabeca(g, o) {
     g.restore();
 }
 
+// pulso da mão esquerda que abraça a caneca (pose 'wrap'): centro da caneca m, inclinação r, largura mugW
+export function pulsoCaneca(m, r, mugW) {
+    const k = 74 / 60, rot = -Math.PI / 2 + r, lx = 2 * k, ly = -24 * k - mugW / 2;
+    return { rot, w: [m[0] - (lx * Math.cos(rot) - ly * Math.sin(rot)), m[1] - (lx * Math.sin(rot) + ly * Math.cos(rot))] };
+}
+
 export function dito(g, x, y, s, o = {}) {
     const t = o.t ?? 0, resp = Math.sin(Math.floor(t * 12) / 12 * 2.6) * 4;
     const pes = o.pes ?? [[-58, 0], [58, 0]], q = o.quadril ?? [0, 0], am = o.amassa ?? 0;
@@ -210,8 +216,7 @@ export function dito(g, x, y, s, o = {}) {
     // braços: direito do Dito (esquerda da imagem) e esquerdo (direita da imagem, o que segura a caneca)
     braco(g, 0, o.maoD ?? [-150, -470], o.poseD ?? 'open', o);
     if (o.segura) {
-        const S = o.segura, k = 74 / 60, rot = -Math.PI / 2 + S.r, lx = 2 * k, ly = -24 * k - S.mugW / 2;
-        const w = [S.m[0] - (lx * Math.cos(rot) - ly * Math.sin(rot)), S.m[1] - (lx * Math.sin(rot) + ly * Math.cos(rot))];
+        const S = o.segura, { w, rot } = pulsoCaneca(S.m, S.r, S.mugW);
         braco(g, 1, w, null, o);
         D.hand(g, w[0], w[1], 74, rot, 'wrap', { skin: C.pele, side: 'left', cuff: D.shade(C.sueter, -8), part: 'back' });
         S.desenha(g);

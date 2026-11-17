@@ -6,7 +6,7 @@
 // barata(g, x, y, s, t, P)  origem no centro do corpo; cabeça para -x (P.vira = -1 espelha).
 //   P.rot · P.v (fervura) · P.anda (0–2: ciclo das patas) · P.olhar [x, y] (olhão; o olhinho vaga sozinho)
 //   P.palpebra (0–1: olhos meio fechados, satisfeita) · P.boca 'aberta' | 'sorriso' · P.baba (0–1)
-//   P.barriga (escala do abdômen, gole) · P.tchau (0–1: pata da frente acenando)
+//   P.cabRot (giro da cabeça, para o rosto ficar em pé quando o corpo gira) · P.barriga (escala do abdômen, gole) · P.tchau (0–1: pata da frente acenando)
 import * as C from './clay.js';
 
 const COR = { casca: '#5a2e17', asa: '#7a4220', escudo: '#8a4a22', borda: '#d29a5a', cabeca: '#3e1f10', pata: '#4a2614', olho: '#f1e7bf', boca: '#2a0d08' };
@@ -47,8 +47,6 @@ export function barata(g, x, y, s, t, P = {}) {
   // patas: 3 de longe (atrás do corpo) e 3 de perto
   const pts = [[-50, 22], [0, 30], [50, 28]], A1 = [2.75, 1.9, 0.55], A2 = [-0.95, -0.35, 0.85];
   pts.forEach(([px, py], i) => { const w = Math.sin(fase + i * 2.1) * 0.3; pata(g, 'L' + i, px + 14, py - 22, A1[i] + w + 0.15, A2[i] - w * 0.5, v, 0); });
-  antena(g, 'L', -112, -14, 0.25 + Math.sin(tq * 9) * 0.12, v);
-  antena(g, 'R', -104, -18, -0.15 + Math.sin(tq * 7 + 1) * 0.15, v);
   // abdômen (incha no gole), asas com a costura no meio, escudo com borda clara, cabeça
   C.put(g, 20, 0, [P.barriga ?? 1, P.barriga ?? 1], 0, () => {
     P_(g, 'b-abd' + v, C.lumpy(C.ellipse(0, 0, 100, 58, 16), 'babd' + v, 2), COR.casca, ov(v, { bevel: 12, shine: 1.1, prints: 2, marks: 4 }));
@@ -60,13 +58,16 @@ export function barata(g, x, y, s, t, P = {}) {
   g.save(); g.strokeStyle = 'rgba(30,12,4,0.55)'; g.lineWidth = 2.6; g.beginPath(); g.moveTo(-36, -10); g.quadraticCurveTo(40, -6, 112, 0); g.stroke(); g.restore();
   P_(g, 'b-escudoB' + v, C.bean(-62, -6, 82, 98, 'besc' + v, 1.6), COR.borda, ov(v, { bevel: 8, shine: 0.9 }));
   P_(g, 'b-escudo' + v, C.bean(-60, -4, 62, 78, 'besc2' + v, 1.2), COR.escudo, ov(v, { bevel: 7, shine: 1.2, shadow: 0.4 }));
-  P_(g, 'b-cabeca' + v, C.bean(-108, 6, 58, 52, 'bcab' + v, 1.2), COR.cabeca, ov(v, { bevel: 7, shine: 1.1 }));
   // patas de perto
   pts.forEach(([px, py], i) => {
     const w = Math.sin(fase + i * 2.1 + Math.PI) * 0.3;
     if (i === 0 && P.tchau) { const a = Math.sin(tq * 16) * 0.45; pata(g, 'R0', px, py, 3.9 + a * P.tchau, -0.9 + a * 0.4, v, 1); return; }
     pata(g, 'R' + i, px, py, A1[i] + w, A2[i] - w * 0.5, v, 1);
   });
+  g.save(); g.translate(-100, 4); g.rotate(P.cabRot ?? 0); g.translate(100, -4);
+  P_(g, 'b-cabeca' + v, C.bean(-108, 6, 58, 52, 'bcab' + v, 1.2), COR.cabeca, ov(v, { bevel: 7, shine: 1.1 }));
+  antena(g, 'L', -112, -14, 0.25 + Math.sin(tq * 9) * 0.12, v);
+  antena(g, 'R', -104, -18, -0.15 + Math.sin(tq * 7 + 1) * 0.15, v);
   // boca: buraco escuro, 2 dentes tortos (ou sorriso de salsicha)
   if ((P.boca ?? 'aberta') === 'aberta') {
     P_(g, 'b-boca', C.bean(-128, 24, 34, 24, 'bboca', 1), COR.boca, C.small({ bevel: 3, shadow: false }));
@@ -83,14 +84,20 @@ export function barata(g, x, y, s, t, P = {}) {
     for (const [ex, ey, r, k] of [[-120, -84, 30, 'G'], [-72, -62, 17, 'P']]) {
       const ph = P.palpebra;
       g.save(); g.beginPath(); g.ellipse(ex, ey, r * 1.05, r * 1.08, 0, 0, 7); g.clip();
-      C.put(g, ex, ey - r * 1.1 + ph * r * 1.05, 1, 0, () => P_(g, 'b-palp' + k, C.ellipse(0, -r * 0.6, r * 1.2, r * 1.2, 14), C.shade(COR.cabeca, 20), C.small({ bevel: r * 0.15, shadow: false })));
+      C.put(g, ex, ey - r * 1.1 + ph * r * 1.05, 1, 0, () => P_(g, 'b-palp' + k, C.ellipse(0, -r * 0.6, r * 1.2, r * 1.2, 14), COR.borda, C.small({ bevel: r * 0.15, shadow: false })));
+      g.strokeStyle = 'rgba(40,16,6,0.8)'; g.lineWidth = 2.2; g.beginPath(); g.moveTo(ex - r, ey - r * 0.5 + ph * r * 1.05); g.lineTo(ex + r, ey - r * 0.5 + ph * r * 1.05); g.stroke();
       g.restore();
     }
   }
+  if (P.baba) baba(g, s, t, P.baba, tq);
+  g.restore();
+  g.restore();
+}
+function baba(g, s, t, forca, tq) {
+  {
   // baba: fio que estica (gravidade da tela) e gota que cai
-  if (P.baba) {
     const m = g.getTransform(), p = m.transformPoint(new DOMPoint(-130, 32)), k = Math.hypot(m.a, m.b) / s;
-    const u = (tq * 0.8) % 1, L = (30 + u * 110) * k * s * P.baba;
+    const u = (tq * 0.8) % 1, L = (30 + u * 110) * k * s * forca;
     g.save(); g.setTransform(1, 0, 0, 1, 0, 0);
     const wob = Math.sin(tq * 5) * 6 * k * s;
     g.lineCap = 'round';
@@ -104,5 +111,4 @@ export function barata(g, x, y, s, t, P = {}) {
     if (u2 < 0.5) gota(p.x, p.y + 140 * k * s + u2 * 400 * k * s, 7 * k * s);
     g.restore();
   }
-  g.restore();
 }
