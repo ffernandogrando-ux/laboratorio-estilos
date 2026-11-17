@@ -65,23 +65,23 @@ export function barata(g, x, y, s, t, P = {}) {
     pata(g, 'R' + i, px, py, A1[i] + w, A2[i] - w * 0.5, v, 1);
   });
   g.save(); g.translate(-100, 4); g.rotate(P.cabRot ?? 0); g.translate(100, -4);
-  P_(g, 'b-cabeca' + v, C.bean(-108, 6, 58, 52, 'bcab' + v, 1.2), COR.cabeca, ov(v, { bevel: 7, shine: 1.1 }));
+  P_(g, 'b-cabeca' + v, C.bean(-112, 8, 72, 62, 'bcab' + v, 1.2), COR.cabeca, ov(v, { bevel: 7, shine: 1.1 }));
   antena(g, 'L', -112, -14, 0.25 + Math.sin(tq * 9) * 0.12, v);
   antena(g, 'R', -104, -18, -0.15 + Math.sin(tq * 7 + 1) * 0.15, v);
   // boca: buraco escuro, 2 dentes tortos (ou sorriso de salsicha)
   if ((P.boca ?? 'aberta') === 'aberta') {
-    P_(g, 'b-boca', C.bean(-128, 24, 34, 24, 'bboca', 1), COR.boca, C.small({ bevel: 3, shadow: false }));
-    P_(g, 'b-dente1', C.lumpy([[-138, 14], [-130, 14], [-131, 26], [-137, 24]], 'bd1', 0.3), '#efe3b0', C.small({ bevel: 1.2, shadow: false }));
-    P_(g, 'b-dente2', C.lumpy([[-124, 15], [-117, 14], [-119, 23], [-124, 22]], 'bd2', 0.3), '#e2d39a', C.small({ bevel: 1.2, shadow: false }));
+    P_(g, 'b-boca', C.bean(-134, 26, 40, 28, 'bboca', 1), COR.boca, C.small({ bevel: 3, shadow: false }));
+    P_(g, 'b-dente1', C.lumpy([[-146, 15], [-137, 14], [-138, 28], [-145, 26]], 'bd1', 0.3), '#efe3b0', C.small({ bevel: 1.2, shadow: false }));
+    P_(g, 'b-dente2', C.lumpy([[-129, 15], [-121, 14], [-123, 25], [-129, 24]], 'bd2', 0.3), '#e2d39a', C.small({ bevel: 1.2, shadow: false }));
   } else P_(g, 'b-sorriso', C.capsule([[-140, 18], [-128, 28], [-112, 26]], 3.5), COR.boca, C.small({ bevel: 1.2, shadow: false }));
   // olhos em hastes: olhão com veias e olhinho que vaga
-  P_(g, 'b-haste1' + v, C.capsule([[-104, -14], [-112, -44], [-118, -64]], [8, 6]), COR.cabeca, ov(v, { bevel: 3 }));
-  P_(g, 'b-haste2' + v, C.capsule([[-92, -14], [-82, -34], [-74, -50]], [7, 5]), COR.cabeca, ov(v, { bevel: 3 }));
+  P_(g, 'b-haste1' + v, C.capsule([[-106, -14], [-114, -36], [-120, -50]], [9, 7]), COR.cabeca, ov(v, { bevel: 3 }));
+  P_(g, 'b-haste2' + v, C.capsule([[-92, -14], [-84, -30], [-78, -40]], [8, 6]), COR.cabeca, ov(v, { bevel: 3 }));
   const ol = P.olhar ?? [-0.6, 0], vaga = [Math.sin(tq * 3.1) * 0.7, Math.cos(tq * 2.3) * 0.6];
-  olho(g, 'G', -120, -84, 30, ol, true);
-  olho(g, 'P', -72, -62, 17, vaga, false);
+  olho(g, 'G', -124, -80, 38, ol, true);
+  olho(g, 'P', -74, -54, 22, vaga, false);
   if (P.palpebra) {
-    for (const [ex, ey, r, k] of [[-120, -84, 30, 'G'], [-72, -62, 17, 'P']]) {
+    for (const [ex, ey, r, k] of [[-124, -80, 38, 'G'], [-74, -54, 22, 'P']]) {
       const ph = P.palpebra;
       g.save(); g.beginPath(); g.ellipse(ex, ey, r * 1.05, r * 1.08, 0, 0, 7); g.clip();
       C.put(g, ex, ey - r * 1.1 + ph * r * 1.05, 1, 0, () => P_(g, 'b-palp' + k, C.ellipse(0, -r * 0.6, r * 1.2, r * 1.2, 14), COR.borda, C.small({ bevel: r * 0.15, shadow: false })));
@@ -96,7 +96,7 @@ export function barata(g, x, y, s, t, P = {}) {
 function baba(g, s, t, forca, tq) {
   {
   // baba: fio que estica (gravidade da tela) e gota que cai
-    const m = g.getTransform(), p = m.transformPoint(new DOMPoint(-130, 32)), k = Math.hypot(m.a, m.b) / s;
+    const m = g.getTransform(), p = m.transformPoint(new DOMPoint(-136, 36)), k = Math.hypot(m.a, m.b) / s;
     const u = (tq * 0.8) % 1, L = (30 + u * 110) * k * s * forca;
     g.save(); g.setTransform(1, 0, 0, 1, 0, 0);
     const wob = Math.sin(tq * 5) * 6 * k * s;

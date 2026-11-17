@@ -96,14 +96,13 @@ export function pintarSala() {
     // piso xadrez em perspectiva
     aguada(rect(X0 - 10, 1444, Wd + 20, 1060), '#8A877F', { seed: 16, line: false, edge: 0 });
     cru();
-    let y = 1444;
-    for (let r = 0; r < 9; r++) {
-      const h = 46 + r * 26, tw = 120 + r * 24;
-      for (let i = -6; i * tw < Wd + 600; i++) if ((i + r) % 2 === 0) {
-        const x = X0 + i * tw - r * 30, f = k => (k - 550) * h / 1100;
-        g.fillStyle = '#34332F'; g.beginPath(); g.moveTo(x, y); g.lineTo(x + tw, y); g.lineTo(x + tw + f(x + tw), y + h); g.lineTo(x + f(x), y + h); g.fill();
-      }
-      y += h;
+    // piso xadrez em perspectiva (colunas fogem para um ponto acima do rodapé)
+    const VX = 560, VY = 700, Y0 = 1444, linhas = [Y0]; let h = 60;
+    while (linhas[linhas.length - 1] < 2500) { linhas.push(linhas[linhas.length - 1] + h); h *= 1.32; }
+    const xa = (i, yy) => VX + (i * 150 - VX) * (yy - VY) / (Y0 - VY);
+    g.fillStyle = '#34332F';
+    for (let r = 0; r < linhas.length - 1; r++) for (let i = -12; i < 14; i++) if ((i + r) % 2 === 0) {
+      const ya = linhas[r], yb = linhas[r + 1]; g.beginPath(); g.moveTo(xa(i, ya), ya); g.lineTo(xa(i + 1, ya), ya); g.lineTo(xa(i + 1, yb), yb); g.lineTo(xa(i, yb), yb); g.fill();
     }
   });
   return bg;

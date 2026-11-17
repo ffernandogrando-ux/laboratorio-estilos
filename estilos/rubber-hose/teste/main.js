@@ -21,7 +21,7 @@ const LARGO = { x: 540, y: 1060, z: 1, r: 0 }, PERTO = { x: 590, y: 1150, z: 1.3
 
 // barata dentro do café: (mx,my) posição da caneca, sai 0..1 quanto já saiu
 function barataNaCaneca(t, k, sai, o = {}) {
-  const by = -CAN.H + lerp(150, 6, sai) + (o.afunda || 0), kb = k;
+  const by = -CAN.H + lerp(190, -34, sai) + (o.afunda || 0), kb = k;
   const borda = s => ({ x: (s * 62) / kb, y: (-CAN.H - 2 - by) / kb, mao: 'grab', rot: s > 0 ? .3 : Math.PI - .3 });
   barata({ x: o.dx || 0, y: by, k: kb, t, olhar: o.olhar || [-.8, -.1], olhos: o.olhos, boca: o.boca || 'grin', baba: o.baba ?? 1, sx: o.sx, sy: o.sy, rot: o.rot || 0,
     bracoE: o.bracoE || borda(-1), bracoD: o.bracoD || borda(1) });

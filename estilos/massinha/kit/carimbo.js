@@ -9,7 +9,7 @@ const popa = (u) => u <= 0 ? 0 : u < 0.45 ? 0.4 + (1.18 - 0.4) * (u / 0.45) : u 
 // carimbo(g, txt, x, y, t, t0, o)  o.size (px da letra), o.cor, o.placa, o.borda, o.tilt
 export function carimbo(g, txt, x, y, t, t0, o = {}) {
   if (t < t0) return;
-  const tq = C.q2(t - t0) + 1e-4, size = o.size ?? 150, font = `900 ${size}px "Grossa"`;
+  const tq = C.q2(t - t0) + 1e-4, size = o.size ?? 132, font = `900 ${size}px "Grossa"`;
   medidor.font = font;
   const ws = [...txt].map((ch) => medidor.measureText(ch).width), W = ws.reduce((a, b) => a + b, 0), padX = size * 0.42, H = size * 1.45;
   // a placa bate: cai de cima, achata no contato e volta
@@ -25,7 +25,7 @@ export function carimbo(g, txt, x, y, t, t0, o = {}) {
   // letras pulando uma a uma
   let cx = -W / 2;
   [...txt].forEach((ch, i) => {
-    const s = popa((tq - 0.05 - i * 0.03) / 0.22), w = ws[i];
+    const s = popa((tq - 0.02 - i * 0.016) / 0.16), w = ws[i];
     if (s > 0 && ch !== ' ') {
       g.save(); g.translate(cx + w / 2, size * 0.36); g.rotate(Math.sin(i * 2.7) * 0.06); g.scale(s, s);
       C.text(g, 'carimbo', ch, 0, 0, size, o.cor ?? '#d2392b', { align: 'center', variant: i % 3, shine: 0.8 });

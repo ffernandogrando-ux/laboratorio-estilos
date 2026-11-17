@@ -1,7 +1,9 @@
 # Laboratório de estilos visuais (animação em código, 9:16, pt-BR)
 
-Aqui a gente **testa e guarda estilos visuais** para os canais (anima-oteste, politica-2d, anima-ovitinho, mapas,
-zackdfilms, testarstickimannovo…). Cada estilo conta a **mesma historinha de 8 s** (`docs/TESTE_PADRAO.md`), então
+Aqui a gente **testa e guarda estilos visuais**, principalmente para **canais novos** (decisão do usuário, 17/11/2026):
+a partir de um vídeo de referência, achar no cardápio o estilo que reproduz aquele visual mais barato e rápido (2D de
+preferência) e entregar o kit inicial do canal. Nas fichas, `canais` diz o **tipo de canal** que o estilo serve
+(curiosidades de cidade, explicador, humor, fábula…). Cada estilo conta a **mesma historinha de 8 s** (`docs/TESTE_PADRAO.md`), então
 dá para comparar visual, ritmo e tempo de render lado a lado. Responda em português.
 
 ## Como está organizado

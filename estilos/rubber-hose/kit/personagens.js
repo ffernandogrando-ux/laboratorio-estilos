@@ -41,16 +41,22 @@ export function pao(p = {}) {
   const tr = p.tremor ? [Math.sin((p.t || 0) * 97) * p.tremor, Math.cos((p.t || 0) * 83) * p.tremor * .5] : [0, 0];
   push(); translate(tr[0], tr[1]);
   const cont = []; for (let i = 0; i < 14; i++) { const a = i / 14 * TAU, w = 1 + .035 * Math.sin(a * 3 + 1) + (Math.sin(a) > 0 ? .02 : 0); cont.push([Math.cos(a) * rx * w, cy + Math.sin(a) * ry * w * (Math.sin(a) > 0 ? .96 : 1)]); }
-  shape(spline(cont, true, 6), { fill: P.pale, shade: () => {
-    // casca: sombra recortada à direita (luz do alto à esquerda) + base mais tostada
-    fillLocal([[rx * .5, cy - ry * 1.2], [rx * 1.3, cy - ry * 1.2], [rx * 1.3, cy + ry * 1.2], [rx * .6, cy + ry * 1.2], [rx * .66, cy + ry * .3], [rx * .58, cy - ry * .4]], P.light);
-    fillLocal(ell(0, cy + ry * 1.02, rx * 1.1, ry * .22, 30), P.mid);
+  shape(spline(cont, true, 6), { fill: P.light, shade: () => {
+    // casca tostada: brilho mais claro em cima à esquerda, sombra recortada à direita, base mais escura, riscos da casca
+    fillLocal(ell(-rx * .25, cy - ry * .2, rx * .62, ry * .7, 26), '#D9D5CB');
+    fillLocal([[rx * .5, cy - ry * 1.2], [rx * 1.3, cy - ry * 1.2], [rx * 1.3, cy + ry * 1.2], [rx * .6, cy + ry * 1.2], [rx * .66, cy + ry * .3], [rx * .58, cy - ry * .4]], P.mid);
+    fillLocal(ell(0, cy + ry * 1.0, rx * 1.1, ry * .26, 30), P.dmid);
+    for (const s2 of [-1, 1]) stroke(quad([s2 * rx * .9, cy - ry * .1], [s2 * rx * .99, cy + ry * .3], [s2 * rx * .82, cy + ry * .62]), S.lw * .4, { line: P.dmid, boil: .5 });
     for (let i = 0; i < 14; i++) { const u = hash(i * 3.3) * 2 - 1, v = hash(i * 7.1) * 2 - 1; if (u * u + v * v < .7 && Math.abs(u) > .35) shape(ell(u * rx, cy + v * ry, 4, 3, 8), { fill: P.mid, stroke: false, boil: .3 }); }
   } });
   // pestana: o corte do pão, como um topete por cima
-  const pe = spline([[-rx * .55, cy - ry * .66], [-rx * .1, cy - ry * 1.02], [rx * .38, cy - ry * 1.04], [rx * .62, cy - ry * .82]], false, 8);
-  shape(ribbon(pe, 30, 12), { fill: P.white, shade: () => { for (let i = 1; i < 5; i++) { const q0 = pe[i * 5]; stroke([[q0[0] - 5, q0[1] + 7], [q0[0] + 3, q0[1] - 6]], S.lw * .45, { line: P.mid }); } } });
-  stroke(quad([-rx * .5, cy - ry * .6], [rx * .1, cy - ry * .78], [rx * .58, cy - ry * .74]), S.lw * .5, { line: P.dmid });
+  // pestana: o corte do pão francês, uma fenda de miolo branco com borda rasgada (vira o topete do personagem)
+  const pe = spline([[-rx * .62, cy - ry * .52], [-rx * .2, cy - ry * .96], [rx * .3, cy - ry * 1.08], [rx * .7, cy - ry * .86]], false, 8);
+  const n = pe.length, Ls = [], Rs = [];
+  for (let i = 0; i < n; i++) { const a0 = pe[Math.max(0, i - 1)], b0 = pe[Math.min(n - 1, i + 1)]; let dx = b0[0] - a0[0], dy = b0[1] - a0[1]; const l = Math.hypot(dx, dy) || 1; dx /= l; dy /= l;
+    const u = i / (n - 1), w = Math.sin(Math.PI * u) * 34 + 4, j = (i % 3 === 1 ? 7 : 0);
+    Ls.push([pe[i][0] + dy * (w + j), pe[i][1] - dx * (w + j)]); Rs.push([pe[i][0] - dy * (w * .55 + j * .6), pe[i][1] + dx * (w * .55 + j * .6)]); }
+  shape([...Ls, ...Rs.reverse()], { fill: P.white, shade: () => { for (let i = 2; i < n - 2; i += 4) { const q0 = pe[i]; shape(ell(q0[0], q0[1], 4, 3, 8), { fill: P.pale, stroke: false, boil: .3 }); } } });
   // rosto
   const o = clamp(p.olhar || 0, -1, 1), fx = o * 30, fy = cy + 6, E = p.olhos || {};
   const ex = 36, erx = 27 * (1 - Math.abs(o) * .12), ery = 40;
@@ -104,7 +110,7 @@ export function barata(p = {}) {
   shape(ell(0, -100, 46, 40, 30), { fill: P.dmid, shade: () => fillLocal(ell(26, -96, 26, 44, 16), P.dark) });
   // olhos de torta desiguais, em talos, cada um olhando para um lado; veias no branco
   const [lx, ly] = p.olhar || [0, 0], tipo = p.olhos || 'wide';
-  const olhos = [[-28, -164, 30, 40, lx, ly, -1], [26, -150, 20, 27, -lx * .4 + .5, ly + .4, 1]];
+  const olhos = [[-34, -176, 38, 50, lx, ly, -1], [32, -158, 26, 34, -lx * .4 + .5, ly + .4, 1]];
   for (const [ox, oy, rx, ry, a, b2, s] of olhos) {
     const bob = Math.sin(t * 9 + s * 2) * 4;
     hose([s * 14, -122], [ox, oy + ry * .7 + bob], s * 5, 9, P.dmid);
