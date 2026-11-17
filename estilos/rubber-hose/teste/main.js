@@ -64,12 +64,12 @@ function largo(t) {
   if (anda < 1) Pp.y += w.quica;
   if (tq >= SEGURA && !susto) { Object.assign(Pp, { olhar: .7, olhos: { lx: .9, ly: -.4 + leva * .3, lid: leva * .35 }, boca: { type: leva > .5 ? 'o' : 'smile', open: .6 }, sx: 1 - leva * .04, sy: 1 + leva * .05 }); }
   if (susto) Object.assign(Pp, { olhar: .5, olhos: { type: 'wide', lx: .8, ly: -.5 }, sobr: 'up', boca: { type: 'wavy', open: .9, w: 84 }, tremor: 4,
-    bracoE: { x: -230, y: -560, mao: 'open', curva: 30 }, suor: [[-150, -520, 12], [160, -560, 10]],
+    bracoE: { x: -210, y: -480, mao: 'open', curva: 30 }, suor: [[-150, -520, 12], [160, -560, 10]],
     pernaE: { x: -70, y: -40 * (1 - caiu), dir: -1 }, pernaD: { x: 70, y: -60 * (1 - caiu), dir: 1 } });
   const desenhaCaneca = () => {
     const M0 = T.getM(); T.setM(T.BASE);
     caneca(mc[0], mc[1], { t: tq, b: segura ? 0 : b, k: kc, inclina: inc, treme: susto ? 1 : 0, fumaca: susto ? 'up' : 'lazy',
-      dentro: t >= SAI ? () => barataNaCaneca(tq, .62, back(seg(tq, SAI, SAI + .35), 2.2), { olhar: susto ? [-.9, .1] : [-.9, -.3], baba: seg(tq, SAI + .3, SAI + 1) }) : null });
+      dentro: t >= SAI ? () => barataNaCaneca(tq, .92, back(seg(tq, SAI, SAI + .35), 2.2), { olhar: susto ? [-.9, .1] : [-.9, -.3], baba: seg(tq, SAI + .3, SAI + 1) }) : null });
     T.setM(M0);
   };
   if (!segura) desenhaCaneca();
@@ -80,19 +80,19 @@ function largo(t) {
 function close(t) {
   const u = t - CORTE, tq = q(t), b = respira(t);
   const z = lerp(2.55, 2.95, ss(u / (MERGULHO - CORTE)));
-  camera(t, F.sg, SALA, { x: CANECA[0] - 10, y: CANECA[1] - 150, z, r: -.03 + .01 * Math.sin(t * 2) });
+  camera(t, F.sg, SALA, { x: CANECA[0] - 10, y: CANECA[1] - 190, z, r: -.03 + .01 * Math.sin(t * 2) });
   cortina(300, 352, 1.35, b); mesa(b);
   // o bicho toma o café: dois goles (cabeça no café), levanta satisfeito, arrota, dá tchau e mergulha
   const uq = tq - CORTE, gole = [.25, .85].map(g0 => Math.sin(clamp((uq - g0) / .45) * Math.PI)).reduce((a, c) => Math.max(a, c), 0);
-  const arrota = uq >= 1.75 && uq < 2.15, tchau = uq >= 1.9, afunda = eio(seg(tq, MERGULHO, VOLTA)) * 260;
+  const arrota = uq >= 1.75 && uq < 2.15, tchau = uq >= 1.9, afunda = eio(seg(tq, MERGULHO, VOLTA)) * 340;
   const ondas = uq > .3 ? Math.sin(uq * 7) * 3 : 0;
   caneca(CANECA[0], CANECA[1], { t: tq, b: b * .5, fumaca: arrota ? 'up' : 'lazy', nivel: 4,
     dentro: () => {
       const o = { olhar: uq > 1.3 ? [.2, -.6] : [-.3, .6], olhos: gole > .2 || (uq > 1.3 && !arrota) ? 'happy' : 'wide', boca: arrota ? 'arroto' : gole > .2 ? 'gole' : uq > 1.3 ? 'grin' : 'gole', baba: uq > 1.3 ? .4 : 0,
-        afunda: gole * 70 + afunda + ondas, rot: gole * .25, sx: arrota ? 1.12 : 1, sy: arrota ? .94 : 1 };
+        afunda: gole * 36 + afunda + ondas, rot: gole * .22, sx: arrota ? 1.12 : 1, sy: arrota ? .94 : 1 };
       if (tchau) o.bracoD = { x: 120, y: -150 + Math.sin(tq * 18) * 4, mao: 'wave', rot: -1.2 + Math.sin(tq * 14) * .45 };
       if (uq > 1.3 && uq < 1.75) o.bracoE = { x: -30, y: 30, mao: 'open', rot: .3 };   // tapinha na barriga
-      barataNaCaneca(tq, .74, 1, o);
+      barataNaCaneca(tq, 1.0, 1, o);
     } });
   // anel de arroto subindo
   if (uq > 1.8 && uq < 2.6) { const v = seg(uq, 1.8, 2.6); T.shape(T.ell(CANECA[0] + 10, CANECA[1] - 270 - v * 160, 30 + v * 40, 14 + v * 18, 30), { fill: null, line: P.white, lw: T.S.lw * (1.2 - v * .8), closed: true, alpha: 1 - v }); }

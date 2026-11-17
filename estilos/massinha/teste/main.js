@@ -25,14 +25,14 @@ function draw(t) {
     const ab = eio(seg(tq, 0, 1.2)), ap = eio(seg(tq, SUSTO, SUSTO + 0.5)) * (1 - 0.3 * eio(seg(tq, 4.6, 5.2)));
     const tre = tq > SUSTO && tq < SUSTO + 0.4 ? 10 * (1 - (tq - SUSTO) / 0.4) : 0;
     g.save();
-    cam(lerp(lerp(CANECA[0], 560, ab), 470, ap) + Math.sin(tq * 61) * tre, lerp(lerp(1060, 1000, ab), 940, ap) + Math.cos(tq * 53) * tre, lerp(lerp(3.4, 1.05, ab), 1.2, ap), lerp(0.08, 0, ab), t);
+    cam(lerp(lerp(CANECA[0], 540, ab), 480, ap) + Math.sin(tq * 61) * tre, lerp(lerp(1060, 1040, ab), 960, ap) + Math.cos(tq * 53) * tre, lerp(lerp(3.4, 1.3, ab), 1.5, ap), lerp(0.08, 0, ab), t);
     sala(g, t);
     // Juca: entra andando (0,6–2,0), quique (2,0–2,3), pega a caneca (2,1–2,5), leva à boca (2,6–3,4), susto (3,5+)
     const anda = eo(seg(tq, 0.6, 2.0)), x = lerp(-280, XJ, anda), ps = anda < 1 ? passoDe(tq) : 0;
     const quique = tq > 2.0 && tq < 2.4 ? Math.sin((tq - 2.0) / 0.4 * Math.PI * 2) * 14 * (1 - (tq - 2.0) / 0.4) : 0;
     const pega = eio(seg(tq, 2.1, 2.45)), boca = eio(seg(tq, 2.6, 3.3)), su = back(seg(tq, SUSTO, SUSTO + 0.3));
     const pulo = tq > SUSTO ? Math.sin(Math.min(1, (tq - SUSTO) / 0.55) * Math.PI) * 150 : 0;
-    const alca = [CANECA[0] - 100 - 30 - x, CANECA[1] - 72 - PISO], ombro = [180, -478];
+    const alca = [CANECA[0] - 100 - 30 - x, CANECA[1] - 72 - PISO], ombro = [150, -530];
     let mD = tq < 2.1 ? [110 + ps * 40, -235 + Math.abs(ps) * 6] : tq < 2.6 ? [lerp(110, alca[0], pega), lerp(-235, alca[1], pega)] : [lerp(alca[0], ombro[0], boca), lerp(alca[1], ombro[1], boca)];
     let mE = [-100 - ps * 40, -238], incl = -0.32 * boca;
     if (tq > SUSTO) { mD = [lerp(ombro[0], 250, su), lerp(ombro[1], -560, su)]; mE = [lerp(-100, -230, su), lerp(-238, -690, su)]; incl = -0.32 + 0.5 * su; }
@@ -41,7 +41,7 @@ function draw(t) {
     const sai = back(seg(tq, SAI, SAI + 0.35), 2.2);
     const naMao = (gg, angDev) => {
       gg.save(); gg.rotate(-(angDev - camRot) + incl + tremeCan[2] * 40); gg.translate(108 + tremeCan[0], 72 + tremeCan[1]);
-      caneca(gg, 0, 0, t, { fumaca: tq < SAI ? 1 : 0, dentro: tq > SAI ? (g2) => barata(g2, -6, -150 - sai * 45, 0.42, t, { rot: 0.95, v, anda: tq < SAI + 0.4 ? 1.6 : 0.15, olhar: [-0.8, 0.1], baba: 1 }) : null });
+      caneca(gg, 0, 0, t, { fumaca: tq < SAI ? 1 : 0, dentro: tq > SAI ? (g2) => barata(g2, -6, -140 - sai * 60, 0.6, t, { rot: 0.95, cabRot: -0.75, v, anda: tq < SAI + 0.4 ? 1.6 : 0.15, olhar: [-0.8, 0.1], baba: 1 }) : null });
       gg.restore();
     };
     const susto = tq > SUSTO;
@@ -59,11 +59,11 @@ function draw(t) {
     // corte seco: close da barata tomando o café, satisfeita; arroto, tchau; os últimos 0,3 s voltam ao quadro 0
     const u = tq - CORTE, volta = eio(seg(tq, DUR - 0.35, DUR));
     g.save();
-    cam(lerp(CANECA[0] - 10, CANECA[0], volta), lerp(1010, 1060, volta), lerp(2.7 + u * 0.12, 3.4, volta), lerp(-0.03, 0.08, volta), t);
+    cam(lerp(CANECA[0] - 20, CANECA[0], volta), lerp(990, 1060, volta), lerp(2.5 + u * 0.12, 3.4, volta), lerp(-0.03, 0.08, volta), t);
     sala(g, t);
     const gole = u < 1.7 ? Math.max(0, Math.sin(u * 7.5)) : 0, arroto = tq > 6.9 && tq < 7.3, tchau = seg(tq, 7.15, 7.35) * (1 - seg(tq, 7.85, 8));
-    caneca(g, CANECA[0], CANECA[1], t, { fumaca: 0.7 * (1 - volta) + volta, dentro: (g2) => barata(g2, 6, -150 + gole * 26, 0.5, t, {
-      rot: 1.25 - gole * 0.25, v, anda: 0.12, olhar: [-0.3, -0.5], palpebra: arroto ? 0.2 : 0.6, boca: arroto || gole > 0.5 ? 'aberta' : 'sorriso',
+    caneca(g, CANECA[0], CANECA[1], t, { fumaca: 0.25 * (1 - volta) + volta, dentro: (g2) => barata(g2, 10, -150 + gole * 30, 0.62, t, {
+      rot: 1.45 - gole * 0.2, cabRot: -1.25 + gole * 0.5, v, anda: 0.12, olhar: [-0.3, -0.5], palpebra: arroto ? 0.2 : 0.6, boca: arroto || gole > 0.5 ? 'aberta' : 'sorriso',
       barriga: 1 + Math.min(1, u / 1.7) * 0.12 + (arroto ? 0.08 : 0), tchau, baba: arroto ? 1 : 0.4,
     }) });
     // arroto: bolha de massinha creme que sobe e estoura
