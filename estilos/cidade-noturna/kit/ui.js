@@ -17,7 +17,7 @@ export function capitulo(t, t0, t1, num, titulo, { x = 80, y = 300 } = {}) {
   const k = eo(seg(t, t0, t0 + .35));
   g.save(); g.globalAlpha = a; g.translate(-30 * (1 - k), 0);
   g.font = MONO(700, 26); const bw = 58, bh = 44;
-  rr(x, y - bh / 2, bw, bh, 7); g.fillStyle = 'rgba(79,214,168,.14)'; g.fill(); g.strokeStyle = UI.menta; g.lineWidth = 2.5; g.stroke();
+  rr(x, y - bh / 2, bw, bh, 7); g.fillStyle = 'rgba(17,18,22,.92)'; g.fill(); g.fillStyle = 'rgba(79,214,168,.14)'; g.fill(); g.strokeStyle = UI.menta; g.lineWidth = 2.5; g.stroke();
   g.fillStyle = UI.menta; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(num, x + bw / 2, y + 1);
   g.font = SANS(800, 58); g.fillStyle = '#ffffff'; g.textAlign = 'left'; g.shadowColor = 'rgba(0,0,0,.55)'; g.shadowBlur = 14;
   g.fillText(titulo, x + bw + 20, y + 3);
@@ -30,7 +30,9 @@ export function etiqueta(t, t0, t1, texto, ponto, pos, { cor = UI.creme, bola = 
   const a = env(t, t0, t1, .25, .25); if (a <= 0) return;
   const k = back(seg(t, t0, t0 + .3), 2.2);
   g.save(); g.font = MONO(700, 27);
-  const tw = g.measureText(texto).width, pw = tw + 40 + (bola ? 26 : 0), ph = 50, [px, py] = pos;
+  const tw = g.measureText(texto).width, pw = tw + 40 + (bola ? 26 : 0), ph = 50;
+  // pos[0] = null: a pílula acompanha o ponto na horizontal (a linha de chamada cai quase reta)
+  const py = pos[1], px = pos[0] ?? clamp((ponto ? ponto[0] : W / 2) - pw * lado - 40, 50, W - pw - 50);
   // linha de chamada
   if (ponto && ponto[0] > -50 && ponto[0] < W + 50 && ponto[1] > 0 && ponto[1] < H) {
     const lx = px + pw * lado, ly = py + ph, L = eo(seg(t, t0 + .1, t0 + .55));

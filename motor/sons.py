@@ -42,6 +42,8 @@ def squish(seed=0):
 # —— gerais ——
 def pop(seed=0, f0=900):
     n = int(.09 * SR); t = np.arange(n) / SR; return np.sin(2 * math.pi * f0 * (1 - .4 * t / .09) * t) * np.exp(-t * 45) * .5
+def tick(seed=0):   # clique curto e agudo (número contando, relógio)
+    n = int(.03 * SR); t = np.arange(n) / SR; return np.sin(2 * math.pi * (2400 + 150 * (seed % 3)) * t) * np.exp(-t * 160) * .45
 def whoosh(d=.45, seed=1):
     n = int(d * SR); x = np.random.default_rng(seed).standard_normal(n); f = np.linspace(500, 2800, n); y = np.zeros(n); a = 0.0
     for i in range(n): k = 2 * math.pi * f[i] / SR; a += k * (x[i] - a) / (1 + k); y[i] = a
@@ -51,7 +53,7 @@ def baque(seed=0):
 def esfrega(d=.6, seed=3):
     n = int(d * SR); x = np.random.default_rng(seed).standard_normal(n); y = np.convolve(x, np.ones(30) / 30, "same")
     return y * (.5 + .5 * np.sin(np.arange(n) / SR * 2 * math.pi * 7)) * .25
-SONS = {"patinhas": patinhas, "asas": asas, "chiado": chiado, "gota": gota, "squish": squish, "pop": pop, "whoosh": whoosh, "baque": baque, "esfrega": esfrega}
+SONS = {"patinhas": patinhas, "asas": asas, "chiado": chiado, "gota": gota, "squish": squish, "pop": pop, "tick": tick, "whoosh": whoosh, "baque": baque, "esfrega": esfrega}
 CONTINUOS = {"patinhas", "asas", "whoosh", "esfrega"}
 
 def render(eventos, dur):

@@ -1,0 +1,13 @@
+{
+ "slug": "cidade-noturna",
+ "nome": "Explicador de urbanismo em 3D noturno",
+ "origem": {"repo": "criado no laboratório a partir de referência (Instagram, Curitiba BRT); ideias de lemo-opuscar white-model/tilt-shift (MIT)", "pasta": "referencias/curitiba", "licenca": "código nosso + ideias MIT (lemo-opuscar); fontes Inter e JetBrains Mono (OFL)"},
+ "tecnica": "2D canvas com projeção em perspectiva (3D falso): prismas de 3 faces chapadas ordenados por profundidade, fitas no chão, névoa escura; sem WebGL",
+ "status": "teste",
+ "canais": ["curiosidades de cidades e urbanismo", "explicador de dados", "mobilidade e transporte"],
+ "fortes": "cidade inteira procedural e determinística, câmera que voa sem parar, trânsito andando, interface de dados completa (capítulo, etiquetas presas ao 3D, chip, legenda, número, mapa-múndi), render rápido só com CPU",
+ "limites": "uma avenida-tipo só (trinário em curva); sem sombras, telhados ou cruzamentos desenhados; mapa-múndi de continentes aproximados; ordenação por pintor pode errar com prédios muito altos colados",
+ "seg_por_10s": 16,
+ "semelhanca_referencia": 7,
+ "nota": 8
+}

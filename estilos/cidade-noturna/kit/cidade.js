@@ -129,10 +129,10 @@ export function desenharCidade(C, t, o) {
   // ruas transversais (a cada quadra, aproximadas) — faixas escuras finas
   // linhas coloridas (grossas, como na referência)
   const h = o.destaque || {};
-  const brilho = (rgb, k) => k ? rgb.map(c => Math.min(255, c + 60 * k)) : rgb;
+  const brilho = (rgb, k) => k ? rgb.map(c => Math.min(255, c + 25 * k)) : rgb;
   for (const sd of [-1, 1]) {
-    fita(C, pts, sd * SEC.linhaV, .7 + .3 * (h.canaleta || 0), brilho(COR.vermelho, h.canaleta), .02);
-    fita(C, pts, sd * SEC.linhaL, .6 + .3 * (h.lenta || 0), brilho(COR.laranja, h.lenta), .02);
+    fita(C, pts, sd * SEC.linhaV, .6 + .3 * (h.canaleta || 0), brilho(COR.vermelho, h.canaleta), .02);
+    fita(C, pts, sd * SEC.linhaL, .5 + .3 * (h.lenta || 0), brilho(COR.laranja, h.lenta), .02);
     fita(C, pts, sd * (SEC.rapida + SEC.rapLarg / 2 + .6), 1.1 + .4 * (h.rapida || 0), brilho(COR.menta, h.rapida), .02);
     fita(C, pts, sd * (SEC.rapida - SEC.rapLarg / 2 - .3), .25, COR.branco, .02, .7);
   }
