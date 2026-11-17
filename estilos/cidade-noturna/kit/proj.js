@@ -60,8 +60,6 @@ export function prisma(C, b) {
   const qb = base.map(p => toCam(C, p)), qt = topo.map(p => toCam(C, p));
   const d = Math.hypot(b.x - C.pos[0], (y0 + y1) / 2 - C.pos[1], b.z - C.pos[2]);
   const cam = C.pos;
-  // lados: normais horizontais
-  const lados = [[0, 1, [-s * 0 + 0, 0, 0]], [1, 2], [2, 3], [3, 0]];
   for (let i = 0; i < 4; i++) {
     const j = (i + 1) % 4, a = base[i], bb = base[j];
     const nx = (bb[2] - a[2]), nz = -(bb[0] - a[0]);          // normal para fora (ordem anti-horária vista de cima)
@@ -73,7 +71,6 @@ export function prisma(C, b) {
   }
   if (cam[1] > y1) fillCam(C, qt, fog(C, b.top, d));
   if (b.deco) b.deco(C, topo, d);
-  void lados;
 }
 
 // "fita" no chão: centro (u0) e largura ao longo de uma curva amostrada; pts = [[x,z,nx,nz],...]
