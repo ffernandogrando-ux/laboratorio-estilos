@@ -112,7 +112,7 @@ function ditoEm(t) {
         const u = seg(tq, SUSTO, SUSTO + 0.5), pulo = Math.sin(Math.min(1, u) * Math.PI) * 190;
         const treme = Math.sin(tq * 61) * 10;
         y -= pulo;
-        o.cara = 'susto'; o.olhar = [0.95, -0.15]; o.cabeca = -0.12 + Math.sin(tq * 47) * 0.02;
+        o.cara = 'susto'; o.olhar = [0.45, -0.4]; o.cabeca = -0.12 + Math.sin(tq * 47) * 0.02;
         o.giro = -0.07;
         o.pes = u < 1 ? [[-80, -40 * Math.sin(u * Math.PI)], [70, -60 * Math.sin(u * Math.PI)]] : [[-70, 0], [64, 0]];
         o.amassa = u >= 1 ? 0.05 * Math.exp(-(tq - SUSTO - 0.5) * 6) * Math.cos((tq - SUSTO - 0.5) * 30) - 0.015 : -0.04 * Math.sin(u * Math.PI);
@@ -141,7 +141,7 @@ function draw(t) {
         } };
         dito(g, D.x, D.y, 1, D.o);
         // onomatopeia do susto, em papel (fica no mundo)
-        kit.sfxWord(g, t, SUSTO, 'AAAH!', D.x - 185, 335, 84, '#f4ecda', 0.7);
+        kit.sfxWord(g, t, SUSTO, 'AAAH!', D.x + 165, 300, 76, '#f4ecda', 0.7);
     } else {
         const b = barataB(t);
         g.save(); g.translate(CANECA.x, CANECA.y); canecaCheia(t, b); g.restore();

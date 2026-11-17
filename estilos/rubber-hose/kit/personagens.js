@@ -16,11 +16,11 @@ export function andar(fase, { L = 90, sobe = 34, quica = 16, balanco = 40 } = {}
     quica: -(1 - Math.abs(c)) * quica, balanco: c * balanco };
 }
 
-// —— PÃOZINHO (origem: chão entre os pés; pão deitado de ~360×250 sobre pernas de 280) ——
+// —— PÃOZINHO (origem: chão entre os pés; pão deitado de ~360×250 sobre pernas de 300) ——
 // p: { k, espelho, sx, sy, inclina, tremor, t, olhar:-1..1 (rosto vira), olhos:{type,lx,ly,lid}, boca:{type,open,w}, sobr,
 //      bracoE/bracoD: { x, y, mao:'open'|'grab'|'point'|'fist'|'wave', curva, frente, rot }, pernaE/pernaD: { x, y, dir },
 //      suor:[[x,y,r]], entre: fn (desenhada antes dos braços da frente: objeto na mão) }
-export const PAO = { rx: 178, ry: 122, perna: 280 };
+export const PAO = { rx: 178, ry: 122, perna: 300 };
 export function pao(p = {}) {
   const { rx, ry, perna } = PAO, cy = -perna - ry + 18;
   push(); translate(p.x || 0, p.y || 0); if (p.espelho) scale(-1, 1); scale(p.k || 1);

@@ -1,0 +1,12 @@
+{
+ "slug": "papel-recortado",
+ "nome": "Papel recortado",
+ "origem": {"repo": "illodev/drawn-by-code", "pasta": "styles/paper-cutout (+ engine/core.js: sprite e Ease)", "licenca": "código MIT; fonte Patrick Hand OFL; personagens nossos (Dito e a barata)"},
+ "tecnica": "2D canvas: cada peça é um recorte com borda branca rasgada, fibras, cor com textura de marcador e sombra de papel colado; membros rígidos com cinemática inversa, mãos de papel com dedos, vapor de papel de seda, grão de papel por cima; animado em dois (12 desenhos/s) com câmera a 24 qps; nada ferve (semente fixa por peça)",
+ "status": "teste",
+ "canais": ["anima-ovitinho", "zackdfilms", "anima-oteste", "testarstickimannovo"],
+ "fortes": "acabamento artesanal muito bonito e quente (borda rasgada, tricô, madeira, grão), cenário cheio em camadas, mãos de verdade segurando a caneca, barata nojenta legível de perto, carimbo em português na letra à mão; render leve só com CPU",
+ "limites": "fantoche frontal (sem virar de perfil), poses montadas à mão por ângulo de membro; bicho e detalhes pequenos ficam miúdos no plano aberto (pede close); o vão entre peças rígidas aparece em poses extremas; cada personagem ou objeto novo é bastante código de recorte",
+ "nota": 8,
+ "seg_por_10s": 30.7
+}

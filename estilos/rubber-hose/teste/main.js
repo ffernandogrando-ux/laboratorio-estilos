@@ -46,7 +46,7 @@ function largo(t) {
   const toLocal = (wx, wy) => [(wx - x) / KP, (wy - y) / KP];
   // onde está a caneca (mundo): na mesa → na mão → na boca → longe do corpo (susto)
   const kc = 1.05, mesaPos = [CANECA[0], CANECA[1]];
-  const bocaPos = [x + 238 * KP, y + BOCA_PAO()[1] * KP + 150], longe = [x + 300 * KP, y - 330 * KP];
+  const bocaPos = [x + 238 * KP, y + BOCA_PAO()[1] * KP + 110], longe = [x + 300 * KP, y - 330 * KP];
   let mc = mesaPos, inc = 0;
   if (tq >= SEGURA) { mc = [lerp(mesaPos[0], bocaPos[0], leva), lerp(mesaPos[1], bocaPos[1], leva) - Math.sin(leva * Math.PI) * 60]; inc = -.42 * ss(seg(tq, 3.0, BOCA)); }
   if (susto) { const u = back(seg(tq, SUSTO, SUSTO + .3)); mc = [lerp(bocaPos[0], longe[0], u), lerp(bocaPos[1], longe[1], u)]; inc = lerp(-.42, .15, u); }
@@ -59,7 +59,7 @@ function largo(t) {
   const Pp = { x, y: y + pousa * 10, k: KP, t: tq, sx: 1 - pousa * .06 + (susto ? -.08 * (1 - caiu) : 0), sy: 1 + pousa * .1 + b * .015 + (susto ? .12 * (1 - caiu) - caiu * .1 : 0),
     olhar: tq < PARA ? .6 : .9, olhos: { lx: .7, ly: .1 }, boca: { type: 'smile' },
     pernaE: anda < 1 ? w.pernaE : undefined, pernaD: anda < 1 ? w.pernaD : undefined,
-    bracoE: { x: -240 - w.balanco * .6, y: -240 + Math.abs(w.balanco) * .3, mao: 'open', curva: 20 },
+    bracoE: { x: -175 - w.balanco * .6, y: -240 + Math.abs(w.balanco) * .3, mao: 'open', curva: 20 },
     bracoD: { x: mD[0], y: mD[1], mao: tq < PEGA + .15 ? 'open' : 'grab', frente: true, curva: -24, rot: segura ? -.15 : undefined } };
   if (anda < 1) Pp.y += w.quica;
   if (tq >= SEGURA && !susto) { Object.assign(Pp, { olhar: .7, olhos: { lx: .9, ly: -.4 + leva * .3, lid: leva * .35 }, boca: { type: leva > .5 ? 'o' : 'smile', open: .6 }, sx: 1 - leva * .04, sy: 1 + leva * .05 }); }
@@ -69,7 +69,7 @@ function largo(t) {
   const desenhaCaneca = () => {
     const M0 = T.getM(); T.setM(T.BASE);
     caneca(mc[0], mc[1], { t: tq, b: segura ? 0 : b, k: kc, inclina: inc, treme: susto ? 1 : 0, fumaca: t >= SAI ? 'none' : 'lazy',
-      dentro: t >= SAI ? () => barataNaCaneca(tq, .92, back(seg(tq, SAI, SAI + .35), 2.2), { olhar: susto ? [-.9, .1] : [-.9, -.3], baba: seg(tq, SAI + .3, SAI + 1), rot: -inc, dx: -inc * 40 }) : null });
+      dentro: t >= SAI ? () => barataNaCaneca(tq, 1.1, back(seg(tq, SAI, SAI + .35), 2.2), { olhar: susto ? [-.9, .1] : [-.9, -.3], baba: seg(tq, SAI + .3, SAI + 1), rot: -inc, dx: -inc * 40 }) : null });
     T.setM(M0);
   };
   if (!segura) desenhaCaneca();

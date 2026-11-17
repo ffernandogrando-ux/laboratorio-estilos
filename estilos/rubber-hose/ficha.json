@@ -1,0 +1,12 @@
+{
+ "slug": "rubber-hose",
+ "nome": "Desenho anos 30 (rubber-hose)",
+ "origem": {"repo": "lemomo-ai/lemo-opuscar", "pasta": "styles/rubber-hose", "licenca": "código MIT; fontes Shrikhand e Limelight SIL OFL 1.1; personagens nossos (Pãozinho e barata)"},
+ "tecnica": "2D canvas: traço de tinta com largura constante que ferve, braços e pernas de mangueira, luvas brancas, olhos de torta; personagens em dois (12 desenhos/s) respirando a 120 bpm; fundo em aguada cinza pintado uma vez; pós-efeito de cópia 35 mm gasta (tremor de janela, cintilação, riscos, poeira, vinheta, grão, leve sépia)",
+ "status": "teste",
+ "canais": ["anima-oteste", "zackdfilms", "testarstickimannovo"],
+ "fortes": "identidade fortíssima e nostálgica logo no 1º quadro; objetos viram personagens (pão, caneca) e a barata de olhos desiguais rende nojo engraçado; carimbo em letreiro de época bem legível; o filme gasto disfarça imperfeições; render leve na CPU",
+ "limites": "só cinza/sépia (não serve para mapas, dados ou cor como informação); cada personagem e objeto novo é desenhado em código; muito texto na tela fica difícil fora do letreiro; fica fofo, então nojo pesado perde força; grão e riscos sofrem na compressão do TikTok",
+ "nota": 8,
+ "seg_por_10s": 37.6
+}
