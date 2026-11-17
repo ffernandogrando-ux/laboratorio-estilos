@@ -1062,7 +1062,7 @@
   "descricao": "A coffee cup chases a runaway sugar cube around the kitchen, 1930s-cartoon style.",
   "demo_s": 50.0,
   "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
-  "no_laboratorio": null
+  "no_laboratorio": "rubber-hose"
  },
  {
   "id": "opuscar/satellite-briefing",
@@ -1257,7 +1257,7 @@
   "descricao": "A chain of hands from you to a stranger: tested with letters in 1967, explained by rings that outgrow the Earth, closed around the globe.",
   "demo_s": 52.0,
   "licenca": "código MIT; prévia CC BY 4.0 (Lemo-Opuscar by Lemomo)",
-  "no_laboratorio": null
+  "no_laboratorio": "stick-explainer"
  },
  {
   "id": "opuscar/swiss-motion",
