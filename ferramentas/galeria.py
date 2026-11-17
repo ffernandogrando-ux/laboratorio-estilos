@@ -5,7 +5,7 @@ import sys, os, json, glob, subprocess
 from PIL import Image, ImageDraw, ImageFont
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__))); os.chdir(RAIZ)
 TIRA = [0, 1.2, 2.4, 3.8, 4.6, 5.5]
-FONTE = ImageFont.truetype("motor/fontes/grossa.ttf", 26)
+FONTE = ImageFont.truetype("motor/fontes/grossa.ttf", 20)
 so = set(sys.argv[1:])
 fichas = []
 for f in sorted(glob.glob("estilos/*/ficha.json")):
@@ -25,8 +25,10 @@ g = Image.new("RGB", (cols * (L + 10) + 10, lin * (A + 80) + 10), "#1b1422"); d 
 for k, j in enumerate(ok):
     x, y = 10 + k % cols * (L + 10), 10 + k // cols * (A + 80)
     g.paste(Image.open(os.path.join(j["_dir"], "poster.jpg")).resize((L, A)), (x, y))
-    d.text((x, y + A + 8), j["nome"], font=FONTE, fill="#ffffff")
-    d.text((x, y + A + 42), f'{j.get("seg_por_10s", "?")} s de render / 10 s · nota {j.get("nota", "?")}', font=ImageFont.truetype("motor/fontes/grossa.ttf", 18), fill="#f2c14e")
+    nome = j["nome"]
+    while d.textlength(nome, font=FONTE) > L and len(nome) > 4: nome = nome[:-2].rstrip() + "…" if not nome.endswith("…") else nome[:-2] + "…"
+    d.text((x, y + A + 8), nome, font=FONTE, fill="#ffffff")
+    d.text((x, y + A + 42), f'{j.get("seg_por_10s", "?")} s/10 s · nota {j.get("nota", "?")}', font=ImageFont.truetype("motor/fontes/grossa.ttf", 18), fill="#f2c14e")
 g.save("galeria.jpg", quality=86)
 # CATALOGO.md
 ln = ["# Catálogo do laboratório", "", "Gerado por `python3 -I ferramentas/galeria.py`. Pôsteres em `galeria.jpg`; tira de 6 quadros em `estilos/<estilo>/tira.jpg`;",
