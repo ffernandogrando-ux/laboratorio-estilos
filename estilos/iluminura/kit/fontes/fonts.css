@@ -1,0 +1,5 @@
+/* fontes livres (SIL OFL 1.1, licenças nos OFL-*.txt desta pasta; baixadas de github.com/google/fonts, pasta ofl/) */
+@font-face { font-family: 'Uncial'; font-display: block; src: url(UncialAntiqua-Regular.ttf); }
+@font-face { font-family: 'Fell'; font-display: block; src: url(IMFellEnglish.ttf); }
+@font-face { font-family: 'FellI'; font-style: italic; font-display: block; src: url(IMFellEnglish-Italic.ttf); }
+@font-face { font-family: 'Grenze'; font-weight: 100 900; font-display: block; src: url(GrenzeGotisch.ttf); }
