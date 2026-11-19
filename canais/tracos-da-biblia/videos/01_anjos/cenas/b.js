@@ -208,7 +208,7 @@ const ANJ20 = [690, 1630];
 function quadro20(t) {
   const u = eio(seg(t, T20, T21)), cam = { x: lerp(560, 540, u), y: lerp(1380, 1360, u), z: lerp(1.38, 1.46, u) };
   const ap = ss(seg(t, T20 + .05, K.aparece + .5)), enche = ss(seg(t, K.luz - .15, K.luz + 1.1)), cabeca = [ANJ20[0] - 4, ANJ20[1] - 232];
-  return { cam, dim: .8, noite: lerp(.75, .38, enche), amb: .45 * enche,
+  return { cam, dim: .8, noite: lerp(.75, .38, enche), amb: .9 * enche,
     luzes: [F.luzChama(t, cabeca[0], cabeca[1], 320 + 700 * enche, .5 * ap + .6 * enche),
       F.luzAnel(t, K.luz, { x: cabeca[0], y: cabeca[1], vel: 950, dur: 2.4, a: 1.6, w: 110 }), F.luzAnel(t, K.caem, { x: PED[0], y: 1600, vel: 600, dur: 1.4 })],
     mundo: g => {
@@ -225,7 +225,7 @@ function quadro21(t) {
   const u = eio(seg(t, T21, T22)), cam = { x: lerp(470, 640, u), y: lerp(1330, 1310, u), z: 1.3 };
   const portao = eio(seg(t, K.abre - .15, K.abre + .7)), anda1 = seg(t, T21, K.abre - .1), anda2 = seg(t, K.abre + .5, T22 + .5);
   const ax = lerp(480, 700, eio(anda1)) + 120 * anda2, px = ax - 175, andando = (anda1 > 0 && anda1 < 1) || anda2 > 0;
-  return { cam, dim: .7, noite: .5, amb: .3,
+  return { cam, dim: .7, noite: .5, amb: .55,
     luzes: () => [F.luzChama(t, ax, 1400, 520, .9), F.luzFaixa(t, K.abre, 1.3, { w: 200, a: 1.2 })],
     mundo: g => {
       fundoCela(g, cam, portao);
@@ -328,8 +328,8 @@ function tropa(g, o) {
     const a = back(clamp((k * 1.15 - p.d) / .1), 1.6); if (a <= .02) continue; any = true;
     const u = p.u * a, x = p.x, y = p.y + Math.sin(t * 1.3 + p.ph) * p.u * .15, w = Math.sin(t * 2.2 + p.ph) * u * .25;
     const hy = y - 4.05 * u;
-    ring.moveTo(x + 1.12 * u, hy - .15 * u); ring.arc(x, hy - .15 * u, 1.12 * u, 0, TAU);
-    halo.moveTo(x + u, hy - .15 * u); halo.arc(x, hy - .15 * u, u, 0, TAU);
+    ring.moveTo(x + 1.32 * u, hy - .3 * u); ring.arc(x, hy - .3 * u, 1.32 * u, 0, TAU);
+    halo.moveTo(x + 1.18 * u, hy - .3 * u); halo.arc(x, hy - .3 * u, 1.18 * u, 0, TAU);
     quad(arm, x - .5 * u, y - 3.05 * u, x - 1.3 * u, y - 4.7 * u + w, .2 * u); quad(arm, x + .5 * u, y - 3.05 * u, x + 1.3 * u, y - 4.7 * u - w, .2 * u);
     body.moveTo(x - 1.35 * u, y); body.lineTo(x - .6 * u, y - 3.2 * u); body.quadraticCurveTo(x, y - 3.55 * u, x + .6 * u, y - 3.2 * u); body.lineTo(x + 1.35 * u, y); body.quadraticCurveTo(x, y + .3 * u, x - 1.35 * u, y); body.closePath();
     quad(st[p.r % 3], x - .45 * u, y - 3.1 * u, x + .75 * u, y - .5 * u, .2 * u);
@@ -351,7 +351,7 @@ const ORG = [540, 1000];
 function quadro25(t) {
   const u = eio(seg(t, T25, TFIM)), cam = { x: 540, y: lerp(820, 740, u), z: lerp(1, .94, u) };
   const k = eo(seg(t, K.aparece25, K.louvando + .4)), frente = ss(seg(t, K.multidao - .2, K.multidao + .6));
-  const bb = back(seg(t, K.coral - .15, K.coral + .25), 1.8), xk = seg(t, K.coral + .3, K.coral + .95), BB = [290, 330];
+  const bb = back(seg(t, K.coral - .15, K.coral + .25), 1.8), xk = seg(t, K.coral + .3, K.coral + .95), BB = [820, 520];
   let LO = null;
   return { cam, dim: .7, noite: .62,
     luzes: () => [LO, ...[K.louvando + .5, K.exercito].map(t0 => F.luzAnel(t, t0, { x: ORG[0], y: ORG[1], vel: 1300, dur: 1.2, a: 1.3, w: 120, duplo: false })),
