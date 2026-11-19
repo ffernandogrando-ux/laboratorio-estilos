@@ -1,6 +1,6 @@
 """Mixagem: <video>/audio/eventos.json (escrito pelo render a partir da própria cena) + narração -> audio/mix.wav.
 Os efeitos abaixam sozinhos quando a voz fala (sidechain), para a narração ficar clara e os sons da barata imersivos nas pausas.
-Uso: python3 -I ferramentas/mix.py estilos/<estilo>/teste [--efeitos-lufs -24]   (sem audio/narracao.wav, sai só a faixa de efeitos)
+Uso: python3 -I ferramentas/mix.py estilos/<estilo>/teste [--efeitos-lufs -24] [--musica-lufs -30]  (audio/musica.wav, se existir, entra por baixo)   (sem audio/narracao.wav, sai só a faixa de efeitos)
 Saídas extras (stems, para editar fora): audio/stem_efeitos.wav (efeitos no nível do mix) e audio/stem_voz.wav."""
 import sys, os, json, wave, subprocess, numpy as np
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "motor"))
@@ -29,6 +29,18 @@ else: subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", os.path.join(A, "narr
                 "[e][sc]sidechaincompress=threshold=0.1:ratio=2:attack=20:release=200[ed];"
                 "[v][ed]amix=inputs=2:normalize=0:duration=longest,alimiter=limit=0.89,apad", "-t", str(ev.get("dur", dur)), "-ar", "48000", os.path.join(A, "mix.wav")], check=True)
 print(f"efeitos {lufs:.1f} -> {EF_LUFS} LUFS ({ganho:+.1f} dB)")
+# trilha de fundo opcional (audio/musica.wav, ex.: ferramentas/musica.py): bem por baixo da voz (-30 LUFS) e abaixa mais quando ela fala
+MUS = os.path.join(A, "musica.wav")
+if os.path.exists(MUS):
+    MUS_LUFS = float(sys.argv[sys.argv.index("--musica-lufs") + 1]) if "--musica-lufs" in sys.argv else -30
+    med = subprocess.run(["ffmpeg", "-hide_banner", "-i", MUS, "-af", "ebur128", "-f", "null", "-"], capture_output=True, text=True).stderr
+    gm = MUS_LUFS - float([l for l in med.splitlines() if l.strip().startswith("I:")][-1].split()[1])
+    os.replace(os.path.join(A, "mix.wav"), os.path.join(A, "mix_sem_musica.wav"))
+    voz = os.path.join(A, "narracao.wav") if os.path.exists(os.path.join(A, "narracao.wav")) else MUS
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", os.path.join(A, "mix_sem_musica.wav"), "-i", MUS, "-i", voz, "-filter_complex",
+                    f"[1:a]aresample=48000,volume={gm:.2f}dB[m];[2:a]aresample=48000[sc];[m][sc]sidechaincompress=threshold=0.05:ratio=3:attack=40:release=400[md];"
+                    "[0:a][md]amix=inputs=2:normalize=0:duration=first,alimiter=limit=0.89", "-ar", "48000", os.path.join(A, "mix.wav")], check=True)
+    print(f"música -> {MUS_LUFS} LUFS ({gm:+.1f} dB), abaixa sob a voz")
 print(len(ev["eventos"]), "eventos sonoros ->", os.path.join(A, "mix.wav"))
 # stems separados (mesmo nível e duração do mix)
 D = str(ev.get("dur", dur))

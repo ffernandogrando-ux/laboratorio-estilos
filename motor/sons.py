@@ -56,6 +56,49 @@ def esfrega(d=.6, seed=3):
 SONS = {"patinhas": patinhas, "asas": asas, "chiado": chiado, "gota": gota, "squish": squish, "pop": pop, "tick": tick, "whoosh": whoosh, "baque": baque, "esfrega": esfrega}
 CONTINUOS = {"patinhas", "asas", "whoosh", "esfrega"}
 
+# —— iluminura / narrativa (sintetizados, sem amostra externa) ——
+def _env(n, a, r):   # ataque e soltura em segundos
+    i = np.arange(n); return np.minimum(1, np.minimum(i / max(1, a * SR), (n - i) / max(1, r * SR)))
+def sino(seed=0):
+    """Sino pequeno de ouro acendendo: parciais inarmônicos de sino com decaimento longo."""
+    f0 = [660, 784, 880, 988][seed % 4]; n = int(3.2 * SR); t = np.arange(n) / SR; y = np.zeros(n)
+    for k, a, dec in [(1, 1, 1.6), (2.0, .5, 2.4), (2.76, .35, 3.2), (5.4, .2, 5), (8.9, .1, 7)]:
+        y += a * np.sin(2 * math.pi * f0 * k * t) * np.exp(-t * dec)
+    return y / np.abs(y).max() * _env(n, .002, .3) * .55
+def pena(d=1.0, seed=4):
+    """Pena riscando pergaminho: ruído agudo em traços curtos."""
+    r = np.random.default_rng(seed); n = int(d * SR); x = _passa_faixa(r.standard_normal(n), 2500, 9000); t = np.arange(n) / SR
+    m = np.zeros(n); s = 0.0
+    while s < d: L = r.uniform(.08, .22); i0, i1 = int(s * SR), int(min(d, s + L) * SR); m[i0:i1] = np.sin(np.linspace(0, math.pi, i1 - i0)) * r.uniform(.5, 1); s += L + r.uniform(.03, .1)
+    return x / (np.abs(x).max() + 1e-9) * m * .22
+def vento(d=4.0, seed=5):
+    """Vento noturno suave: ruído grave com sopros lentos."""
+    r = np.random.default_rng(seed); n = int(d * SR); t = np.arange(n) / SR
+    y = _passa_faixa(r.standard_normal(n), 150, 900) * (.6 + .4 * np.sin(2 * math.pi * .23 * t + r.uniform(0, 6)) * np.sin(2 * math.pi * .11 * t))
+    return y / (np.abs(y).max() + 1e-9) * _env(n, 1.0, 1.2) * .35
+def ferro(seed=0):
+    """Ferro: corrente caindo ou portão girando (choques metálicos curtos e ressonantes)."""
+    r = np.random.default_rng(seed); n = int(1.2 * SR); y = np.zeros(n); t0 = 0.0
+    for k in range(6):
+        i = int(t0 * SR); L = n - i; tt = np.arange(L) / SR; f = r.uniform(900, 2600)
+        y[i:] += (np.sin(2 * math.pi * f * tt) + .6 * np.sin(2 * math.pi * f * 2.31 * tt)) * np.exp(-tt * r.uniform(9, 18)) * r.uniform(.4, 1); t0 += r.uniform(.04, .16)
+    return y / np.abs(y).max() * .6
+def murmurio(d=3.0, seed=6):
+    """Murmúrio grave e solene (presença, "Santo"): acorde baixo de órgão com ar."""
+    n = int(d * SR); t = np.arange(n) / SR; y = np.zeros(n)
+    for f, a in [(65.4, 1), (98, .7), (130.8, .5), (196, .25)]:
+        y += a * (np.sin(2 * math.pi * f * t) + .3 * np.sin(2 * math.pi * f * 2 * t)) * (1 + .05 * np.sin(2 * math.pi * .7 * t))
+    y += .15 * _passa_faixa(np.random.default_rng(seed).standard_normal(n), 80, 600)
+    return y / np.abs(y).max() * _env(n, .8, 1.2) * .6
+def fogo(d=4.0, seed=7):
+    """Fogueira: chiado baixo com estalos."""
+    r = np.random.default_rng(seed); n = int(d * SR); y = _passa_faixa(r.standard_normal(n), 200, 2500) * .3
+    for _ in range(int(d * 6)):
+        i = r.integers(0, n - 400); L = 300; y[i:i + L] += r.standard_normal(L) * np.exp(-np.arange(L) / 40) * r.uniform(.5, 1.5)
+    return y / (np.abs(y).max() + 1e-9) * _env(n, .5, .8) * .4
+SONS.update({"sino": sino, "pena": pena, "vento": vento, "ferro": ferro, "murmurio": murmurio, "fogo": fogo})
+CONTINUOS |= {"pena", "vento", "murmurio", "fogo"}
+
 def render(eventos, dur):
     out = np.zeros(int((dur + 1) * SR))
     for e in eventos:
