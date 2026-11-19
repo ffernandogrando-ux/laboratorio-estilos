@@ -1,0 +1,11 @@
+{
+ "slug": "iluminura",
+ "nome": "Iluminura com folha de ouro",
+ "origem": {"repo": "lemomo-ai/lemo-opuscar", "pasta": "styles/gilded-illumination", "licenca": "código MIT; fontes Uncial Antiqua, IM Fell English e Grenze Gotisch SIL OFL 1.1; personagens nossos (homem de túnica, anjo sem asas, serafim, pastor, soldado, ovelha, besouro de margem, bebê kitsch)"},
+ "tecnica": "2D canvas: pigmento chapado com borda escura, tinta firme e pérolas de alvaiade; folha de ouro em quadrados (costuras, bolo vermelho, punções) com máscara: a luz da cena (radial, faixa, anel) só acende o ouro, quadrado a quadrado; ultramar granulado, pergaminho; câmera virtual com zoom em log; fundo parado em cache sob a câmera",
+ "status": "teste",
+ "canais": ["explicador bíblico (Traços da Bíblia)"],
+ "fortes": "cara de manuscrito medieval desde o 1º quadro; ouro que acende com a luz dá os momentos de revelação; moldura, plaqueta com capitular e faixa de pergaminho prontas para listas e frases curtas em português (acentos ok, ≥ 48 px, sempre no alto); rig de figura com poses por parâmetro e cenário bíblico pronto (tenda, templo, cela, campo, manjedoura)",
+ "limites": "rostos pequenos e pouco expressivos (bom para sério, fraco para humor); fundos de ouro grandes sob luz forte estouram para amarelo chapado; fumaça e vapor ainda parecem balõezinhos; ~60–120 ms por quadro no teste (200+ em cenas cheias de ouro sem cache)",
+ "nota": 8
+}

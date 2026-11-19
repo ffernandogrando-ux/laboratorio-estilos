@@ -295,22 +295,36 @@ function lightAt(Ls, x, y) {
     else { const d = (Math.hypot(x - L.x, y - L.y) - L.rad) / L.w; v += L.a * Math.exp(-d * d); }
   } return v;
 }
-let ctx, MC, MCg, GW, GWg, GWD, GWI;
+let ctx, MC, MCg, GW, GWg, GWD, GWI, GB, GBg;
 const QW = W / 4, QH = H / 4;
 // por pixel: onde a máscara diz ouro, acha o quadrado de folha (grade do mundo, ou da tela), a inclinação dele, e soma a luz.
 // A textura da folha é multiplicada (não pintada por cima) e cada canal tem teto (82 % do caminho até o ouro claro):
 // o ouro mais aceso continua mostrando quadrados e costuras, nunca vira branco.
 function glintPass(M, Ls, amb) {
-  if (!Ls.length && amb <= 0) { GWD.fill(0); return; }
-  const md = MCg.getImageData(0, 0, W, H).data, img = ctx.getImageData(0, 0, W, H), fd = img.data;
-  GWD.fill(0);
+  GWD.fill(0); if (!Ls.length && amb <= 0) return;
+  // só a região da tela que alguma luz alcança (lida e regravada; o resto nem é lido)
+  let bx0 = W, by0 = H, bx1 = 0, by1 = 0; const box = (a, b, c, d) => { bx0 = Math.min(bx0, a); by0 = Math.min(by0, b); bx1 = Math.max(bx1, c); by1 = Math.max(by1, d); };
+  if (amb > 0) box(0, 0, W, H);
+  for (const L of Ls) {
+    if (L.type === 'r') box(L.x - L.r, L.y - L.r, L.x + L.r, L.y + L.r);
+    else if (L.type === 'o') { const R = L.rad + 3 * L.w; box(L.x - R, L.y - R, L.x + R, L.y + R); }
+    else { const pts = []; for (const [cx, cy] of [[0, 0], [W, 0], [W, H], [0, H]]) pts.push((cx - L.x) * L.nx + (cy - L.y) * L.ny);   // faixa: recorta a tira |d| < 3w
+      const lo = Math.min(...pts), hi = Math.max(...pts); if (hi < -3 * L.w || lo > 3 * L.w) continue;
+      if (Math.abs(L.ny) > .2) { const ys = []; for (const x of [0, W]) for (const d of [-3 * L.w, 3 * L.w]) ys.push(L.y + (d - (x - L.x) * L.nx) / L.ny); box(0, Math.min(...ys), W, Math.max(...ys)); }
+      else box(0, 0, W, H); }
+  }
+  bx0 = Math.max(0, Math.floor(bx0)); by0 = Math.max(0, Math.floor(by0)); bx1 = Math.min(W, Math.ceil(bx1)); by1 = Math.min(H, Math.ceil(by1));
+  if (bx1 <= bx0 || by1 <= by0) return;
+  const RW = bx1 - bx0, RH = by1 - by0;
+  const md = MCg.getImageData(bx0, by0, RW, RH).data, md32 = new Uint32Array(md.buffer), img = ctx.getImageData(bx0, by0, RW, RH), fd = img.data;
   const inv = M.inverse(), ia = inv.a, ib = inv.b, ic = inv.c, id = inv.d, ie = inv.e, iff = inv.f;
   const Lr = Ls.map(L => ({ ...L, r2: L.r ? L.r * L.r : 0 }));
   let ci = 1e9, cj = 1e9, cs = -1, nx = 1, ny = 0, th = 0, fam = 0, tone = 0, ox = 0;
-  for (let y = 0; y < H; y++) {
-    const row = y * W;
-    for (let x = 0; x < W; x++) {
-      const p = (row + x) * 4, A = md[p + 3]; if (A < 6) continue;
+  for (let yy = 0; yy < RH; yy++) {
+    const row = yy * RW, y = yy + by0;
+    for (let xx = 0; xx < RW; xx++) {
+      if (md32[row + xx] === 0) continue;
+      const x = xx + bx0, p = (row + xx) * 4, A = md[p + 3]; if (A < 6) continue;
       const scr = md[p + 1] < 128 ? 1 : 0;
       const fx = scr ? x : ia * x + ic * y + ie, fy = scr ? y : ib * x + id * y + iff;
       const j = Math.floor(fy / LS), ro = rowOff(j), i = Math.floor((fx + ro) / LS);
@@ -332,17 +346,17 @@ function glintPass(M, Ls, amb) {
       fd[p] = Math.min(255, r0 * (1 + .5 * k) + (250 - r0) * f); fd[p + 1] = Math.min(232, g0 * (1 + .45 * k) + (204 - g0) * f); fd[p + 2] = Math.min(150, b0 * (1 + .2 * k) + (96 - b0) * f);
     }
   }
-  ctx.putImageData(img, 0, 0);
+  ctx.putImageData(img, bx0, by0);
 }
 function glowPass(gain) {   // halo pequeno só em volta do ouro mais aceso
   if (gain <= 0) return; const n = GWD.length, d = GWI.data; let any = false;
   for (let i = 0; i < n; i++) { const v = Math.min(1, GWD[i] / 16 * gain); if (v > .01) any = true; d[i * 4] = 255; d[i * 4 + 1] = 196; d[i * 4 + 2] = 110; d[i * 4 + 3] = 255 * v * v; }
   if (!any) return;
   GWg.putImageData(GWI, 0, 0);
-  ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalCompositeOperation = 'lighter';
-  ctx.filter = 'blur(3px)'; ctx.globalAlpha = .55; ctx.drawImage(GW, 0, 0, W, H);
-  ctx.filter = 'blur(9px)'; ctx.globalAlpha = .55; ctx.drawImage(GW, 0, 0, W, H);
-  ctx.restore();
+  // o desfoque é feito na imagem de ¼ (barato) e só depois ampliado
+  GBg.setTransform(1, 0, 0, 1, 0, 0); GBg.globalCompositeOperation = 'copy'; GBg.filter = 'blur(.8px)'; GBg.drawImage(GW, 0, 0);
+  GBg.globalCompositeOperation = 'lighter'; GBg.filter = 'blur(2.4px)'; GBg.drawImage(GW, 0, 0); GBg.filter = 'none';
+  ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = .55; ctx.drawImage(GB, 0, 0, W, H); ctx.restore();
 }
 function flashes(Ls) {   // estrelas de quatro pontas onde a luz é mais forte num pedaço de ouro
   ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalCompositeOperation = 'lighter';
@@ -355,15 +369,41 @@ function flashes(Ls) {   // estrelas de quatro pontas onde a luz é mais forte n
   ctx.restore();
 }
 
+// ---------------------------------------------------------------- camada estática (cache sob a câmera)
+// O que não se mexe (parede, céu, montanhas, cenário) pode ser pintado uma vez numa imagem e só colado sob a câmera:
+// a imagem guarda também a máscara de ouro e os pontos de brilho, então a luz continua acendendo o ouro dela.
+// A resolução segue o zoom em degraus (×½, ×1, ×2, ×4); se a imagem passaria de 4096 px, desenha ao vivo (nunca fica borrado).
+// Use para o FUNDO, desenhado primeiro (a imagem não apaga a máscara do que está por baixo).
+const CACHE = new Map();
+export function estatico(g, chave, caixa, fn) {
+  const [x0, y0, x1, y1] = caixa, m = g.getTransform(), zf = Math.hypot(m.a, m.b);
+  let res = Math.pow(2, Math.ceil(Math.log2(Math.max(zf, .01)) - .15)); res = clamp(res, .5, 4);
+  if ((x1 - x0) * res > 4096 || (y1 - y0) * res > 4096) { fn(g); return; }
+  const key = `${chave}|${res}|${E.DIM}|${x0},${y0},${x1},${y1}`;
+  let c = CACHE.get(key);
+  if (!c) {
+    const im = cnv((x1 - x0) * res, (y1 - y0) * res), mk = cnv(im.width, im.height), ig = im.getContext('2d'), mg = mk.getContext('2d');
+    const MK0 = E.MK, GP0 = E.GP, Z0 = E.ZOOM; E.MK = { g: mg, col: '#fff' }; E.GP = []; setZoom(res);
+    ig.setTransform(res, 0, 0, res, -x0 * res, -y0 * res);
+    try { fn(ig); } finally { E.MK = MK0; setZoom(Z0); }
+    c = { im, mk, gp: E.GP.map(p => ({ x: p.x / res + x0, y: p.y / res + y0, r: p.r / res, k: p.k })) }; E.GP = GP0;
+    for (const k of CACHE.keys()) if (k.startsWith(chave + '|') && CACHE.size > 6) CACHE.delete(k);
+    CACHE.set(key, c);
+  }
+  g.drawImage(c.im, x0, y0, x1 - x0, y1 - y0);
+  if (E.MK) { const mg = E.MK.g; mg.save(); mg.setTransform(m); mg.drawImage(c.mk, x0, y0, x1 - x0, y1 - y0); mg.restore(); }
+  for (const p of c.gp) gpush(g, p.x, p.y, p.r, p.k);
+}
+
 // ---------------------------------------------------------------- início e quadro
 export let g = null;   // o contexto da tela (1080×1920)
 /** cria as texturas (uma vez) e carrega as fontes do kit (fontes/fonts.css precisa estar no <head>) */
 export async function init(canvas) {
-  canvas.width = W; canvas.height = H; ctx = g = canvas.getContext('2d', { willReadFrequently: true });
+  canvas.width = W; canvas.height = H; ctx = g = canvas.getContext('2d');
   GOLDC = makeGold(); GOLDF = makeGoldFine(512, 3, 1); GOLDFF = makeGoldFine(1024, 9, 1.6); SPKC = makeSpk(); GRAINC = makeGrain();
   PAINTC = tint(GRAINC, [20, 30, 98], [58, 82, 176]); VELLC = makeVell();
-  MC = cnv(W, H); MCg = MC.getContext('2d', { willReadFrequently: true });
-  GW = cnv(QW, QH); GWg = GW.getContext('2d'); GWD = new Float32Array(QW * QH); GWI = GWg.createImageData(QW, QH);
+  MC = cnv(W, H); MCg = MC.getContext('2d');
+  GW = cnv(QW, QH); GWg = GW.getContext('2d'); GB = cnv(QW, QH); GBg = GB.getContext('2d'); GWD = new Float32Array(QW * QH); GWI = GWg.createImageData(QW, QH);
   await Promise.all(['80px Uncial', '60px Fell', 'italic 60px FellI', '600 60px Grenze'].map(f => document.fonts.load(f, 'ÃÇÉÓão')));
 }
 /**
@@ -374,12 +414,12 @@ export async function init(canvas) {
  *  pocas [{x, y, r, a}] — poça de luz quente de lamparina/fogueira no mundo · depois(g) — por cima de tudo (pigmento sem luz)
  */
 export function quadro(o) {
-  E.t = o.t || 0; const cam = o.cam || { x: W / 2, y: H / 2, z: 1, r: 0 }, M = camMatrix(cam); E.M = M;
+  const T0 = performance.now(), TP = {}; E.t = o.t || 0; const cam = o.cam || { x: W / 2, y: H / 2, z: 1, r: 0 }, M = camMatrix(cam); E.M = M;
   for (const c of [ctx, MCg]) { c.setTransform(1, 0, 0, 1, 0, 0); c.globalAlpha = 1; c.globalCompositeOperation = 'source-over'; c.filter = 'none'; }
   MCg.clearRect(0, 0, W, H);
   ctx.fillStyle = o.fundo || ULTRA_D; ctx.fillRect(0, 0, W, H);
   E.DIM = o.dim ?? 0; E.GP = []; E.MK = { g: MCg, col: '#fff' }; E.tela = false;
-  setZoom(cam.z); ctx.save(); ctx.setTransform(M); if (o.mundo) o.mundo(ctx, cam); ctx.restore();
+  setZoom(cam.z); ctx.save(); ctx.setTransform(M); if (o.mundo) o.mundo(ctx, cam); ctx.restore(); TP.mundo = performance.now() - T0;
   ctx.setTransform(1, 0, 0, 1, 0, 0);
   if (o.noite > 0) { ctx.globalCompositeOperation = 'multiply'; ctx.globalAlpha = o.noite; ctx.fillStyle = 'rgb(150,158,206)'; ctx.fillRect(0, 0, W, H); ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over'; }
   if (o.pocas) { ctx.save(); ctx.setTransform(M); ctx.globalCompositeOperation = 'screen';
@@ -389,10 +429,11 @@ export function quadro(o) {
   pat(ctx); ctx.save(); ctx.globalCompositeOperation = 'multiply'; ctx.globalAlpha = .14; ctx.fillStyle = ctx.__grain; ctx.fillRect(0, 0, W, H); ctx.restore();
   E.MK = null;
   const Ls = (typeof o.luzes === 'function' ? o.luzes() : (o.luzes || [])).flat().filter(Boolean).map(L => luzDev(L, M, cam.z, cam.r || 0));
-  glintPass(M, Ls, o.amb || 0);
-  glowPass(o.halo ?? .6);
+  TP.tela = performance.now() - T0; glintPass(M, Ls, o.amb || 0); TP.brilho = performance.now() - T0;
+  glowPass(o.halo ?? .6); TP.halo = performance.now() - T0;
   flashes(Ls);
   const v = ctx.createRadialGradient(W * .5, H * .46, H * .4, W / 2, H / 2, H * .78); v.addColorStop(0, 'rgba(0,0,0,0)'); v.addColorStop(1, (o.noite || 0) > .5 ? 'rgba(10,12,40,.4)' : 'rgba(40,20,5,.22)');
   ctx.fillStyle = v; ctx.fillRect(0, 0, W, H);
   if (o.depois) { E.tela = true; setZoom(1); ctx.save(); o.depois(ctx); ctx.restore(); }
+  TP.fim = performance.now() - T0; E.tempos = TP;
 }

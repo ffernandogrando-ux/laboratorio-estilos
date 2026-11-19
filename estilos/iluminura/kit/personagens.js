@@ -1,6 +1,6 @@
-// Personagens originais da iluminura (laboratório). A receita de pintura (pigmento chapado, borda, tinta firme, alvaiade, cordões e
-// auréola de ouro) é adaptada de lemomo-ai/lemo-opuscar (MIT, © 2026 Lemomo/LemoLab) — styles/gilded-illumination/demo/world.js
-// (drawGirl, drawAureole). Rig e figuras (homem, anjo, serafim, pastor, ovelha, soldado, bebê de asinha, bicho) são nossos.
+// adaptado de lemomo-ai/lemo-opuscar (MIT, © 2026 Lemomo/LemoLab) — styles/gilded-illumination/demo/world.js (drawGirl, drawAureole):
+// a receita de pintura (pigmento chapado, borda, tinta firme, alvaiade, cordões e auréola de ouro).
+// Rig e figuras (homem, anjo, serafim, pastor, ovelha, soldado, bebê de asinha, bicho) são nossos.
 // Convenção: (g, o) com o.x, o.y = pés no chão, o.s = escala (s=1: figura de ~260 de altura), o.dir = 1 (olha p/ direita) | -1.
 import {
   E, P2, TAU, lerp, clamp, ss, seg, eo, back, mulberry, local, leaf, leafCord, paint, ink, rimShade, hiLine, triad, pearls, pearlLine,

@@ -25,7 +25,7 @@ const PAINEIS = [
       P.anjo(g, { x: 760, y: 1500, s: 1.1, dir: -1, aureola: 'branca', manto: PIG.verdi }); P.anjo(g, { x: 880, y: 1470, s: 1.05, dir: -1, aureola: 'branca', manto: PIG.lilas, cabelo: '#7a4a26' });
       P.homem(g, { x: 1000, y: 1520, s: 1.12, dir: -1, tunica: PIG.branco, manto: PIG.verm, aureola: 'cruz', barba: 'curta', cabelo: '#6a3a1a', longo: true, bracos: 'abencoa' }); },
     tela: g => rot(g, 'céu de dia, tenda de Abraão, homem servindo, anjos (auréola branca), cruz, luz varrendo') }),
-  t => I.quadro({ t, luzes: [F.luzAnel(t, 0, { x: 540, y: 1100, vel: 700 }), { tipo: 'radial', x: 540, y: 1000, r: 600, a: .5 }],
+  t => I.quadro({ t, luzes: [F.luzAnel(t, 0, { x: 540, y: 1100, vel: 700 }), { tipo: 'radial', x: 540, y: 1000, r: 500, a: .25 }],
     mundo: g => { C.templo(g, { x: 540, y: 1700, s: .9, t, manto: 1, fumaca: .6, tremor: 1 }); P.serafim(g, { x: 260, y: 520, s: .7, t }); P.serafim(g, { x: 820, y: 520, s: .7, t: t + .4 });
       P.homem(g, { x: 830, y: 1740, s: 1, dir: -1, ajoelhado: 1, curva: .5, bracos: 'rosto', barba: 'longa', cabelo: '#5a3a22', tunica: PIG.rosa, manto: PIG.ultra, olhos: 'fechado' }); },
     tela: g => rot(g, 'templo: trono, manto, fumaça, portas; serafins; Isaías ajoelhado') }),

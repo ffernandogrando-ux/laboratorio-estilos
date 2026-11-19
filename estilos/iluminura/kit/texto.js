@@ -123,7 +123,8 @@ export function moldura(g, o = {}) {
 /**
  * Plaqueta da lista: capitular iluminada (número ou letra em ouro sobre ultramar) e título em pergaminho, no alto da tela.
  * o: num ('1'..'5' ou letra), titulo ('NÃO SÃO BEBÊS'), t (s desde a entrada), y (centro; padrão 300), w (padrão 960),
- *    sai (0..1: enrola e some), quique (true: bate com mola, para carimbo), vel (1: velocidade da pena)
+ *    sai (0..1: enrola e some), quique (true: bate com mola, para carimbo; o título entra em 0,35 s), vel (1: velocidade da pena),
+ *    junto (true: título encostado na capitular, para palavra começada pela capitular: num 'N' + titulo 'ÃO BEBE!')
  * Entrada: corpo desenrola (0–0,45 s) → capitular em bolo e depois ouro (0,25–0,8 s) → título por pena (0,6 s → +0,5 s + 0,035 s/letra).
  * Devolve {cap: [x, y] centro da capitular, fim: s em que o título termina, caixa: [x0, y0, x1, y1]}.
  */
@@ -161,10 +162,10 @@ export function plaqueta(g, o) {
     g.restore();
   }
   // título
-  const tk = o.quique ? seg(t, .05, .05 + dur * .6) : seg(t, .6 / vel, .6 / vel + dur), tx = x0 + 250 + (w - 280) / 2;
+  const tk = o.quique ? seg(t, .05, .4) : seg(t, .6 / vel, .6 / vel + dur), tx = o.junto ? x0 + 248 : x0 + 250 + (w - 280) / 2;
   const ls = fit.linhas, lh = fit.tam * 1.08, y0 = y + fit.tam * .34 - (ls.length - 1) * lh / 2;
   const tot = ls.reduce((a, l) => a + l.length, 0); let acc = 0;
-  ls.forEach((l, i) => { const k0 = acc / tot, k1 = (acc + l.length) / tot; acc += l.length; escrever(g, l, tx, y0 + i * lh, seg(tk, k0, k1), { tam: fit.tam, fonte: 'Uncial', cor: TINTA, primeira: i === 0 ? VERM_D : null }); });
+  ls.forEach((l, i) => { const k0 = acc / tot, k1 = (acc + l.length) / tot; acc += l.length; escrever(g, l, tx, y0 + i * lh, seg(tk, k0, k1), { tam: fit.tam, fonte: 'Uncial', cor: TINTA, primeira: i === 0 ? VERM_D : null, alinh: o.junto ? 'left' : 'center' }); });
   g.restore();
   return { cap: [ccx, ccy], fim, caixa: [x0, top, x0 + w, top + h] };
 }

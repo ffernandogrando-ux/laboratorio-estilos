@@ -495,6 +495,6 @@ export function caneca(g, o) {
     for (let i = 0; i < 7; i++) { g.fillStyle = 'rgba(100,54,6,.6)'; g.beginPath(); g.arc(-48 + i * 16, -117, 2, 0, TAU); g.fill(); }
     gpush(g, 0, -117, 90, 1.1);
     const mo = P2(q => q.ellipse(0, -126, 54, 10, 0, 0, TAU)); g.fillStyle = '#3b2416'; g.fill(mo); ink(g, mo, 1.8); maskErase(g, mo);
-    if ((o.vapor ?? 1) > 0) fumaca(g, { x: -6, y: -140, s: .5, t, k: o.vapor ?? 1, n: 5, alt: 420, cor: [WHITE, '#b8bcd8'], vel: .35 });
+    if ((o.vapor ?? 1) > 0) fumaca(g, { x: -6, y: -134, s: .5, t, k: o.vapor ?? 1, n: 7, alt: 380, larg: .5, cor: [WHITE, '#b8bcd8'], vel: .3 });
   }, o.dir ?? 1, o.inclina || 0);
 }
