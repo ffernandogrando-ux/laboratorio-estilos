@@ -358,7 +358,9 @@ function quadro25(t) {
       F.luzChama(t, ANJC[0], ANJC[1] - 240, 500, .6)],
     mundo: g => {
       fundo(g, cam, 'campo', BOXC, pintaCampo);
-      LO = tropa(g, { x0: 60, y0: -150, x1: 1020, y1: 760, k, t, origem: ORG });
+      // a tropa, depois de formada, fica parada (em fileira): sai do cache; só a onda de entrada é desenhada ao vivo
+      const TR = { x0: 60, y0: -150, x1: 1020, y1: 760, t: 0, origem: ORG };
+      if (k >= 1) { LO = null; I.estatico(g, 'tropa', [0, -360, 1080, 820], gg => tropa(gg, { ...TR, k: 1 })); } else LO = tropa(g, { ...TR, k });
       for (const [x, y, w, sd] of [[180, 1010, 420, 2], [540, 1030, 520, 4], [900, 1010, 420, 6]]) alfa(g, frente, () => C.nuvem(g, { x, y, w, s: 1.2, seed: sd }));
       [[150, 985, -1], [345, 1000, 1], [735, 1000, -1], [930, 985, 1]].forEach(([x, y, d], i) => alfa(g, ss(seg(t, K.multidao + i * .12, K.multidao + .5 + i * .12)), () =>
         P.anjo(g, { x, y, s: .9, dir: d, ...ANJO, bracos: 'alto', cabeca: -.15, aureolaK: ss(seg(t, K.multidao + i * .12, K.multidao + .6 + i * .12)) })));
